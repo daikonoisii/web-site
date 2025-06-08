@@ -1,0 +1,38 @@
+{% extends "wiki/article.html" %}
+{% load wiki_tags static i18n sekizai_tags %}
+
+{% static "wiki/bootstrap/css/wiki-bootstrap.css" %}
+
+{% block wiki_contents_tab %}
+
+<div class="col-lg-9">
+{% wiki_render article %}
+
+{% if urlpath.parent == None %}
+{% for item in all_article %}
+<a href={% url 'wiki:get' path=item.path %}>
+{{item.article.current_revision.title}}
+</a>
+<br>
+{% endfor %}
+{% endif %}
+</div>
+
+<div class="col-lg-3">
+<table class="table">
+<tr bgcolor="#e0e0e0">
+<th>最新修正記事</th>
+</tr>
+{% for item in new_modified %}
+<tr>
+<th>
+<a href={% url 'wiki:get' path=item.path %}>
+{{item.article.current_revision.title}}
+</a>
+</th>
+</tr>
+{% endfor %}
+</table>
+</div>
+
+{% endblock %}
