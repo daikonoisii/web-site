@@ -1,4 +1,8 @@
 # 渡部研Webサイトチューニングハッカソン
 
-テスト
-テスト2
+## Quick Start
+
+```sh
+$ docker compose up
+# localhost:7777
+```
