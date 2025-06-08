@@ -1,13 +1,14 @@
 name: Catch Merged
 
-# 22TI050/mainにpull_requestがcloseされたときに実行
+
+# 22ti050/mainにpull_requestがcloseされたときに実行
 # マージの是非は後ほどフィルタリング
 
 on:
   pull_request:
     types: [closed]
     branches:
-      - 22TI050/main
+      - 22ti050/main
 
 jobs:
   dispatch:
@@ -26,7 +27,7 @@ jobs:
             {
               "student_repo": "${{ github.repository }}",
               "student_branch": "${{ github.ref_name }}",
-              "STUDENT_ID": "22TI050",
+              "STUDENT_ID": "22ti050",
               "ENTRY_POINT_COMMAND": ["python","./web_site/manage.py"],
               "START_COMMAND": ["runserver","0.0.0.0:80"],
               "ENVIRONMENT_COMMAND": []
