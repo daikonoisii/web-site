@@ -1,0 +1,34 @@
+name: Catch Merged
+
+# 20103488/mainにpull_requestがcloseされたときに実行
+# マージの是非は後ほどフィルタリング
+
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - 20103488/main
+
+jobs:
+  dispatch:
+    # PRがマージされた時のみ実行
+    if: github.event.pull_request.merged == true
+    # github Actionの仮想実行マシーンの指定 ubuntu最新版
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send repository_dispatch
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.LIGHTHOUSE_PAT_TOKEN }}
+          repository: daikonoisii/web-tuning-contest
+          event-type: run-tuning
+          client-payload: |
+            {
+              "student_repo": "${{ github.repository }}",
+              "student_branch": "${{ github.ref_name }}",
+              "STUDENT_ID": "20103488",
+              "ENTRY_POINT_COMMAND": ["python","./web_site/manage.py"],
+              "START_COMMAND": ["runserver","0.0.0.0:80"],
+              "ENVIRONMENT_COMMAND": []
+            }
+
