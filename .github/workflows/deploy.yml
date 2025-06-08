@@ -1,5 +1,6 @@
 name: Catch Merged
 
+
 # 22ti050/mainにpull_requestがcloseされたときに実行
 # マージの是非は後ほどフィルタリング
 
