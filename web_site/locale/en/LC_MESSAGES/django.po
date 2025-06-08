@@ -1,0 +1,1032 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-08-30 16:51+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: templates/admin/base.html:35
+msgid "Welcome,"
+msgstr ""
+
+#: templates/admin/base.html:40
+msgid "View site"
+msgstr ""
+
+#: templates/admin/base.html:45
+msgid "Documentation"
+msgstr ""
+
+#: templates/admin/base.html:50
+msgid "Change password"
+msgstr ""
+
+#: templates/admin/base.html:52
+msgid "Log out"
+msgstr ""
+
+#: templates/admin/base.html:62 templates/admin/change_list.html:31
+#: templates/users/extention_base.html:7
+msgid "Home"
+msgstr ""
+
+#: templates/admin/change_list.html:50 templates/admin/change_list.html:54
+#: templates/admin/change_list_object_tools.html:9
+#: templates/admin/change_list_object_tools.html:13
+#, python-format
+msgid "Add %(name)s"
+msgstr ""
+
+#: templates/admin/change_list.html:64 templates/users/add_user_private.html:11
+#: templates/users/my_account.html:11
+msgid "Please correct the error below."
+msgstr ""
+
+#: templates/admin/change_list.html:64 templates/users/add_user_private.html:11
+#: templates/users/my_account.html:11
+msgid "Please correct the errors below."
+msgstr ""
+
+#: templates/admin/change_list.html:75
+msgid "Filter"
+msgstr ""
+
+#: templates/admin/index.html:20
+#, python-format
+msgid "Models in the %(name)s application"
+msgstr ""
+
+#: templates/admin/index.html:32 templates/admin/index.html:34
+msgid "Add"
+msgstr ""
+
+#: templates/admin/index.html:42
+msgid "View"
+msgstr ""
+
+#: templates/admin/index.html:44
+msgid "Change"
+msgstr ""
+
+#: templates/admin/index.html:55
+msgid "You don't have permission to view or edit anything."
+msgstr ""
+
+#: templates/admin/index.html:63
+msgid "Recent actions"
+msgstr ""
+
+#: templates/admin/index.html:64
+msgid "My actions"
+msgstr ""
+
+#: templates/admin/index.html:68
+msgid "None available"
+msgstr ""
+
+#: templates/admin/index.html:82
+msgid "Unknown content"
+msgstr ""
+
+#: templates/base.html:35 templates/top.html:5 templates/top.html:14
+msgid "データ管理システム"
+msgstr "Data Management System"
+
+#: templates/base.html:46
+msgid "アプリ一覧"
+msgstr "App List"
+
+#: templates/base.html:49 templates/base.html:99
+msgid "外部公開サイト"
+msgstr ""
+
+#: templates/base.html:50 templates/base.html:100
+msgid "研究室wiki"
+msgstr ""
+
+#: templates/base.html:51 templates/base.html:101
+#: templates/report/report_base.html:35 templates/report/report_top.html:5
+#: templates/report/report_top.html:9
+msgid "レポート管理"
+msgstr "Reports Management"
+
+#: templates/base.html:52 templates/base.html:102
+#: templates/paper/paper_base.html:38 templates/paper/paper_top.html:5
+#: templates/paper/paper_top.html:9
+msgid "業績・文献管理"
+msgstr ""
+
+#: templates/base.html:53 templates/base.html:103
+#: templates/output/format_list.html:5 templates/output/format_list.html:9
+#: templates/output/output_base.html:30 templates/output/output_top.html:5
+#: templates/output/output_top.html:9
+msgid "データ出力"
+msgstr ""
+
+#: templates/base.html:54
+msgid "データベース"
+msgstr "Database View"
+
+#: templates/base.html:80
+#, python-format
+msgid "ようこそ %(name)sさん"
+msgstr "Welcome, %(name)s"
+
+#: templates/base.html:84 templates/base.html:86 templates/base.html:107
+#: templates/base.html:109 templates/public/public_base.html:131
+#: templates/public/public_base.html:133 templates/public/public_base.html:159
+#: templates/public/public_base.html:161
+#: templates/public/public_kwatabe_base.html:59
+#: templates/public/public_kwatabe_base.html:61
+#: templates/public/public_kwatabe_base.html:85
+#: templates/public/public_kwatabe_base.html:87
+msgid "アカウント設定"
+msgstr "Account Settings"
+
+#: templates/base.html:88 templates/base.html:111
+#: templates/public/public_base.html:135 templates/public/public_base.html:163
+#: templates/public/public_kwatabe_base.html:63
+#: templates/public/public_kwatabe_base.html:89
+msgid "パスワード変更"
+msgstr "Change Password"
+
+#: templates/base.html:89 templates/base.html:112
+#: templates/public/public_base.html:136 templates/public/public_base.html:164
+#: templates/public/public_kwatabe_base.html:64
+#: templates/public/public_kwatabe_base.html:90
+msgid "ログアウト"
+msgstr "Log out"
+
+#: templates/base.html:104
+msgid "データベース閲覧"
+msgstr "Database View"
+
+#: templates/base.html:134
+msgid "長岡技術科学大学"
+msgstr "Nagaoka University of Technology"
+
+#: templates/base.html:134 templates/public/public_about_us.html:6
+#: templates/public/public_achievements.html:6
+#: templates/public/public_contacts.html:6
+#: templates/public/public_former_members.html:6
+#: templates/public/public_information.html:6
+#: templates/public/public_market.html:6 templates/public/public_members.html:6
+#: templates/public/public_nakagawa_lab_members.html:6
+#: templates/public/public_photo_gallery.html:6
+#: templates/public/public_presentation_list.html:6
+#: templates/public/public_schedule.html:6 templates/public/public_top.html:6
+#: templates/top.html:5
+msgid "通信ネットワーク研究室"
+msgstr "Communication Networks Laboratory"
+
+#: templates/output/format_form.html:5 templates/output/format_form.html:9
+msgid "データフォーマット編集"
+msgstr ""
+
+#: templates/output/format_form.html:13
+msgid ""
+"フォーマットを編集して，任意のフォーマットでデータを出力することができます．"
+msgstr "This page provides view of all data in the database. "
+
+#: templates/output/format_list.html:13
+msgid "出力可能なフォーマットの一覧を表示します．"
+msgstr "This page shows the list of your reports. "
+
+#: templates/output/format_list.html:19
+msgid "フォーマットリスト"
+msgstr ""
+
+#: templates/output/output_base.html:9
+msgid "データ出力トップ"
+msgstr ""
+
+#: templates/output/output_base.html:12
+msgid "論文データ出力"
+msgstr ""
+
+#: templates/output/output_base.html:24
+msgid "受賞データ出力"
+msgstr ""
+
+#: templates/output/output_base.html:25
+msgid "委員歴データ出力"
+msgstr ""
+
+#: templates/output/output_top.html:13
+msgid "業績など様々なデータを任意のフォーマットで出力することができます．"
+msgstr "This page provides a registration form for new reports. "
+
+#: templates/output/output_top.html:19 templates/paper/paper_top.html:19
+#: templates/report/report_top.html:19
+msgid "最新の投稿"
+msgstr "Recent Reports"
+
+#: templates/paper/bibtex_how_to.html:5 templates/paper/bibtex_how_to.html:9
+msgid "BibTeXによる参考文献の出力方法"
+msgstr ""
+
+#: templates/paper/bibtex_how_to.html:13
+msgid "BibTeXによる参考文献出力の仕方を説明します．"
+msgstr ""
+
+#: templates/paper/bibtex_how_to.html:19
+msgid "BibTeXの使い方"
+msgstr ""
+
+#: templates/paper/conference_title_edit.html:5
+#: templates/paper/conference_title_edit.html:9
+msgid "会議登録"
+msgstr ""
+
+#: templates/paper/conference_title_edit.html:13
+msgid "会議をデータベースに登録することができます．"
+msgstr "This page provides a registration form for new reports. "
+
+#: templates/paper/journal_title_edit.html:5
+#: templates/paper/journal_title_edit.html:9
+msgid "論文誌登録"
+msgstr ""
+
+#: templates/paper/journal_title_edit.html:13
+msgid "論文誌をデータベースに登録することができます．"
+msgstr "This page provides a registration form for new reports. "
+
+#: templates/paper/paper_base.html:9
+msgid "業績・文献管理トップ"
+msgstr ""
+
+#: templates/paper/paper_base.html:12
+msgid "新規登録"
+msgstr ""
+
+#: templates/paper/paper_base.html:15
+msgid "学術誌論文(研究室メンバが著者)"
+msgstr ""
+
+#: templates/paper/paper_base.html:16
+msgid "国際・国内会議論文(研究室メンバが著者)"
+msgstr ""
+
+#: templates/paper/paper_base.html:17
+msgid "学術誌論文"
+msgstr ""
+
+#: templates/paper/paper_base.html:18
+msgid "国際・国内会議論文"
+msgstr ""
+
+#: templates/paper/paper_base.html:19
+msgid "ウェブサイト"
+msgstr ""
+
+#: templates/paper/paper_base.html:22 templates/paper/paper_search.html:5
+#: templates/paper/paper_search.html:9 templates/paper/paper_search.html:18
+msgid "文献検索"
+msgstr ""
+
+#: templates/paper/paper_base.html:25
+msgid "LaTeX"
+msgstr ""
+
+#: templates/paper/paper_edit.html:5 templates/paper/paper_edit.html:9
+msgid "文献登録"
+msgstr ""
+
+#: templates/paper/paper_edit.html:13
+msgid "文献をデータベースに登録することができます．"
+msgstr "This page provides a registration form for new reports. "
+
+#: templates/paper/paper_search.html:13
+msgid "データベースから文献を検索することができます．"
+msgstr "This page provides a search form for all reports in the database. "
+
+#: templates/paper/paper_search.html:28
+#: templates/report/report_all_list.html:28
+msgid "検索"
+msgstr "Search"
+
+#: templates/paper/paper_search.html:33
+#: templates/report/report_all_list.html:33
+#: templates/report/report_my_list.html:32
+msgid "検索結果"
+msgstr "Search Results"
+
+#: templates/paper/paper_top.html:13
+msgid "研究室内の業績と参考文献を管理します．"
+msgstr ""
+
+#: templates/public/public_about_us.html:6
+msgid "研究室紹介"
+msgstr ""
+
+#: templates/public/public_about_us.html:42
+msgid ""
+"\n"
+"                            インターネットに代表される通信ネットワークは，私"
+"達の生活に深く根ざし，重要な社会インフラとなってきています．\n"
+"                            私達の生活がネットワークに強く依存すればするほ"
+"ど，決して止まることのないネットワークが求められます．\n"
+"                            通信ネットワーク研究室では，安心して使える通信イ"
+"ンフラを目指し，超高信頼ネットワークを実現するための技術を研究しています．\n"
+"                        "
+msgstr ""
+
+#: templates/public/public_about_us.html:52
+msgid ""
+"\n"
+"                                様々なものがインターネットに接続される"
+"Internet of Things (IoT)では，膨大な数のデバイスがつながるため，これらを協調"
+"させ，きちんと繋がるネットワークを構築することはとても難しい課題です．\n"
+"                            "
+msgstr ""
+
+#: templates/public/public_about_us.html:58
+msgid ""
+"\n"
+"                                ネットワークを介した遠隔手術や自動運転を実現"
+"する場合，ネットワークの僅かな遅れや停止も重大な事故に繋がるため，決して止ま"
+"らない通信を実現する方法を模索することは非常に重要です．\n"
+"                            "
+msgstr ""
+
+#: templates/public/public_about_us.html:64
+msgid ""
+"\n"
+"                                インフラの重要性は，大規模な災害や障害時に浮"
+"き彫りになります．\n"
+"                                災害や障害が起こっても途切れることがない，あ"
+"るいはすぐに復旧可能な設計を検討しなければなりません．\n"
+"                            "
+msgstr ""
+
+#: templates/public/public_about_us.html:71
+msgid "インターネットの中身を覗いてみよう"
+msgstr ""
+
+#: templates/public/public_about_us.html:85
+msgid ""
+"\n"
+"                            通信ネットワーク研究室では，安心して使える通信イ"
+"ンフラを実現するために，様々なアプローチから研究を行っています．\n"
+"                        "
+msgstr ""
+"\n"
+"Communication Networks Laboratory (ComNets Lab.) tackle various issues in "
+"communication networks including the Internet."
+
+#: templates/public/public_about_us.html:95
+#: templates/public/public_kwatabe.html:99
+msgid "詳細はこちら"
+msgstr "For more details. "
+
+#: templates/public/public_about_us.html:111
+msgid ""
+"\n"
+"                            通信ネットワーク研究室の学生居室は，広さ134平方"
+"メートルの大きな研究室で，各メンバーにはパーティションで区切られたパーソナル"
+"デスクとロッカー，GPU搭載の高機能サーバ群のアカウントが割り当てられます．\n"
+"                            部屋の南側に大きく確保された共有スペースは，本格"
+"的なエスプレッソを楽しめるコーヒーサーバと大型のビーズクッションを備えてお"
+"り，研究の合間にくつろぐことができます．\n"
+"                        "
+msgstr ""
+
+#: templates/public/public_about_us.html:133
+msgid ""
+"\n"
+"                            通信ネットワーク研究室では，卒業・修了までの期間"
+"に，様々なスキルを獲得することができます．\n"
+"                            研究活動の中でスキルが培われるほか，研究外プロ"
+"ジェクトも推奨しており， メンバー自身が描くキャリアプランに合わせ，多様なスキ"
+"ル獲得をサポートします．\n"
+"                        "
+msgstr ""
+
+#: templates/public/public_about_us.html:154
+msgid ""
+"\n"
+"                            通信ネットワーク研究室の大まかな年間スケジュール"
+"です．\n"
+"                            各種打ち上げや，花火観覧，OBとの交流を企画してい"
+"ます．\n"
+"                        "
+msgstr ""
+
+#: templates/public/public_about_us.html:164
+msgid "4月"
+msgstr ""
+
+#: templates/public/public_about_us.html:175
+msgid "5月"
+msgstr ""
+
+#: templates/public/public_about_us.html:186
+msgid "6月"
+msgstr ""
+
+#: templates/public/public_about_us.html:197
+msgid "7月"
+msgstr ""
+
+#: templates/public/public_about_us.html:208
+msgid "8月"
+msgstr ""
+
+#: templates/public/public_about_us.html:219
+msgid "9月"
+msgstr ""
+
+#: templates/public/public_about_us.html:234
+msgid "10月"
+msgstr ""
+
+#: templates/public/public_about_us.html:245
+msgid "11月"
+msgstr ""
+
+#: templates/public/public_about_us.html:256
+msgid "12月"
+msgstr ""
+
+#: templates/public/public_about_us.html:267
+msgid "1月"
+msgstr ""
+
+#: templates/public/public_about_us.html:278
+msgid "2月"
+msgstr ""
+
+#: templates/public/public_about_us.html:289
+msgid "3月"
+msgstr ""
+
+#: templates/public/public_about_us.html:313
+msgid ""
+"\n"
+"                            通信ネットワーク研究室は，アットホームな雰囲気作"
+"りを目指しています．\n"
+"                            研究の相談など，チャットを活用して気軽にコミュニ"
+"ケーションを取れる雰囲気があります．\n"
+"                            有志による遊びの企画も多く，たこ焼きパーティーな"
+"ども頻繁に企画しています．\n"
+"                        "
+msgstr ""
+
+#: templates/public/public_about_us.html:338
+msgid ""
+"\n"
+"                            修士に進学する学生は，4ヵ月間の実務訓練に派遣され"
+"ます．\n"
+"                            派遣先は，通信関係の企業が中心となりますが，ベト"
+"ナムの企業・研究所への派遣も可能です．\n"
+"                        "
+msgstr ""
+
+#: templates/public/public_about_us.html:345
+msgid ""
+"\n"
+"                                ※ ネットワーク特性評価研究室(中川健治研究室)"
+"の派遣実績を含みます．\n"
+"                            "
+msgstr ""
+"\n"
+"Note: The above achievements include papers in Laboratory of Network "
+"Performance Evaluation (Kenji Nakagawa's laboratory). "
+
+#: templates/public/public_about_us.html:369
+msgid ""
+"\n"
+"                            卒業生・修了生は， NTTなど通信関連の企業に就職す"
+"る割合が多いですが，JRなど通信分野以外の企業に就職する例も多数あります．\n"
+"                            現代では，ほとんどすべての企業は情報部門を持ち，"
+"ネットワークに依存しているため，潜在的な就職先はほとんど絞られることはありま"
+"せん．\n"
+"                            職種としては，ネットワークエンジニアや，社内の情"
+"報部門やSIerで上流を担当するシステムエンジニアが多くいます．\n"
+"                        "
+msgstr ""
+
+#: templates/public/public_about_us.html:377
+msgid ""
+"\n"
+"                                ※ ネットワーク特性評価研究室(中川健治研究室)"
+"における指導学生の就職実績を含みます．\n"
+"                            "
+msgstr ""
+"\n"
+"Note: The above achievements include papers in Laboratory of Network "
+"Performance Evaluation (Kenji Nakagawa's laboratory). "
+
+#: templates/public/public_achievements.html:6
+msgid "業績"
+msgstr ""
+
+#: templates/public/public_achievements.html:41
+msgid ""
+"※ 2019年10月以前の業績は，ネットワーク特性評価研究室(中川健治研究室)での業績"
+"です．"
+msgstr ""
+"\n"
+"Note: The above achievements include papers in Laboratory of Network "
+"Performance Evaluation (Kenji Nakagawa's laboratory). "
+
+#: templates/public/public_base.html:86
+msgid "ComNets Lab."
+msgstr ""
+
+#: templates/public/public_base.html:126
+#: templates/public/public_kwatabe_base.html:54
+#, python-format
+msgid "%(name)s"
+msgstr ""
+
+#: templates/public/public_base.html:129 templates/public/public_base.html:157
+#: templates/public/public_kwatabe_base.html:57
+#: templates/public/public_kwatabe_base.html:83
+msgid "メンバー限定ページ"
+msgstr ""
+
+#: templates/public/public_base.html:166
+#: templates/public/public_kwatabe_base.html:92
+msgid "Login"
+msgstr ""
+
+#: templates/public/public_contacts.html:6
+msgid "連絡先"
+msgstr ""
+
+#: templates/public/public_contacts.html:39
+msgid "〒940-2188"
+msgstr ""
+
+#: templates/public/public_contacts.html:40
+msgid "新潟県長岡市上富岡町1603-1"
+msgstr "Address: Kamitomiokamachi 1603-1, Nagaoka, Niigata 940-2188, Japan"
+
+#: templates/public/public_contacts.html:41
+msgid "長岡技術科学大学 電気1号棟 3階 305 (教員居室)，314，316 (学生居室)"
+msgstr ""
+
+#: templates/public/public_contacts.html:57
+msgid "JR長岡駅 大手口より，バスのりば7番線から技大前行きバス乗車 約30分"
+msgstr ""
+
+#: templates/public/public_contacts.html:58
+msgid "JR長岡駅 大手口より，タクシー乗車 約25分"
+msgstr ""
+
+#: templates/public/public_contacts.html:59
+msgid "関越自動車道・北陸自動車道長岡I.C.から約5分"
+msgstr ""
+
+#: templates/public/public_former_members.html:6
+msgid "過去のメンバー"
+msgstr ""
+
+#: templates/public/public_former_members.html:39
+#: templates/public/public_former_members.html:47
+msgid "メンバー限定"
+msgstr ""
+
+#: templates/public/public_former_members.html:57
+#: templates/public/public_kwatabe.html:53
+#: templates/public/public_members.html:55
+#: templates/public/public_nakagawa_lab_members.html:55
+msgid "[氏名]"
+msgstr "[Name]"
+
+#: templates/public/public_former_members.html:61
+msgid "[在籍期間]"
+msgstr ""
+
+#: templates/public/public_former_members.html:65
+#: templates/public/public_members.html:84
+#: templates/public/public_nakagawa_lab_members.html:84
+msgid "[出身校]"
+msgstr ""
+
+#: templates/public/public_former_members.html:70
+msgid "[就職先]"
+msgstr ""
+
+#: templates/public/public_former_members.html:74
+msgid "※中川健治研"
+msgstr ""
+
+#: templates/public/public_information.html:6
+msgid "過去の情報"
+msgstr ""
+
+#: templates/public/public_kwatabe.html:54
+#: templates/public/public_kwatabe_profile.html:193
+msgid "渡部 康平"
+msgstr "Kohei Watabe"
+
+#: templates/public/public_kwatabe.html:57
+msgid "[学位]"
+msgstr "[Degree]"
+
+#: templates/public/public_kwatabe.html:58
+msgid "博士(情報科学)"
+msgstr "Ph.D in Information Science"
+
+#: templates/public/public_kwatabe.html:61
+msgid "[所属]"
+msgstr "[Affiliation]"
+
+#: templates/public/public_kwatabe.html:62
+msgid ""
+"長岡技術科学大学<br>技学研究院<br>電気電子情報工学専攻<br>情報通信制御システ"
+"ム工学コース"
+msgstr "Graduate School of Engineering, Nagaoka University of Technology"
+
+#: templates/public/public_kwatabe.html:65
+#: templates/public/public_members.html:60
+#: templates/public/public_nakagawa_lab_members.html:60
+msgid "[職位]"
+msgstr "[Position]"
+
+#: templates/public/public_kwatabe.html:66
+msgid "准教授"
+msgstr "Assistant professor"
+
+#: templates/public/public_kwatabe.html:69
+msgid "[専門領域]"
+msgstr "[Research Fields]"
+
+#: templates/public/public_kwatabe.html:70
+msgid "通信ネットワーク"
+msgstr "Communication Networks"
+
+#: templates/public/public_kwatabe.html:75
+msgid "プロフィールの詳細はこちら"
+msgstr "For more details. "
+
+#: templates/public/public_kwatabe.html:115
+#, python-format
+msgid "国際論文誌 %(journal_num)s件"
+msgstr "International Journal: %(journal_num)spapers"
+
+#: templates/public/public_kwatabe.html:116
+#, python-format
+msgid "国内・国際際会議 %(conf_num)s件"
+msgstr "International/Domestic Conference: %(conf_num)spapers"
+
+#: templates/public/public_kwatabe.html:119
+msgid "研究業績の詳細はこちら"
+msgstr "For more details about achievements. "
+
+#: templates/public/public_kwatabe_base.html:20
+msgid "Kohei Watabe's Site"
+msgstr ""
+
+#: templates/public/public_kwatabe_profile.html:176
+msgid ""
+"\n"
+"                        <p>\n"
+"                            IoTを始め通信ネットワークを活用して様々な技術課題"
+"の解決に取り組みます．\n"
+"                        </p>\n"
+"                        <p>\n"
+"                            通信を専門とする企業から地域の中小企業まで，共同"
+"研究の提案，技術相談などお気軽にご相談ください．\n"
+"                        </p>\n"
+"                    "
+msgstr ""
+"\n"
+"                        <p>\n"
+"                            Please feel free to make an inquiry below if you "
+"have any questions related to my research or our "
+"laboratory.                     </p>\n"
+"                        <p>\n"
+"                            If you want to join our laboratory as an "
+"international student in the master's/doctoral course of NUT, please send an "
+"email to the address k_watabe+entry[at]vos.nagaokaut.ac.jp, not the "
+"following address.                     </p>\n"
+"                    "
+
+#: templates/public/public_kwatabe_profile.html:185
+msgid "住所: 〒940-2188 新潟県長岡市上富岡町1603-1"
+msgstr "Address: Kamitomiokamachi 1603-1, Nagaoka, Niigata 940-2188, Japan"
+
+#: templates/public/public_kwatabe_profile.html:186
+msgid "居室: 電気1号棟 3階 305"
+msgstr "Office: Faculty building (Electrical Engineering) 3F 305"
+
+#: templates/public/public_kwatabe_profile.html:187
+msgid "電話: 0258-47-9537"
+msgstr "Phone: +81-258-47-9537"
+
+#: templates/public/public_kwatabe_profile.html:188
+msgid "メール"
+msgstr "E-mail"
+
+#: templates/public/public_kwatabe_schedule.html:86
+#: templates/public/public_schedule.html:86
+msgid "14日間限定公開URL"
+msgstr ""
+
+#: templates/public/public_kwatabe_schedule.html:94
+#: templates/public/public_schedule.html:94
+msgid "30日間限定公開URL"
+msgstr ""
+
+#: templates/public/public_kwatabe_schedule.html:102
+#: templates/public/public_schedule.html:102
+msgid "365日間限定公開URL"
+msgstr ""
+
+#: templates/public/public_market.html:6
+msgid "ComNets マーケット"
+msgstr ""
+
+#: templates/public/public_market.html:73
+msgid "出品はこちらから"
+msgstr ""
+
+#: templates/public/public_members.html:6
+msgid "メンバー"
+msgstr ""
+
+#: templates/public/public_members.html:64
+#: templates/public/public_nakagawa_lab_members.html:64
+msgid "[居室]"
+msgstr ""
+
+#: templates/public/public_members.html:68
+#: templates/public/public_nakagawa_lab_members.html:68
+msgid "[電話]"
+msgstr ""
+
+#: templates/public/public_members.html:72
+#: templates/public/public_nakagawa_lab_members.html:72
+msgid "[メール]"
+msgstr ""
+
+#: templates/public/public_members.html:76
+#: templates/public/public_nakagawa_lab_members.html:76
+msgid "個人ページ"
+msgstr ""
+
+#: templates/public/public_members.html:80
+#: templates/public/public_nakagawa_lab_members.html:80
+msgid "[学年]"
+msgstr ""
+
+#: templates/public/public_members.html:104
+msgid ""
+"ネットワーク特性評価研究室(中川健治研)を含む過去のメンバーと現中川健治研メン"
+"バーはこちら．"
+msgstr ""
+
+#: templates/public/public_members.html:106
+msgid "過去のメンバーはこちら"
+msgstr "Check here for past information. "
+
+#: templates/public/public_members.html:107
+msgid "中川健治研のメンバーはこちら"
+msgstr "For more details about members. "
+
+#: templates/public/public_nakagawa_lab_members.html:6
+msgid "中川健治研メンバー"
+msgstr ""
+
+#: templates/public/public_nakagawa_lab_members.html:104
+msgid "通信ネットワーク研究室(渡部研究室)のメンバーはこちら．"
+msgstr "NUT ComNets Lab. (Watabe Laboratory)"
+
+#: templates/public/public_nakagawa_lab_members.html:106
+msgid "渡部研メンバーはこちら"
+msgstr "For more details about members. "
+
+#: templates/public/public_photo_gallery.html:6
+msgid "フォトギャラリー"
+msgstr ""
+
+#: templates/public/public_presentation_list.html:6
+msgid "研究紹介"
+msgstr ""
+
+#: templates/public/public_schedule.html:6
+msgid "スケジュール"
+msgstr ""
+
+#: templates/public/public_schedule.html:74
+msgid ""
+"以下のURLを共有することで，期間を限定してページへのアクセスを許可することがで"
+"きます．"
+msgstr ""
+
+#: templates/public/public_schedule.html:78
+msgid "当日間限定公開URL"
+msgstr ""
+
+#: templates/public/public_top.html:6
+msgid "Top page"
+msgstr ""
+
+#: templates/public/public_top.html:61
+msgid "過去の情報はこちら"
+msgstr "Check here for past information. "
+
+#: templates/public/public_top.html:74
+msgid ""
+"\n"
+"                        通信ネットワーク研究室(渡部研究室)では，インターネッ"
+"トに代表される通信ネットワークをテーマに様々な研究に取り組んでいます．\n"
+"                    "
+msgstr ""
+"\n"
+"Communication Networks Laboratory (ComNets Lab.) tackle various issues in "
+"communication networks including the Internet."
+
+#: templates/public/public_top.html:78
+msgid "研究室紹介の詳細はこちら"
+msgstr "For more details about us. "
+
+#: templates/public/public_top.html:92
+#, python-format
+msgid ""
+"\n"
+"                            通信ネットワーク研究室(渡部研究室)では，国際論文"
+"誌 %(watabe_journal_num)s件，国内・国際際会議 %(watabe_conf_num)s件の論文を発"
+"表し，科学技術の発展に貢献しています．\n"
+"                        "
+msgstr ""
+"\n"
+"Communication Networks Laboratory (ComNets Lab.) has published "
+"%(watabe_journal_num)s international journal papers and %(watabe_conf_num)s "
+"domestic/international conference papers, contributing to the development of "
+"information science."
+
+#: templates/public/public_top.html:98
+msgid ""
+"\n"
+"                                ※ ネットワーク特性評価研究室(中川健治研究室)"
+"での業績を含みます．\n"
+"                            "
+msgstr ""
+"\n"
+"Note: The above achievements include papers in Laboratory of Network "
+"Performance Evaluation (Kenji Nakagawa's laboratory). "
+
+#: templates/public/public_top.html:104
+msgid "業績の詳細はこちら"
+msgstr "For more details about achievements. "
+
+#: templates/public/public_top.html:118
+#, python-format
+msgid ""
+"\n"
+"                            通信ネットワーク研究室(渡部研究室)は現在，教員1"
+"名，大学院生%(masters_num)s名，学部生%(bachelor_num)s名から構成されていま"
+"す．\n"
+"                        "
+msgstr ""
+"\n"
+"Communication Networks Laboratory (ComNets Lab.) currently consists of one "
+"associate professor, %(masters_num)s graduate students, and %(bachelor_num)s "
+"undergraduate students."
+
+#: templates/public/public_top.html:123
+msgid "メンバーの詳細はこちら"
+msgstr "For more details about members. "
+
+#: templates/public/public_top.html:137
+msgid ""
+"\n"
+"                            通信ネットワーク研究室(渡部研究室)は，長岡技術科"
+"学大学 電気1号棟に位置しています．\n"
+"                        "
+msgstr ""
+"\n"
+"Communication Networks Laboratory (ComNets Lab.) is located in Faculty "
+"building (Electrical Engineering) of Nagaoka University of Technology."
+
+#: templates/public/public_top.html:142
+msgid "連絡先の詳細はこちら"
+msgstr "For more details about contacts. "
+
+#: templates/report/report_all_list.html:5
+#: templates/report/report_all_list.html:9
+#: templates/report/report_all_list.html:18
+#: templates/report/report_base.html:28
+msgid "レポート検索"
+msgstr "Report Search"
+
+#: templates/report/report_all_list.html:13
+msgid "データベースからレポートを検索することができます．"
+msgstr "This page provides a search form for all reports in the database. "
+
+#: templates/report/report_base.html:15
+msgid "レポート管理トップ"
+msgstr "Reports Management Top"
+
+#: templates/report/report_base.html:18
+#: templates/report/report_submission_list.html:5
+#: templates/report/report_submission_list.html:9
+msgid "投稿一覧"
+msgstr "Report List"
+
+#: templates/report/report_base.html:21
+msgid "ゼミ"
+msgstr "Seminar"
+
+#: templates/report/report_base.html:22
+msgid "論文レポート"
+msgstr "Paper Reports"
+
+#: templates/report/report_base.html:23
+msgid "サイドプロジェクト"
+msgstr "Side Project"
+
+#: templates/report/report_base.html:24
+msgid "その他"
+msgstr "Others"
+
+#: templates/report/report_base.html:25
+msgid "すべての投稿"
+msgstr "All Reports"
+
+#: templates/report/report_base.html:29 templates/report/report_my_list.html:5
+#: templates/report/report_my_list.html:9
+msgid "マイレポート"
+msgstr "My Reports"
+
+#: templates/report/report_base.html:30
+#: templates/report/report_report_new.html:5
+#: templates/report/report_report_new.html:9
+msgid "レポート投稿"
+msgstr "Post a Report"
+
+#: templates/report/report_detail.html:152
+msgid "コメント"
+msgstr "Comments"
+
+#: templates/report/report_my_list.html:13
+msgid "自身が投稿したレポートの一覧を表示することができます．"
+msgstr "This page shows the list of your reports. "
+
+#: templates/report/report_my_list.html:27
+msgid "表示"
+msgstr ""
+
+#: templates/report/report_my_list.html:71
+msgid "このテーマに関するレポートはありません．"
+msgstr ""
+
+#: templates/report/report_my_list.html:77
+msgid "テーマを選択してください．"
+msgstr ""
+
+#: templates/report/report_report_new.html:13
+msgid "新しいレポートをデータベースに登録することができます．"
+msgstr "This page provides a registration form for new reports. "
+
+#: templates/report/report_report_new.html:30
+msgid "ファイル再アップロード"
+msgstr ""
+
+#: templates/report/report_report_new.html:31
+msgid "本文修正(markdown,text)"
+msgstr ""
+
+#: templates/report/report_report_new.html:53
+msgid "業績・論文管理から論文を追加する"
+msgstr ""
+
+#: templates/report/report_submission_list.html:13
+msgid "メンバー毎の資料投稿状況を見ることができます．"
+msgstr "This page shows submission history for each member. "
+
+#: templates/report/report_title_new.html:4
+#: templates/report/report_title_new.html:8
+msgid "タイトル追加"
+msgstr ""
+
+#: templates/report/report_title_new.html:12
+msgid "研究テーマをデータベースに登録することができます．"
+msgstr "This page provides a registration form for new reports. "
+
+#: templates/report/report_top.html:13
+msgid "報告書や資料，付随するコメント等を管理します．"
+msgstr "This page manages reports and comments. "
+
+#: templates/top.html:18
+msgid "メンバーや業績など様々なものを管理します．"
+msgstr ""
+"This page manages various things, including members, publication, reports, "
+"etc."
