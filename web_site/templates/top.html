@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}
+    {% trans "通信ネットワーク研究室" %} {% trans "データ管理システム" %}
+{% endblock title %}
+
+{% block nav_items %}
+    <ul class="navbar-nav mr-auto">
+    </ul>
+{% endblock %}
+
+{% block headline %}
+    {% trans "データ管理システム" %}
+{% endblock %}
+
+{% block lead_sentence %}
+    {% trans "メンバーや業績など様々なものを管理します．" %}
+{% endblock %}
+
+{% block top_page %}
+{% endblock %}
+
+{% block header_btn %}
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h2>
+            Application List
+        </h2>
+        {% for app in applications %}
+            <div class="mb-2">
+                <a href="{% url app.url_id %}" class="btn btn-primary" role="button" aria-disabled="true">
+                    <h5 class="list-group-item-heading">{{ app.name }}</h5>
+                </a>
+                <span>{{ app.description }}</span>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock content %}

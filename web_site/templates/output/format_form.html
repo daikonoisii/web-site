@@ -1,0 +1,64 @@
+{% extends 'output/output_base.html' %}
+{% load i18n static %}
+
+{% block title %}
+    {% trans "データフォーマット編集" %}
+{% endblock title %}
+
+{% block headline %}
+    {% trans "データフォーマット編集" %}
+{% endblock %}
+
+{% block lead_sentence %}
+    {% trans "フォーマットを編集して，任意のフォーマットでデータを出力することができます．" %}
+{% endblock %}
+
+{% block extra_style %}
+{% endblock %}
+
+{% block content %}
+    <div class="child_main_wrapper">
+        <div class="bg-light py-5">
+            <form method="post" id="reportform" novalidate enctype="multipart/form-data">
+                <div class="form-row">
+                    <div class="col-7 ml-5">
+                        {% csrf_token %}
+                        {{ form.non_field_errors }}
+                        {% for field in form %}
+                            <p>
+                                {{ field.label_tag }}
+                                {{ field }}
+                                {{ field.errors }}
+                                <span class="helptext">
+                                    {{ field.help_text }}
+                                </span>
+                                {% if field.name == 'format' %}
+                                    <div class="helptext mb-5">
+                                        <div>
+                                            使用可能な変数一覧
+                                        </div>
+                                        {% for k, v in item_list.items %}
+                                            <div class="ml-4">
+                                                <strong>{{ k }}</strong><span> : {{ v }}</span>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </p>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="form-row ml-5">
+                    <button class="btn btn-primary btn-sm mr-2 mt-2" type="submit" name="output">入力したフォーマットで出力</button>
+                    {% if format_pk is not None %}
+                        <button class="btn btn-primary btn-sm mr-2 mt-2" type="submit" name="update">フォーマット更新</button>
+                    {% endif %}
+                    <button class="btn btn-primary btn-sm mr-2 mt-2" type="submit" name="create">新規フォーマットとして保存</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+{% endblock %}

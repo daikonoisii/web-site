@@ -1,0 +1,1100 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-08-30 16:51+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/delete.html:5
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/delete.html:10
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html:40
+#: wiki/templates/wiki/delete.html:8
+msgid "Delete"
+msgstr ""
+
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/delete.html:12
+msgid ""
+"The file may be referenced on other articles. Deleting it means that they "
+"will loose their references to this file. The following articles reference "
+"this file:"
+msgstr ""
+
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/delete.html:27
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/delete.html:51
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/history.html:49
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/replace.html:39
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/search.html:75
+#: wiki/plugins/images/templates/wiki/plugins/images/purge.html:23
+#: wiki/plugins/images/templates/wiki/plugins/images/revision_add.html:23
+#: wiki/templates/wiki/create.html:40 wiki/templates/wiki/delete.html:12
+#: wiki/templates/wiki/delete.html:48 wiki/templates/wiki/move.html:37
+msgid "Go back"
+msgstr ""
+
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/delete.html:31
+msgid "Delete it!"
+msgstr ""
+
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/delete.html:38
+msgid "Remove"
+msgstr ""
+
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/delete.html:40
+msgid ""
+"You can remove a reference to a file, but it will retain its references on "
+"other articles."
+msgstr ""
+
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/delete.html:55
+msgid "Remove reference"
+msgstr ""
+
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/history.html:5
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/history.html:9
+msgid "History of"
+msgstr ""
+
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/history.html:12
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/search.html:28
+#: wiki/plugins/globalhistory/templates/wiki/plugins/globalhistory/globalhistory.html:43
+msgid "Date"
+msgstr ""
+
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/history.html:13
+#: wiki/plugins/globalhistory/templates/wiki/plugins/globalhistory/globalhistory.html:42
+msgid "User"
+msgstr ""
+
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/history.html:14
+msgid "Description"
+msgstr ""
+
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/history.html:15
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/search.html:26
+msgid "File"
+msgstr ""
+
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/history.html:16
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html:34
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/search.html:30
+#: wiki/plugins/images/templates/wiki/plugins/images/index.html:22
+#: wiki/plugins/images/templates/wiki/plugins/images/sidebar.html:162
+msgid "Size"
+msgstr ""
+
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/history.html:17
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/search.html:31
+msgid "Action"
+msgstr ""
+
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/history.html:23
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html:25
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/search.html:44
+#: wiki/plugins/globalhistory/templates/wiki/plugins/globalhistory/globalhistory.html:68
+#: wiki/templates/wiki/includes/revision_info.html:15
+msgid "deleted"
+msgstr ""
+
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/history.html:28
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/search.html:37
+msgid "<em>No description</em>"
+msgstr ""
+
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/history.html:36
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/search.html:55
+msgid "Download"
+msgstr ""
+
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/history.html:41
+msgid "Use this!"
+msgstr ""
+
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html:5
+msgid "Attachments"
+msgstr ""
+
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html:10
+msgid ""
+"The following files are available for this article. Copy the markdown tag to "
+"directly refer to a file from the article text."
+msgstr ""
+
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html:11
+msgid ""
+"Complete markdown code syntax: <code>[attachment:id title:\"text\" size]</"
+"code><br> &nbsp;&nbsp;title: Link text replacement for the file name. size: "
+"Show file size after the title."
+msgstr ""
+
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html:32
+#: wiki/plugins/images/templates/wiki/plugins/images/index.html:20
+msgid "Markdown tag"
+msgstr ""
+
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html:33
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/search.html:29
+#: wiki/plugins/images/templates/wiki/plugins/images/index.html:21
+msgid "Uploaded by"
+msgstr ""
+
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html:38
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/replace.html:5
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/replace.html:9
+#: wiki/plugins/images/templates/wiki/plugins/images/sidebar.html:54
+msgid "Replace"
+msgstr ""
+
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html:42
+msgid "Detach"
+msgstr ""
+
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html:51
+msgid "File history"
+msgstr ""
+
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html:51
+msgid "revisions"
+msgstr ""
+
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html:66
+msgid "There are no attachments for this article."
+msgstr ""
+
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html:76
+msgid "Upload new file"
+msgstr ""
+
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html:88
+msgid "Upload file"
+msgstr ""
+
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html:99
+msgid "Search and add file"
+msgstr ""
+
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html:105
+msgid ""
+"You can reuse files from other articles. These files are subject to updates "
+"on other articles which may or may not be a good thing."
+msgstr ""
+
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html:124
+msgid "Restore attachments"
+msgstr ""
+
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html:137
+#: wiki/templates/wiki/deleted.html:25 wiki/templates/wiki/deleted.html:30
+#: wiki/templates/wiki/deleted_list.html:24
+msgid "Restore"
+msgstr ""
+
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html:144
+msgid "Nothing to restore"
+msgstr ""
+
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html:160
+msgid ""
+"The article is currently locked for editing, and therefore no new "
+"attachments can be added."
+msgstr ""
+
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/render.html:6
+msgid "This attachment is not permitted on this page."
+msgstr ""
+
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/render.html:8
+msgid "Click to download"
+msgstr ""
+
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/replace.html:12
+#, python-format
+msgid ""
+"Replacing an attachment means adding a new file that will be used in its "
+"place. All references to the file will be replaced by the one you upload and "
+"the file will be downloaded as <strong>%(filename)s</strong>. Please note "
+"that this attachment is in use on other articles, you may distort contents. "
+"However, do not hestitate to take advantage of this and make replacements "
+"for the listed articles where necessary. This way of working is more "
+"efficient...."
+msgstr ""
+
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/replace.html:17
+#, python-format
+msgid "Articles using %(filename)s"
+msgstr ""
+
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/replace.html:26
+#, python-format
+msgid ""
+"Replacing an attachment means adding a new file that will be used in its "
+"place. All references to the file will be replaced by the one you upload and "
+"the file will be downloaded as <strong>%(filename)s</strong>."
+msgstr ""
+
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/replace.html:43
+#: wiki/plugins/images/templates/wiki/plugins/images/index.html:45
+#: wiki/plugins/images/templates/wiki/plugins/images/revision_add.html:27
+msgid "Upload replacement"
+msgstr ""
+
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/search.html:5
+msgid "Add file to"
+msgstr ""
+
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/search.html:9
+msgid "Add attachment from other article"
+msgstr ""
+
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/search.html:17
+msgid "Search files and articles"
+msgstr ""
+
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/search.html:27
+msgid "Main article"
+msgstr ""
+
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/search.html:59
+msgid "Add to article"
+msgstr ""
+
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/search.html:67
+msgid "Your search did not return any results"
+msgstr ""
+
+#: wiki/plugins/globalhistory/templates/wiki/plugins/globalhistory/globalhistory.html:4
+#: wiki/plugins/globalhistory/templates/wiki/plugins/globalhistory/globalhistory.html:8
+#: wiki/plugins/globalhistory/templates/wiki/plugins/globalhistory/menubaritem.html:7
+msgid "Global history"
+msgstr ""
+
+#: wiki/plugins/globalhistory/templates/wiki/plugins/globalhistory/globalhistory.html:14
+#, python-format
+msgid "List of <strong>%(cnt)s change</strong> in the wiki."
+msgid_plural "List of <strong>%(cnt)s changes</strong> in the wiki."
+msgstr[0] ""
+msgstr[1] ""
+
+#: wiki/plugins/globalhistory/templates/wiki/plugins/globalhistory/globalhistory.html:25
+msgid "Show all revisions of all articles"
+msgstr ""
+
+#: wiki/plugins/globalhistory/templates/wiki/plugins/globalhistory/globalhistory.html:28
+msgid "Show last revision of every article"
+msgstr ""
+
+#: wiki/plugins/globalhistory/templates/wiki/plugins/globalhistory/globalhistory.html:39
+msgid "Revision ID"
+msgstr ""
+
+#: wiki/plugins/globalhistory/templates/wiki/plugins/globalhistory/globalhistory.html:40
+msgid "Article"
+msgstr ""
+
+#: wiki/plugins/globalhistory/templates/wiki/plugins/globalhistory/globalhistory.html:41
+msgid "Message"
+msgstr ""
+
+#: wiki/plugins/globalhistory/templates/wiki/plugins/globalhistory/globalhistory.html:65
+#: wiki/templates/wiki/history.html:69
+msgid "no log message"
+msgstr ""
+
+#: wiki/plugins/globalhistory/templates/wiki/plugins/globalhistory/globalhistory.html:71
+#: wiki/templates/wiki/includes/revision_info.html:18
+msgid "restored"
+msgstr ""
+
+#: wiki/plugins/globalhistory/templates/wiki/plugins/globalhistory/globalhistory.html:74
+#: wiki/templates/wiki/article.html:20
+#: wiki/templates/wiki/article_backup.html:23
+#: wiki/templates/wiki/includes/revision_info.html:21
+msgid "locked"
+msgstr ""
+
+#: wiki/plugins/globalhistory/templates/wiki/plugins/globalhistory/globalhistory.html:77
+#: wiki/templates/wiki/includes/revision_info.html:24
+msgid "unlocked"
+msgstr ""
+
+#: wiki/plugins/globalhistory/templates/wiki/plugins/globalhistory/globalhistory.html:87
+#: wiki/templates/wiki/includes/revision_info.html:10
+msgid "anonymous (IP logged)"
+msgstr ""
+
+#: wiki/plugins/globalhistory/templates/wiki/plugins/globalhistory/globalhistory.html:95
+msgid "Go to article history"
+msgstr ""
+
+#: wiki/plugins/globalhistory/templates/wiki/plugins/globalhistory/globalhistory.html:96
+msgid "Go to article"
+msgstr ""
+
+#: wiki/plugins/globalhistory/templates/wiki/plugins/globalhistory/globalhistory.html:105
+msgid "No more changes to display !"
+msgstr ""
+
+#: wiki/plugins/globalhistory/templates/wiki/plugins/globalhistory/globalhistory.html:106
+msgid "Go back to previous page"
+msgstr ""
+
+#: wiki/plugins/globalhistory/templates/wiki/plugins/globalhistory/globalhistory.html:108
+msgid "No changes to display !"
+msgstr ""
+
+#: wiki/plugins/help/templates/wiki/plugins/help/sidebar.html:1
+msgid "Adding new articles"
+msgstr ""
+
+#: wiki/plugins/help/templates/wiki/plugins/help/sidebar.html:3
+msgid ""
+"To create a new wiki article, create a link to it. Clicking the link gives "
+"you the creation page."
+msgstr ""
+
+#: wiki/plugins/help/templates/wiki/plugins/help/sidebar.html:6
+#: wiki/plugins/links/templates/wiki/plugins/links/sidebar.html:22
+msgid "An external link"
+msgstr ""
+
+#: wiki/plugins/help/templates/wiki/plugins/help/sidebar.html:9
+msgid "Headers"
+msgstr ""
+
+#: wiki/plugins/help/templates/wiki/plugins/help/sidebar.html:10
+msgid ""
+"Use these codes for headers and to automatically generate Tables of Contents."
+msgstr ""
+
+#: wiki/plugins/help/templates/wiki/plugins/help/sidebar.html:25
+msgid "Typography"
+msgstr ""
+
+#: wiki/plugins/help/templates/wiki/plugins/help/sidebar.html:30
+msgid "Lists"
+msgstr ""
+
+#: wiki/plugins/help/templates/wiki/plugins/help/sidebar.html:38
+msgid "Tables"
+msgstr ""
+
+#: wiki/plugins/images/templates/wiki/plugins/images/index.html:5
+msgid "Images"
+msgstr ""
+
+#: wiki/plugins/images/templates/wiki/plugins/images/index.html:8
+msgid ""
+"The following images are available for this article. Copy the markdown tag "
+"to directly refer to an image from the article text."
+msgstr ""
+
+#: wiki/plugins/images/templates/wiki/plugins/images/index.html:12
+msgid "Back to edit page"
+msgstr ""
+
+#: wiki/plugins/images/templates/wiki/plugins/images/index.html:19
+msgid "No file"
+msgstr ""
+
+#: wiki/plugins/images/templates/wiki/plugins/images/index.html:36
+msgid "Upload and publish new image"
+msgstr ""
+
+#: wiki/plugins/images/templates/wiki/plugins/images/index.html:40
+msgid "Restore image"
+msgstr ""
+
+#: wiki/plugins/images/templates/wiki/plugins/images/index.html:49
+msgid "Remove image"
+msgstr ""
+
+#: wiki/plugins/images/templates/wiki/plugins/images/index.html:56
+msgid "Completely delete"
+msgstr ""
+
+#: wiki/plugins/images/templates/wiki/plugins/images/index.html:70
+#: wiki/templates/wiki/history.html:5
+msgid "History"
+msgstr ""
+
+#: wiki/plugins/images/templates/wiki/plugins/images/index.html:89
+msgid "Revert to this version"
+msgstr ""
+
+#: wiki/plugins/images/templates/wiki/plugins/images/index.html:102
+msgid "There are no images for this article."
+msgstr ""
+
+#: wiki/plugins/images/templates/wiki/plugins/images/purge.html:5
+#: wiki/templates/wiki/deleted.html:40
+msgid "Purge deletion"
+msgstr ""
+
+#: wiki/plugins/images/templates/wiki/plugins/images/purge.html:14
+msgid "Purge image: Completely remove image file and all revisions."
+msgstr ""
+
+#: wiki/plugins/images/templates/wiki/plugins/images/purge.html:27
+msgid "Remove it completely!"
+msgstr ""
+
+#: wiki/plugins/images/templates/wiki/plugins/images/render.html:16
+msgid "Image not found"
+msgstr ""
+
+#: wiki/plugins/images/templates/wiki/plugins/images/revision_add.html:5
+msgid "Replace image"
+msgstr ""
+
+#: wiki/plugins/images/templates/wiki/plugins/images/revision_add.html:14
+msgid "Choose an image file to replace current image."
+msgstr ""
+
+#: wiki/plugins/images/templates/wiki/plugins/images/sidebar.html:9
+msgid "Insert Image"
+msgstr ""
+
+#: wiki/plugins/images/templates/wiki/plugins/images/sidebar.html:50
+msgid "Image id"
+msgstr ""
+
+#: wiki/plugins/images/templates/wiki/plugins/images/sidebar.html:52
+#: wiki/plugins/links/templates/wiki/plugins/links/sidebar.html:15
+msgid "Insert"
+msgstr ""
+
+#: wiki/plugins/images/templates/wiki/plugins/images/sidebar.html:68
+msgid "No images found for this article"
+msgstr ""
+
+#: wiki/plugins/images/templates/wiki/plugins/images/sidebar.html:76
+msgid "Manage images"
+msgstr ""
+
+#: wiki/plugins/images/templates/wiki/plugins/images/sidebar.html:81
+msgid "Add new image"
+msgstr ""
+
+#: wiki/plugins/images/templates/wiki/plugins/images/sidebar.html:119
+msgid "Add image"
+msgstr ""
+
+#: wiki/plugins/images/templates/wiki/plugins/images/sidebar.html:127
+msgid "You do not have permissions to add images."
+msgstr ""
+
+#: wiki/plugins/images/templates/wiki/plugins/images/sidebar.html:134
+msgid "How to use images"
+msgstr ""
+
+#: wiki/plugins/images/templates/wiki/plugins/images/sidebar.html:137
+msgid ""
+"After uploading an image, it is attached to this particular article and can "
+"be used only here. Other users may replace the image, but older versions are "
+"kept. To show the image press the Insert button and select the options you "
+"want to use. You can use Markdown in the caption. The Markdown code syntax "
+"for images looks like this"
+msgstr ""
+
+#: wiki/plugins/images/templates/wiki/plugins/images/sidebar.html:140
+msgid "Possible values for align are"
+msgstr ""
+
+#: wiki/plugins/images/templates/wiki/plugins/images/sidebar.html:141
+msgid "Possible values for size are"
+msgstr ""
+
+#: wiki/plugins/images/templates/wiki/plugins/images/sidebar.html:154
+msgid "Alignment"
+msgstr ""
+
+#: wiki/plugins/images/templates/wiki/plugins/images/sidebar.html:172
+msgid "Caption"
+msgstr ""
+
+#: wiki/plugins/images/templates/wiki/plugins/images/sidebar.html:173
+msgid "Enter caption"
+msgstr ""
+
+#: wiki/plugins/images/templates/wiki/plugins/images/sidebar.html:178
+msgid "Insert image"
+msgstr ""
+
+#: wiki/plugins/images/templates/wiki/plugins/images/sidebar.html:179
+msgid "Cancel"
+msgstr ""
+
+#: wiki/plugins/links/templates/wiki/plugins/links/sidebar.html:3
+msgid "Link to another wiki page"
+msgstr ""
+
+#: wiki/plugins/links/templates/wiki/plugins/links/sidebar.html:6
+msgid ""
+"Type in something from another wiki page's title and auto-complete will help "
+"you create a tag for your wiki link. Tags for links look like this:"
+msgstr ""
+
+#: wiki/plugins/links/templates/wiki/plugins/links/sidebar.html:25
+msgid ""
+"You can link to another website simply by inserting an address example.com "
+"or http://example.com or by using the markdown syntax:"
+msgstr ""
+
+#: wiki/plugins/macros/templates/wiki/plugins/macros/article_list.html:6
+msgid "Article index"
+msgstr ""
+
+#: wiki/plugins/macros/templates/wiki/plugins/macros/article_list.html:10
+msgid "Nothing below this level"
+msgstr ""
+
+#: wiki/plugins/notifications/templates/wiki/plugins/notifications/menubaritem.html:4
+msgid "No notifications"
+msgstr ""
+
+#: wiki/plugins/notifications/templates/wiki/plugins/notifications/menubaritem.html:9
+msgid "Clear notifications list"
+msgstr ""
+
+#: wiki/plugins/notifications/templates/wiki/plugins/notifications/menubaritem.html:14
+msgid "Notification settings"
+msgstr ""
+
+#: wiki/plugins/notifications/templates/wiki/plugins/notifications/settings.html:5
+msgid "Notifications"
+msgstr ""
+
+#: wiki/plugins/notifications/templates/wiki/plugins/notifications/settings.html:9
+msgid "Your notification settings"
+msgstr ""
+
+#: wiki/plugins/notifications/templates/wiki/plugins/notifications/settings.html:11
+msgid "Manage how often you receive notifications"
+msgstr ""
+
+#: wiki/plugins/notifications/templates/wiki/plugins/notifications/settings.html:20
+msgid "Settings for"
+msgstr ""
+
+#: wiki/plugins/notifications/templates/wiki/plugins/notifications/settings.html:20
+msgid "articles"
+msgstr ""
+
+#: wiki/plugins/notifications/templates/wiki/plugins/notifications/settings.html:27
+msgid "You are not subscribed to any notifications yet."
+msgstr ""
+
+#: wiki/plugins/notifications/templates/wiki/plugins/notifications/settings.html:35
+#: wiki/templates/wiki/edit.html:35 wiki/templates/wiki/edit.html:82
+#: wiki/templates/wiki/settings.html:17
+msgid "Save changes"
+msgstr ""
+
+#: wiki/templates/wiki/accounts/account_settings.html:4
+#: wiki/templates/wiki/accounts/account_settings.html:7
+#: wiki/templates/wiki/base_site.html:82
+msgid "Account Settings"
+msgstr ""
+
+#: wiki/templates/wiki/accounts/account_settings.html:11
+msgid "Update"
+msgstr ""
+
+#: wiki/templates/wiki/accounts/login.html:4
+#: wiki/templates/wiki/base_site.html:112
+msgid "Log in"
+msgstr ""
+
+#: wiki/templates/wiki/accounts/login.html:10
+msgid "Please log in"
+msgstr ""
+
+#: wiki/templates/wiki/accounts/login.html:18
+msgid "Log me in..."
+msgstr ""
+
+#: wiki/templates/wiki/accounts/login.html:25
+msgid "Don't have an account?"
+msgstr ""
+
+#: wiki/templates/wiki/accounts/login.html:25
+#: wiki/templates/wiki/accounts/signup.html:3
+#: wiki/templates/wiki/accounts/signup.html:6
+#: wiki/templates/wiki/base_site.html:116
+msgid "Sign up"
+msgstr ""
+
+#: wiki/templates/wiki/accounts/signup.html:14
+msgid "Sign me up..."
+msgstr ""
+
+#: wiki/templates/wiki/article.html:62
+#: wiki/templates/wiki/article_backup.html:39
+msgid "This article was last modified:"
+msgstr ""
+
+#: wiki/templates/wiki/base_site.html:54
+msgid "Search from current article..."
+msgstr ""
+
+#: wiki/templates/wiki/base_site.html:56
+msgid "Search whole wiki..."
+msgstr ""
+
+#: wiki/templates/wiki/base_site.html:89
+msgid "Log out"
+msgstr ""
+
+#: wiki/templates/wiki/base_site.html:96
+msgid "Deleted articles"
+msgstr ""
+
+#: wiki/templates/wiki/base_site.html:126
+msgid "Software"
+msgstr ""
+
+#: wiki/templates/wiki/base_site.html:127
+msgid "Server"
+msgstr ""
+
+#: wiki/templates/wiki/base_site.html:128
+msgid "Study&LabTips"
+msgstr ""
+
+#: wiki/templates/wiki/base_site.html:129
+msgid "SchoolLifeTips"
+msgstr ""
+
+#: wiki/templates/wiki/base_site.html:130
+msgid "Et Cetera"
+msgstr ""
+
+#: wiki/templates/wiki/base_site.html:152
+msgid ""
+"Copyright(C) 2017- Comunication Networks Laboratory in Nagaoka University. "
+"All rights reserved."
+msgstr ""
+
+#: wiki/templates/wiki/create.html:5 wiki/templates/wiki/create.html:31
+msgid "Add new article"
+msgstr ""
+
+#: wiki/templates/wiki/create.html:44
+msgid "Create article"
+msgstr ""
+
+#: wiki/templates/wiki/create_root.html:4
+msgid "Create root article"
+msgstr ""
+
+#: wiki/templates/wiki/create_root.html:22
+msgid "Root article"
+msgstr ""
+
+#: wiki/templates/wiki/create_root.html:29
+msgid "Create root"
+msgstr ""
+
+#: wiki/templates/wiki/delete.html:5 wiki/templates/wiki/delete.html:52
+#: wiki/templates/wiki/edit.html:48
+msgid "Delete article"
+msgstr ""
+
+#: wiki/templates/wiki/delete.html:11
+msgid "権限が無いと削除できません."
+msgstr ""
+
+#: wiki/templates/wiki/delete.html:17
+msgid ""
+"子を持つ記事のため, 権限が無いため削除できません.  子サイトを手動で一つ一つ削"
+"除してください."
+msgstr ""
+
+#: wiki/templates/wiki/delete.html:23
+msgid "記事を削除"
+msgstr ""
+
+#: wiki/templates/wiki/delete.html:25
+msgid "Articles that will be deleted"
+msgstr ""
+
+#: wiki/templates/wiki/delete.html:31
+msgid "...and more!"
+msgstr ""
+
+#: wiki/templates/wiki/delete.html:39
+msgid "You are deleting an article. Please confirm."
+msgstr ""
+
+#: wiki/templates/wiki/deleted.html:5 wiki/templates/wiki/deleted.html:14
+msgid "Article deleted"
+msgstr ""
+
+#: wiki/templates/wiki/deleted.html:17
+msgid "削除した記事は存在しません"
+msgstr ""
+
+#: wiki/templates/wiki/deleted.html:26
+msgid "You may restore this article and its children by clicking restore."
+msgstr ""
+
+#: wiki/templates/wiki/deleted.html:41
+msgid ""
+"You may remove this article and any children permanently and free their "
+"slugs by clicking the below button. This action cannot be undone."
+msgstr ""
+
+#: wiki/templates/wiki/deleted.html:47
+msgid "Purge"
+msgstr ""
+
+#: wiki/templates/wiki/deleted_list.html:4
+msgid "Admin Panel"
+msgstr ""
+
+#: wiki/templates/wiki/deleted_list.html:8
+msgid "Deleted Articles"
+msgstr ""
+
+#: wiki/templates/wiki/deleted_list.html:13
+msgid "Page Title"
+msgstr ""
+
+#: wiki/templates/wiki/deleted_list.html:14
+msgid "Date Deleted"
+msgstr ""
+
+#: wiki/templates/wiki/deleted_list.html:15
+msgid "Restore Article"
+msgstr ""
+
+#: wiki/templates/wiki/deleted_list.html:30
+msgid "No deleted articles to display"
+msgstr ""
+
+#: wiki/templates/wiki/dir.html:5
+msgid "Listing articles in"
+msgstr ""
+
+#: wiki/templates/wiki/dir.html:17
+msgid "Up one level"
+msgstr ""
+
+#: wiki/templates/wiki/dir.html:22
+msgid "Add article"
+msgstr ""
+
+#: wiki/templates/wiki/dir.html:30
+msgid "clear"
+msgstr ""
+
+#: wiki/templates/wiki/dir.html:40
+msgid "article,articles"
+msgstr ""
+
+#: wiki/templates/wiki/dir.html:40
+msgid "is,are"
+msgstr ""
+
+#: wiki/templates/wiki/dir.html:40
+#, python-format
+msgid ""
+"Browsing <strong><a href=\"%(self_url)s\">/%(path)s</a></strong>. There "
+"%(articles_plur_verb)s <strong>%(cnt)s %(articles_plur)s</strong> in this "
+"level."
+msgstr ""
+
+#: wiki/templates/wiki/dir.html:48 wiki/templates/wiki/search.html:35
+msgid "Title"
+msgstr ""
+
+#: wiki/templates/wiki/dir.html:49
+msgid "Slug"
+msgstr ""
+
+#: wiki/templates/wiki/dir.html:50 wiki/templates/wiki/search.html:36
+msgid "Last modified"
+msgstr ""
+
+#: wiki/templates/wiki/dir.html:74 wiki/templates/wiki/search.html:45
+msgid "There are no articles in this level"
+msgstr ""
+
+#: wiki/templates/wiki/edit.html:5
+#: wiki/templates/wiki/includes/article_menu.html:34
+msgid "Edit"
+msgstr ""
+
+#: wiki/templates/wiki/edit.html:11
+msgid "<strong>Warning:</strong> ログインしていません"
+msgstr ""
+
+#: wiki/templates/wiki/edit.html:12
+msgid "ログインしてください!"
+msgstr ""
+
+#: wiki/templates/wiki/edit.html:31
+msgid "Preview"
+msgstr ""
+
+#: wiki/templates/wiki/edit.html:42 wiki/templates/wiki/move.html:41
+msgid "Move article"
+msgstr ""
+
+#: wiki/templates/wiki/edit.html:78
+msgid "Back to editor"
+msgstr ""
+
+#: wiki/templates/wiki/error.html:5 wiki/templates/wiki/error.html:26
+msgid "Error"
+msgstr ""
+
+#: wiki/templates/wiki/error.html:15
+msgid "Not found"
+msgstr ""
+
+#: wiki/templates/wiki/error.html:18
+msgid "記事が見つかりません."
+msgstr ""
+
+#: wiki/templates/wiki/error.html:20
+msgid "Start page"
+msgstr ""
+
+#: wiki/templates/wiki/error.html:30
+msgid "アクセスエラーです."
+msgstr ""
+
+#: wiki/templates/wiki/error.html:38
+msgid "Back to"
+msgstr ""
+
+#: wiki/templates/wiki/history.html:81 wiki/templates/wiki/history.html:86
+msgid "Preview this revision"
+msgstr ""
+
+#: wiki/templates/wiki/history.html:100
+msgid "Auto log:"
+msgstr ""
+
+#: wiki/templates/wiki/history.html:108
+msgid "Change"
+msgstr ""
+
+#: wiki/templates/wiki/history.html:126
+msgid "Merge selected with current..."
+msgstr ""
+
+#: wiki/templates/wiki/history.html:130
+msgid "Switch to selected version"
+msgstr ""
+
+#: wiki/templates/wiki/history.html:149 wiki/templates/wiki/history.html:180
+msgid "Back to history view"
+msgstr ""
+
+#: wiki/templates/wiki/history.html:154 wiki/templates/wiki/history.html:159
+msgid "Switch to this version"
+msgstr ""
+
+#: wiki/templates/wiki/history.html:171
+msgid "Merge with current"
+msgstr ""
+
+#: wiki/templates/wiki/history.html:172
+msgid ""
+"現在のページとマージする場合, それぞれのrevisionからおおよそ一致していない箇"
+"所をマージ."
+msgstr ""
+
+#: wiki/templates/wiki/history.html:172
+msgid "マージ後, 手動で見直してください."
+msgstr ""
+
+#: wiki/templates/wiki/history.html:185 wiki/templates/wiki/history.html:190
+msgid "Create new merged version"
+msgstr ""
+
+#: wiki/templates/wiki/includes/anonymous_blocked.html:7
+#, python-format
+msgid ""
+"You need to <a href=\"%(login_url)s\">log in</a> or <a href=\"%(signup_url)s"
+"\">sign up</a> to use this function."
+msgstr ""
+
+#: wiki/templates/wiki/includes/anonymous_blocked.html:11
+msgid "You need to log in or sign up to use this function."
+msgstr ""
+
+#: wiki/templates/wiki/includes/article_menu.html:9
+#: wiki/templates/wiki/settings.html:5
+msgid "Settings"
+msgstr ""
+
+#: wiki/templates/wiki/includes/article_menu.html:26
+msgid "Changes"
+msgstr ""
+
+#: wiki/templates/wiki/includes/article_menu.html:41
+msgid "View Source"
+msgstr ""
+
+#: wiki/templates/wiki/includes/article_menu.html:49
+msgid "View"
+msgstr ""
+
+#: wiki/templates/wiki/includes/breadcrumbs.html:13
+#: wiki/templates/wiki/includes/breadcrumbs.html:40
+msgid "Sub-articles for"
+msgstr ""
+
+#: wiki/templates/wiki/includes/breadcrumbs.html:25
+msgid "No sub-articles"
+msgstr ""
+
+#: wiki/templates/wiki/includes/breadcrumbs.html:28
+msgid "...and more"
+msgstr ""
+
+#: wiki/templates/wiki/includes/breadcrumbs.html:33
+msgid "Browse articles below this page"
+msgstr ""
+
+#: wiki/templates/wiki/includes/breadcrumbs.html:49
+#, python-format
+msgid "New article next to %(title)s"
+msgstr ""
+
+#: wiki/templates/wiki/includes/breadcrumbs.html:54
+#, python-format
+msgid "New article below %(title)s"
+msgstr ""
+
+#: wiki/templates/wiki/includes/revision_info.html:10
+msgid "by"
+msgstr ""
+
+#: wiki/templates/wiki/move.html:4
+msgid "Move"
+msgstr ""
+
+#: wiki/templates/wiki/move.html:23
+#, python-format
+msgid ""
+"%(cnt)s nested article will also be moved.<br> Be careful, links to this "
+"article and %(cnt)s article nested in this hierarchy will not be updated."
+msgid_plural ""
+"%(cnt)s nested articles will also be moved.<br> Be careful, links to this "
+"article and %(cnt)s articles nested in this hierarchy will not be updated."
+msgstr[0] ""
+msgstr[1] ""
+
+#: wiki/templates/wiki/permission_denied.html:8
+msgid "Permission Denied"
+msgstr ""
+
+#: wiki/templates/wiki/permission_denied.html:11
+msgid "Sorry, you don't have permission to access this page."
+msgstr ""
+
+#: wiki/templates/wiki/permission_denied.html:16
+msgid "This article is locked for editing."
+msgstr ""
+
+#: wiki/templates/wiki/permission_denied.html:23
+#: wiki/templates/wiki/permission_denied.html:27
+msgid "Back to article"
+msgstr ""
+
+#: wiki/templates/wiki/preview_inline.html:8
+msgid "Previewing revision"
+msgstr ""
+
+#: wiki/templates/wiki/preview_inline.html:15
+msgid "Previewing merge between"
+msgstr ""
+
+#: wiki/templates/wiki/preview_inline.html:17
+msgid "and"
+msgstr ""
+
+#: wiki/templates/wiki/preview_inline.html:22
+msgid "You cannot merge with a deleted revision"
+msgstr ""
+
+#: wiki/templates/wiki/preview_inline.html:31
+msgid "This revision has been deleted."
+msgstr ""
+
+#: wiki/templates/wiki/preview_inline.html:32
+msgid "Restoring to this revision will mark the article as deleted."
+msgstr ""
+
+#: wiki/templates/wiki/root_missing.html:10
+msgid "Congratulations!"
+msgstr ""
+
+#: wiki/templates/wiki/root_missing.html:12
+msgid ""
+"You have django-wiki installed and it seems to be working. But there are no "
+"articles yet."
+msgstr ""
+
+#: wiki/templates/wiki/root_missing.html:17
+msgid ""
+"Not to worry! You simply have to login with a superuser account and create "
+"the first article in the root of the URL hierarchy."
+msgstr ""
+
+#: wiki/templates/wiki/root_missing.html:21
+msgid "Click here to login"
+msgstr ""
+
+#: wiki/templates/wiki/root_missing.html:27
+msgid ""
+"But since you're logged in as a superuser, we should really get started..."
+msgstr ""
+
+#: wiki/templates/wiki/root_missing.html:29
+msgid "Yes, I'll go and create the first article"
+msgstr ""
+
+#: wiki/templates/wiki/root_missing.html:30
+msgid "No thanks, I'd rather read the documentation"
+msgstr ""
+
+#: wiki/templates/wiki/search.html:5 wiki/templates/wiki/search.html:9
+msgid "Search results for:"
+msgstr ""
+
+#: wiki/templates/wiki/search.html:15
+msgid "Searching in"
+msgstr ""
+
+#: wiki/templates/wiki/search.html:17
+msgid "Searching whole wiki"
+msgstr ""
+
+#: wiki/templates/wiki/search.html:28
+#, python-format
+msgid "Your search returned <strong>%(cnt)s</strong> results."
+msgstr ""
+
+#: wiki/templates/wiki/source.html:5
+msgid "Source of"
+msgstr ""
+
+#: wiki/templates/wiki/source.html:10
+msgid "This article is currently locked for editing."
+msgstr ""

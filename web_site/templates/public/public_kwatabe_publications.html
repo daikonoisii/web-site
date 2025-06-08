@@ -1,0 +1,73 @@
+{% extends 'public/public_kwatabe_base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}
+    Kohei Watabe's Site -- Publications
+{% endblock title %}
+
+{% block nav_items %}
+    <ul class="navbar-nav mr-auto">
+    </ul>
+{% endblock %}
+
+{% block top_page %}
+{% endblock %}
+
+{% block app_css %}
+    {{ block.super }}
+{% endblock %}
+
+{% block pre-title %}
+    Kohei Watabe's Site
+{% endblock %}
+
+{% block headline %}
+    Publications
+{% endblock %}
+
+{% block sub-title %}
+    {% if request.LANGUAGE_CODE == 'ja' %}研究業績{% endif %}
+{% endblock %}
+
+{% block content %}
+    <div>
+        {% for g in list %}
+            <div {% if forloop.counter|divisibleby:2 %}class="block-negative"{% endif %}>
+                <div id="block{{ forloop.counter }}" class="contents-block">
+                    <h2 class="under_border ml-4 mb-1 mr-4 pt-4">{{ g.title }}</h2>
+                    <h6 class="ml-4 mr-4">{% if request.LANGUAGE_CODE == 'ja' %}{{ g.j_title }}{% endif %}</h6>
+                    <ol class="ml-2 mr-4">
+                        {% for p in g.list %}
+                            <li class="mb-3">
+                                {{ p.author }}, `<span>`</span>{{ p.title }}'', {{ p.source }}, {{ p.year }}.
+                                {% if p.pdf_publish %}
+                                    <button class="badge ml-2"><a href="{% url 'paper:post_print_pdf' p.pk %}" target="_blank"><i class="fas fa-chevron-circle-right"></i> PDF (Copyright {{ p.year }} {{ p.publisher }})</a></button>
+                                {% elif p.link_publish %}
+                                    <button class="badge ml-2"><a href="{{ p.url }}" target="_blank"><i class="fas fa-chevron-circle-right"></i> PDF (External link)</a></button>
+                                {% elif p.post_print_publish %}
+                                    <button class="badge ml-2"><a href="{% url 'paper:post_print_pdf' p.pk %}" target="_blank"><i class="fas fa-chevron-circle-right"></i> PDF (Post-print)</a></button>
+                                {% elif p.pre_print_publish %}
+                                    <button class="badge ml-2"><a href="{% url 'paper:pre_print_pdf' p.pk %}" target="_blank"><i class="fas fa-chevron-circle-right"></i> PDF (Pre-print)</a></button>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ol>
+                    {% if forloop.counter == list|length %}
+                        <div class="bottom-text">
+                            <div class="skip-arrow"><a href="javascript:void(0);" onclick="Scroll('#top');"><i class="fas fa-angle-double-up"></i></a></div>
+                        </div>
+                    {% else %}
+                        <div class="bottom-text">
+                            <div class="skip-arrow"><a href="javascript:void(0);" onclick="Scroll('#block{{ forloop.counter|add:'1' }}');"><i class="fas fa-angle-double-down"></i></a></div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock content %}
+
+{% block js %}
+    {{ block.super }}
+{% endblock %}

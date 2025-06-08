@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block app_css %}
+    <!-- report用 CSS -->
+    <link href="{% static 'report/css/css.css'%}" rel="stylesheet">
+{% endblock %}
+
+<!-- 個別ページ用スタイル -->
+{% block extra_style %}
+{% endblock %}
+
+{% block header_btn %}
+    <a href="{% url 'report:top' %}" class="btn btn-primary mr-2 mb-1">{% trans "レポート管理トップ" %}</a>
+    <div class="btn-group mr-2 mb-1" role="group">
+        <button id="submission_list" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {% trans "投稿一覧" %}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="submission_list">
+            <a class="dropdown-item" href="{% url 'report:submission_list' %}?category=1">{% trans "ゼミ" %}</a>
+            <a class="dropdown-item" href="{% url 'report:submission_list' %}?category=2">{% trans "論文レポート" %}</a>
+            <a class="dropdown-item" href="{% url 'report:submission_list' %}?category=6">{% trans "サイドプロジェクト" %}</a>
+            <a class="dropdown-item" href="{% url 'report:submission_list' %}?category=9">{% trans "その他" %}</a>
+            <a class="dropdown-item" href="{% url 'report:submission_list' %}">{% trans "すべての投稿" %}</a>
+        </div>
+    </div>
+    <a href="{% url 'report:search_list' %}" class="btn btn-primary mr-2 mb-1">{% trans "レポート検索" %}</a>
+    <a href="{% url 'report:my_reports' %}" class="btn btn-primary mr-2 mb-1">{% trans "マイレポート" %}</a>
+    <a href="{% url 'report:report_new' %}" class="btn btn-primary mr-2 mb-1">{% trans "レポート投稿" %}</a>
+{% endblock %}
+
+{% block top_page %}
+    <a class="nav-link text-light" href="{% url 'report:top' %}">
+        {% trans "レポート管理" %}
+    </a>
+{% endblock %}
+
+{% block js %}
+{% endblock %}

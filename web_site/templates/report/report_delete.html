@@ -1,0 +1,51 @@
+{% extends 'report/report_base.html' %}
+{% load i18n %}
+
+{% block title %}
+    {% trans "レポート削除" %}
+{% endblock title %}
+
+{% block headline %}
+    {% trans "レポート削除" %}
+{% endblock %}
+
+{% block lead_sentence %}
+    {% trans "レポートをデータベースから削除することができます．" %}
+{% endblock %}
+
+{% block content %}
+<div class="col-7 ml-5">
+    <p><b>Category:</b><br>{{ object.get_category_display }}</p>
+    <p><b>Title:</b><br>{{ object.title }}</p>
+    <p><b>Abstract:</b><br>{{ object.abstract }}</p>
+    <p><b>Paper(関連論文):</b><br>{{ object.paper }}</p>
+    <p><b>Research(関連テーマ):</b><br>{{ object.research }}</p>
+    <p><b>User:</b><br>{{ object.user }}</p>
+    <p><b>Created Date:</b><br>{{ object.created_date }}</p>
+    <br>
+    <br>
+    <h3>{% trans "本当に削除しますか?" %}</h3>
+    <div class="d-flex mb-5">
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn-sm btn-danger">{% trans "削除" %}</button>
+        </form>
+        <button class="btn-sm btn-primary ml-5" onclick=goBack()>
+                {% trans "キャンセル" %}
+        </button>
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript">
+    // 直前のページに戻る
+    function goBack() {
+        window.history.back();
+    }
+    // レポート top ページに戻る
+    function goReportTop() {
+        window.location.href='{% url "report:top" %}';
+    }
+</script>
+{% endblock js %}

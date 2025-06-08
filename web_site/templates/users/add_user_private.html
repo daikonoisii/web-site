@@ -1,0 +1,40 @@
+{% extends "users/extention_base.html" %}
+{% load i18n static %}
+<!-- pasword_change_form.htmlを参考に修正 -->
+
+{% block content %}<div id="content-main">
+
+<form method="post">{% csrf_token %}
+<div>
+{% if form.errors %}
+    <p class="errornote">
+    {% if form.errors.items|length == 1 %}{% trans "Please correct the error below." %}{% else %}{% trans "Please correct the errors below." %}{% endif %}
+    </p>
+{% endif %}
+
+
+<p>このページでは，アカウントの追加をすることができます．</p>
+<p>※ Userモデルから追加しても，UserPrivateモデルから追加しても，UserPrivateモデルとして追加されます．</p>
+
+<fieldset class="module aligned wide">
+
+{% for field in form %}
+    <div class="form-row">
+        {{ field.errors }}
+        {{ field.label_tag }} {{ field }}
+        {% if field.help_text %}
+            <div class="help">{{ field.help_text|safe }}</div>
+        {% endif %}
+    </div>
+{% endfor %}
+
+</fieldset>
+
+<div class="submit-row">
+    <input type="submit" value="追加" class="default">
+</div>
+
+</div>
+</form></div>
+
+{% endblock %}

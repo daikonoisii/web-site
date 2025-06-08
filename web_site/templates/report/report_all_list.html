@@ -1,0 +1,130 @@
+{% extends 'report/report_base.html' %}
+{% load i18n %}
+
+{% block title %}
+    {% trans "レポート検索" %}
+{% endblock title %}
+
+{% block headline %}
+    {% trans "レポート検索" %}
+{% endblock %}
+
+{% block lead_sentence %}
+    {% trans "データベースからレポートを検索することができます．" %}
+{% endblock %}
+
+
+{% block content %}
+    <h2 class='mx-5'>{% trans "レポート検索" %}</h2>
+    <div class="bg-light py-5">
+        <form id="ajax-search-post" action="{% url 'report:ajax_report_search' %}" method="GET" novalidate>
+            <div class="form-row">
+                <div class="col-7 ml-5">
+                    {% csrf_token %}
+                    {{form.as_p}}
+                </div>
+            </div>
+            <div class="form-row px-5">
+                <button type="submit"  class="btn-sm btn-danger">{% trans "検索" %}</button>
+            </div>
+        </form>
+    </div>
+    <div class="child_main_wrapper">
+        <h2 class="mx-5">{% trans "検索結果" %}</h2>
+        <hr>
+        <div id="posts" class="mx-5" style="height:700px;overflow:auto;">
+            {% for post in report_list %}
+                <p>{{ post.title_name }}</p>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block js %}
+
+<script type="text/javascript">
+///*
+    $(function () {
+        $('#ajax-search-post').submit(
+            function (event) {
+                event.preventDefault();
+                var $form = $(this);
+
+                console.log($("input[name='search_category']:checked").val());
+
+                $.ajax({
+                    type: $form.prop("method"),
+                    url: $form.prop("action"),
+                    data: {
+                        'category': $('.category-select').val(),
+                        'report': $('.search-word').val(),
+                        'search_category': $("input[name='search_category']:checked").val(),
+                    },
+                    dataType: 'json',
+                    timeout: 10000,
+                })
+                    .done(function (response) {
+                        $('#posts').empty();
+                        if ($.isEmptyObject(response.report_list)) {
+                            $('#posts').append( 
+                                `<font size="7">「`
+                                + $('.search-word').val()
+                                + `」に一致する情報は見つかりませんでした。</font>`
+                            );
+                        }
+                        else {
+                            for (const report of response.report_list) {
+                                var time = new Date(report["created_date"]);
+                                var year = time.getFullYear();
+                                var month = time.getMonth() + 1;
+                                var day = time.getDate();
+                                var hours = time.getHours();
+                                var minutes = time.getMinutes();
+
+                                var created_date = year + '年' + month + '月' + day + '日'+hours+':'+minutes;
+
+
+                                var cutFigure = 150;
+                                
+                                if (report["abstract"].length > cutFigure) {
+                                    var abst = report["abstract"].substr(0,cutFigure) + '...';
+                                    console.log(abst);
+                                }
+                                else{
+                                    abst = report["abstract"];
+                                }
+                                
+                                $('#posts').append(
+                                    `<a class=\'list-group-item list-group-item-action flex-column align-items-start\' href=\'`
+                                    + report['pk']
+                                    + `/detail/'\'>`
+                                    +`<div class=\'d-flex w-100 justify-content-between\'><h4 class=\' mb-4 \'>`
+                                    + report["title_name"]
+                                    + `</h4><small>`
+                                    + created_date
+                                    + `</small></div><p class='mb-2 ml-3'>`
+                                    + abst
+                                    + `</p><div class=\' text-right \'><small>`
+                                    + report["user"]
+                                    + `</small></div></a>`
+                                );
+
+                            }
+                        
+                        }
+                        
+                        console.log('検証OK');
+                    })
+                    .fail(function (response) {
+                        alert("失敗");
+                    })
+                    .always(function(){
+                        $(".search-word").val('');
+                    })
+            });
+    });
+//*/
+</script>
+
+{% endblock %}

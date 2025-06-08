@@ -1,0 +1,136 @@
+{% extends 'paper/paper_base.html' %}
+{% load markdown_deux_tags %}
+{% load i18n %}
+
+{% block title %}
+    {{ object.title }}
+{% endblock title %}
+
+{% block headline %}
+    {% if paper_type == 'our_journal' %}
+        {{ object.title }} <a href="{% url 'paper:update_our_journal_paper' object.id %}" class="btn-sm btn-danger">Edit</a>
+    {% elif paper_type == 'our_conference' %}
+        {{ object.title }} <a href="{% url 'paper:update_our_conference_paper' object.id %}" class="btn-sm btn-danger">Edit</a>
+    {% elif paper_type == 'journal' %}
+        {{ object.title }} <a href="{% url 'paper:update_journal_paper' object.id %}" class="btn-sm btn-danger">Edit</a>
+    {% elif paper_type == 'conference' %}
+        {{ object.title }} <a href="{% url 'paper:update_conference_paper' object.id %}" class="btn-sm btn-danger">Edit</a>
+    {% elif paper_type == 'url_reference' %}
+        {{ object.title }} <a href="{% url 'paper:update_url_reference' object.id %}" class="btn-sm btn-danger">Edit</a>
+    {% endif %}
+{% endblock %}
+
+{% block lead_sentence %}
+    <div><strong>原稿ファイル:</strong>
+        {% if object.pdf is not None %}
+            PDF
+            <a href="{% url 'paper:media_pdf' object.pk %}" download="{{ report_detail.title }}.pdf" target="_blank" class="td_icons">
+                <i class="fas fa-file-download"></i>
+            </a>
+            <a href="{% url 'paper:media_pdf' object.pk %}" target="_blank" class="td_icons">
+                <i class="fas fa-external-link-alt"></i>
+            </a>
+        {% endif %}
+    </div>
+    {% if inherit_obj.post_print is not None and inherit_obj.post_print.name != '' and inherit_obj.doi is not None %}
+        <div><strong>Post-print:</strong>
+            PDF
+            <a href="{% url 'paper:post_print_pdf' object.pk %}" download="post-print_{{ report_detail.title }}.pdf" target="_blank" class="td_icons">
+                <i class="fas fa-file-download"></i>
+            </a>
+            <a href="{% url 'paper:post_print_pdf' object.pk %}" target="_blank" class="td_icons">
+                <i class="fas fa-external-link-alt"></i>
+            </a>
+        </div>
+    {% endif %}
+    {% if inherit_obj.pre_print is not None and inherit_obj.pre_print.name != '' and inherit_obj.doi is not None %}
+        <div><strong>Pre-print:</strong>
+            PDF
+            <a href="{% url 'paper:pre_print_pdf' object.pk %}" download="pre-print_{{ report_detail.title }}.pdf" target="_blank" class="td_icons">
+                <i class="fas fa-file-download"></i>
+            </a>
+            <a href="{% url 'paper:pre_print_pdf' object.pk %}" target="_blank" class="td_icons">
+                <i class="fas fa-external-link-alt"></i>
+            </a>
+        </div>
+    {% endif %}
+    {% if inherit_obj.presentation_pdf is not None and inherit_obj.presentation_pdf.name != '' %}
+        <div><strong>発表資料:</strong>
+            PDF
+            <a href="{% url 'paper:presentation_pdf' object.pk %}" download="presentation_pdf_{{ report_detail.title }}.pdf" target="_blank" class="td_icons">
+                <i class="fas fa-file-download"></i>
+            </a>
+            <a href="{% url 'paper:presentation_pdf' object.pk %}" target="_blank" class="td_icons">
+                <i class="fas fa-external-link-alt"></i>
+            </a>
+        </div>
+    {% endif %}
+    {% if author != None %}
+        <div><strong>著者:</strong> {{ author }}</div>
+    {% endif %}
+    {% if inherit_obj.journal_title.name != None %}
+        <div>
+            <strong>論文誌:</strong>
+            {{ inherit_obj.journal_title.name }}
+            {% if inherit_obj.volume != '' %}
+                , vol.{{ inherit_obj.volume }}
+            {% endif %}
+            {% if inherit_obj.number != '' %}
+                , no.{{ inherit_obj.number }}
+            {% endif %}
+        </div>
+    {% endif %}
+    {% if inherit_obj.conference_title.name != None %}
+        <div><strong>会議:</strong> {{ inherit_obj.conference_title.name }}</div>
+    {% endif %}
+    {% if inherit_obj.presentation_id != None %}
+        <div><strong>発表ID:</strong> {{ inherit_obj.presentation_id }}</div>
+    {% endif %}
+    {% if inherit_obj.page != '' and inherit_obj.page != None %}
+        <div><strong>ページ:</strong> {{ inherit_obj.page }}</div>
+    {% endif %}
+    {% if inherit_obj.conference_title.year != None %}
+        <div><strong>発表年:</strong> {{ inherit_obj.conference_title.year }}</div>
+    {% endif %}
+    {% if inherit_obj.year != None %}
+        <div><strong>発表年:</strong> {{ inherit_obj.year }}</div>
+    {% endif %}
+    {% if inherit_obj.url != None %}
+        <div>
+            <strong>URL:</strong> {{ inherit_obj.url }}
+            <a href="{{ inherit_obj.url }}" target="_blank" class="td_icons">
+                <i class="fas fa-external-link-alt"></i>
+            </a>
+        </div>
+    {% endif %}
+    <div>
+        <strong>タグ:</strong>
+        {% for t in object.tag.all %}
+            <a class="badge badge-primary text-light">{{ t }}</a>
+        {% endfor %}
+    </div>
+    <div>
+        <strong>関連レポート:</strong>
+        {% for r in related_reports %}
+            <a href="{% url 'report:report_detail' r.pk %}" target="_blank" class="btn-sm btn-primary text-light mr-1">
+                {{ r.title }}({{ r.user }})
+                <span class="td_icons">
+                <i class="far fa-file-pdf"></i>
+            </span>
+            </a>
+        {% endfor %}
+    </div>
+    <div><strong>メモ:</strong> {{ object.abstract }}</div>
+    <div class="text-right"> {{object.user.username}}  {{object.created_date}}</div>
+{% endblock %}
+
+{% block content %}
+<div class="contents">
+    <div class="full_screen">
+        <iframe src="{{ request.scheme }}://{{ request.META.HTTP_HOST }}{% url 'paper:media_pdf' object.pk %}" id = "pdf" height="100%" width="100%" frameborder="0"></iframe>
+    </div>
+</div>
+{% endblock content %}
+
+{% block js %}
+{% endblock js %}

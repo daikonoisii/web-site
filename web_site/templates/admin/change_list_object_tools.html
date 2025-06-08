@@ -1,0 +1,18 @@
+{% load i18n admin_urls %}
+
+{% block object-tools-items %}
+  {% if has_add_permission %}
+  <li>
+    {% url cl.opts|admin_urlname:'add' as add_url %}
+    {% if cl.opts.verbose_name == 'user' or cl.opts.verbose_name == 'student' or cl.opts.verbose_name == 'student private' %}
+      <a href="{% url 'users:add_user_private' %}" class="addlink">
+          {% blocktrans with cl.opts.verbose_name as name %}Add {{ name }}{% endblocktrans %}
+      </a>
+    {% else %}
+      <a href="{% add_preserved_filters add_url is_popup to_field %}" class="addlink">
+        {% blocktrans with cl.opts.verbose_name as name %}Add {{ name }}{% endblocktrans %}
+      </a>
+    {% endif %}
+  </li>
+  {% endif %}
+{% endblock %}

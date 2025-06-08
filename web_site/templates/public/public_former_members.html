@@ -1,0 +1,106 @@
+{% extends 'public/public_base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}
+    {% trans "通信ネットワーク研究室" %} -- {% trans "過去のメンバー" %}
+{% endblock title %}
+
+{% block nav_items %}
+    <ul class="navbar-nav mr-auto">
+    </ul>
+{% endblock %}
+
+{% block top_page %}
+{% endblock %}
+
+{% block app_css %}
+    {{ block.super }}
+{% endblock %}
+
+{% block pre-title %}
+    NUT ComNets Lab.
+{% endblock %}
+
+{% block headline %}
+    Former Members
+{% endblock %}
+
+{% block sub-title %}
+    {% if request.LANGUAGE_CODE == 'ja' %}過去のメンバー{% endif %}
+{% endblock %}
+{% block content %}
+    <div>
+        {% for g in list %}
+            {% if view.request.user.username != '' or g.j_title != '休学・退学・除籍' %}
+                <div {% if forloop.counter|divisibleby:2 %}class="block-negative"{% endif %}>
+                    <div id="block{{ forloop.counter }}" class="contents-block">
+                        <h2 class="under_border ml-4 mb-1 mr-4 pt-4">{{ g.title }}</h2>
+                        <h6 class="ml-4 mr-4">{% if request.LANGUAGE_CODE == 'ja' %}{{ g.j_title }}{% if g.j_title == '休学・退学・除籍' %} <span class="badge for_members">{% trans "メンバー限定" %}</span>{% endif %}{% endif %}</h6>
+                        <div class="ml-4 mr-4 mb-4">
+                            {% for m in g.list %}
+                                <div class="small-block slide-bottom">
+                                    <div class="profile-box">
+                                        <div class="profile-photo">
+                                            {% if m.image and view.request.user.username != '' %}
+                                                <img src="{% url 'users:avatar' m.pk %}">
+                                                <span class="badge for_members">{% trans "メンバー限定" %}</span>
+                                            {% else %}
+                                                <div class="no-profile-image">
+                                                    <div class="user-icon"><i class="fas fa-user"></i></div>
+                                                    <div>No image</div>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                        <div class="profile-text">
+                                            <div class="mb-2">
+                                                <div>{% trans "[氏名]" %}</div>
+                                                <div>{{ m.name }}</div>
+                                            </div>
+                                            <div class="mb-2">
+                                                <div>{% trans "[在籍期間]" %}</div>
+                                                <div>{{ m.assignment_year }}年{{ m.assignment_month }}月-{{ m.graduation_year }}年{{ m.graduation_month }}月</div>
+                                            </div>
+                                            <div class="mb-2">
+                                                <div>{% trans "[出身校]" %}</div>
+                                                <div>{{ m.alma_mater }}</div>
+                                            </div>
+                                            {% if view.request.user.username != '' %}
+                                                <div class="mb-2">
+                                                    <div>{% trans "[就職先]" %} <span class="badge for_members">メンバー限定</span></div>
+                                                    <div>{{ m.company }}</div>
+                                                </div>
+                                            {% endif %}
+                                            {% if m.thesis is not None %}
+                                                <div>[{{ m.thesis_type }}]</div>
+                                                <div>{{ m.thesis }}</div>
+                                            {% endif %}
+                                            {% if m.nlab == True %}{% trans "※中川健治研" %}{% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        {% if forloop.counter == list|length %}
+                            <div class="bottom-text">
+                                <div class="skip-arrow"><a href="javascript:void(0);" onclick="Scroll('#top');"><i class="fas fa-angle-double-up"></i></a></div>
+                            </div>
+                        {% elif forloop.counter == list|length|add:-1 and view.request.user.username == '' %}
+                            <div class="bottom-text">
+                                <div class="skip-arrow"><a href="javascript:void(0);" onclick="Scroll('#top');"><i class="fas fa-angle-double-up"></i></a></div>
+                            </div>
+                        {% else %}
+                            <div class="bottom-text">
+                                <div class="skip-arrow"><a href="javascript:void(0);" onclick="Scroll('#block{{ forloop.counter|add:'1' }}');"><i class="fas fa-angle-double-down"></i></a></div>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endblock content %}
+
+{% block js %}
+    {{ block.super }}
+{% endblock %}

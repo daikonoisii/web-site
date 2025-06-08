@@ -1,0 +1,151 @@
+{% extends 'public/public_base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}
+    {% trans "通信ネットワーク研究室" %} -- {% trans "Top page" %}
+{% endblock title %}
+
+{% block nav_items %}
+    <ul class="navbar-nav mr-auto">
+    </ul>
+{% endblock %}
+
+{% block top_page %}
+{% endblock %}
+
+{% block pre-title %}
+    Nagaoka Univ. of Tech.
+{% endblock %}
+
+{% block headline %}
+    Communication Networks Lab.
+{% endblock %}
+
+{% block sub-title %}
+    {% if request.LANGUAGE_CODE == 'ja' %}長岡技術科学大学 通信ネットワーク研究室 (渡部研究室){% endif %}
+{% endblock %}
+{% block content %}
+    <div>
+        <div>
+            <div id="block1" class="contents-block">
+                <h2 class="under_border ml-4 mb-1 mr-4">News</h2>
+                <h6 class="ml-4 mr-4">{% if request.LANGUAGE_CODE == 'ja' %}新着情報{% endif %}</h6>
+                <div class="ml-4 mr-4">
+                    {% for i in information_list %}
+                        <div class="small-block slide-bottom">
+                            <div class="mb-1">
+                                <i class="far fa-calendar-check"></i>
+                                <strong>{{ i.date }}</strong>
+                                {% if i.is_new %}
+                                    <span class="badge">New</span>
+                                {% endif %}
+                            </div>
+                            <div class="information-image-box mb-1">
+                                <div class="information-image-contents">
+                                    {% if i.picture is not None %}
+                                        <img class="information-image" src="{% url 'picture:image' i.picture.pk %}">
+                                    {% else %}
+                                        <i class="fas fa-info-circle"></i>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            {% if request.LANGUAGE_CODE == 'ja' %}
+                                {{ i.description|safe }}
+                            {% else %}
+                                {{ i.e_description|safe }}
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                    <div class="mt-4 ml-4">
+                        <button type="button" class="btn"><a href="{% url 'public:information' %}"><i class="fas fa-chevron-circle-right"></i> {% trans "過去の情報はこちら" %}</a></button>
+                    </div>
+                </div>
+                <div class="bottom-text">
+                    <div class="skip-arrow"><a href="javascript:void(0);" onclick="Scroll('#block2');"><i class="fas fa-angle-double-down"></i></a></div>
+                </div>
+            </div>
+        </div>
+        <div class="block-negative">
+            <div id="block2" class="contents-block">
+                <h2 class="under_border ml-4 mr-4 mb-1 pt-4">About us</h2>
+                <h6 class="ml-4 mr-4">{% if request.LANGUAGE_CODE == 'ja' %}研究室紹介{% endif %}</h6>
+                <div class="ml-4 mr-4">
+                    {% blocktrans %}
+                        通信ネットワーク研究室(渡部研究室)では，インターネットに代表される通信ネットワークをテーマに様々な研究に取り組んでいます．
+                    {% endblocktrans %}
+                    <div class="mt-4 ml-4">
+                        <button type="button" class="btn"><a href="{% url 'public:about_us' %}"><i class="fas fa-chevron-circle-right"></i> {% trans "研究室紹介の詳細はこちら" %}</a></button>
+                    </div>
+                </div>
+                <div class="bottom-text">
+                    <div class="skip-arrow positive-text"><a href="javascript:void(0);" onclick="Scroll('#block3');"><i class="fas fa-angle-double-down"></i></a></div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div id="block3" class="contents-block">
+                <h2 class="under_border ml-4 mr-4 mb-1 pt-4">Achievements</h2>
+                <h6 class="ml-4 mr-4">{% if request.LANGUAGE_CODE == 'ja' %}業績{% endif %}</h6>
+                <div class="ml-4 mr-4">
+                    <div>
+                        {% blocktrans with watabe_journal_num=watabe_journal_num watabe_e_conf_num=watabe_e_conf_num watabe_j_conf_num=watabe_j_conf_num %}
+                            通信ネットワーク研究室(渡部研究室)では，国際論文誌 {{ watabe_journal_num }}件，国際会議 {{ watabe_e_conf_num }}件，国内会議 {{ watabe_j_conf_num }}件の論文を発表し，科学技術の発展に貢献しています．
+                        {% endblocktrans %}
+                    </div>
+                    <div>
+                        <small class="mt-2">
+                            {% blocktrans %}
+                                ※ ネットワーク特性評価研究室(中川健治研究室)での業績を含みます．
+                            {% endblocktrans %}
+                        </small>
+                    </div>
+                    <div class="mt-4 ml-4">
+                        <button type="button" class="btn"><a href="{% url 'public:achievements' %}"><i class="fas fa-chevron-circle-right"></i> {% trans "業績の詳細はこちら" %}</a></button>
+                    </div>
+                </div>
+                <div class="bottom-text">
+                    <div class="skip-arrow"><a href="javascript:void(0);" onclick="Scroll('#block4');"><i class="fas fa-angle-double-down"></i></a></div>
+                </div>
+            </div>
+        </div>
+        <div class="block-negative">
+            <div id="block4" class="contents-block">
+                <h2 class="under_border ml-4 mr-4 mb-1 pt-4">Members</h2>
+                <h6 class="ml-4 mr-4">{% if request.LANGUAGE_CODE == 'ja' %}メンバー{% endif %}</h6>
+                <div class="ml-4 mr-4">
+                    <div>
+                        {% blocktrans with masters_num=masters_num bachelor_num=bachelor_num %}
+                            通信ネットワーク研究室(渡部研究室)は現在，教員1名，大学院生{{ masters_num }}名，学部生{{ bachelor_num }}名から構成されています．
+                        {% endblocktrans %}
+                    </div>
+                    <div class="mt-4 ml-4">
+                        <button type="button" class="btn"><a href="{% url 'public:members' %}"><i class="fas fa-chevron-circle-right"></i> {% trans "メンバーの詳細はこちら" %}</a></button>
+                    </div>
+                </div>
+                <div class="bottom-text">
+                    <div class="skip-arrow positive-text"><a href="javascript:void(0);" onclick="Scroll('#block5');"><i class="fas fa-angle-double-down"></i></a></div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div id="block5" class="contents-block">
+                <h2 class="under_border ml-4 mr-4 mb-1 pt-4">Contacts</h2>
+                <h6 class="ml-4 mr-4">{% if request.LANGUAGE_CODE == 'ja' %}連絡先{% endif %}</h6>
+                <div class="ml-4 mr-4">
+                    <div>
+                        {% blocktrans %}
+                            通信ネットワーク研究室(渡部研究室)は，長岡技術科学大学 電気1号棟に位置しています．
+                        {% endblocktrans %}
+                    </div>
+                    <div class="mt-4 ml-4">
+                        <button type="button" class="btn"><a href="{% url 'public:contacts' %}"><i class="fas fa-chevron-circle-right"></i> {% trans "連絡先の詳細はこちら" %}</a></button>
+                    </div>
+                </div>
+                <div class="bottom-text">
+                    <div class="skip-arrow"><a href="javascript:void(0);" onclick="Scroll('#top');"><i class="fas fa-angle-double-up"></i></a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

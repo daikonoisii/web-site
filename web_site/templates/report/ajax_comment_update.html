@@ -1,0 +1,16 @@
+
+{% load markdown_deux_tags %}
+
+
+{% for comment in comments %}
+    <div class=" list-group-item list-group-item-action flex-column align-items-start">
+        <div class="d-flex w-100 justify-content-between">
+            <h4 class="mb-4">{{comment.user.username}}</h4>
+            <small>{{comment.published_date}}</small>
+        </div>
+        <p class="">
+            {{ comment.comment | markdown| linebreaksbr}}
+        </p>
+    </div>
+{% endfor %}
+<div id="comment_post"></div>

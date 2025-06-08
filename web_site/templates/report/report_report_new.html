@@ -1,0 +1,87 @@
+{% extends 'report/report_base.html' %}
+{% load i18n static %}
+
+{% block title %}
+    {% trans "レポート投稿" %}
+{% endblock title %}
+
+{% block headline %}
+    {% trans "レポート投稿" %}
+{% endblock %}
+
+{% block lead_sentence %}
+    {% trans "新しいレポートをデータベースに登録することができます．" %}
+{% endblock %}
+
+{% block extra_style %}
+    <link rel="stylesheet" href="{% static 'css/chosen.min.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="child_main_wrapper">
+        <div class="bg-light py-5">
+            <form method="post" id="reportform" novalidate enctype="multipart/form-data">
+                <div class="form-row">
+                    <div class="col-7 ml-5">
+                        {% csrf_token %}
+
+                        {% if is_markdown or is_text %}
+                        <ul class="tab clearfix">
+                          <li class="active">{% trans "ファイル再アップロード" %}</li>
+                          <li>{% trans "本文修正(markdown,text)" %}</li>
+                        </ul>
+                        {% endif %}
+
+                        <p>{{form.category.label}}: {{form.category}}</p>
+                        <p>{{form.title.label}}:{{form.title}}</p>
+                        <p>{{form.abstract.label}}:{{form.abstract}}{{form.abstract.errors}}</p>
+                        <div class="area">
+                          <ul class="show">
+                            <p>{{form.pdf.label}}:{{form.pdf}}</p>
+                          </ul>
+                          <ul>
+                            {% if is_markdown or is_text %}<p>{{form.txt.label}}{{form.txt}}</p>{% endif %}
+                            {% if is_markdown %}
+                            <p><button class="btn btn-default" type="submit" formaction="{{request.path}}preview" formtarget="_blank">
+                            Preview
+                            </button></p>
+                            {% endif %}
+                          </ul>
+                        </div>
+                        {{form.pdf.errors}}
+                        <p>{{form.paper.label}}{{form.paper}}</p>
+                        <span class="helptext"><a href="{% url 'paper:top' %}" target="_blank">{% trans "業績・論文管理から論文を追加する" %}</a></span>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <button class="btn btn-danger btn-sm ml-5 mt-2" type="submit">Post</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script>
+    $(function() {
+      $('.tab li').click(function() {
+        var index = $('.tab li').index(this);
+        $( ".tab" ).tab().addClass( "ui-helper-clearfix" );
+        $( ".tab li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
+        $('.tab li').removeClass('active');
+        $(this).addClass('active');
+        $('.area ul').removeClass('show').eq(index).addClass('show');
+      });
+    });
+    </script>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static "js/chosen.jquery.ja.js" %}"></script>
+    <script>
+        $(".chosen-select").chosen({
+            search_contains:true
+        })
+    </script>
+{% endblock %}

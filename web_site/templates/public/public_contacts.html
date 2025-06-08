@@ -1,0 +1,72 @@
+{% extends 'public/public_base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}
+    {% trans "通信ネットワーク研究室" %} -- {% trans "連絡先" %}
+{% endblock title %}
+
+{% block nav_items %}
+    <ul class="navbar-nav mr-auto">
+    </ul>
+{% endblock %}
+
+{% block top_page %}
+{% endblock %}
+
+{% block app_css %}
+    {{ block.super }}
+{% endblock %}
+
+{% block pre-title %}
+    NUT ComNets Lab.
+{% endblock %}
+
+{% block headline %}
+    Contacts
+{% endblock %}
+
+{% block sub-title %}
+    {% if request.LANGUAGE_CODE == 'ja' %}連絡先{% endif %}
+{% endblock %}
+{% block content %}
+    <div>
+        <div>
+            <div id="block1" class="contents-block">
+                <h2 class="under_border ml-4 mb-1 mr-4 pt-4">Address</h2>
+                <h6 class="ml-4 mr-4">{% if request.LANGUAGE_CODE == 'ja' %}所在地{% endif %}</h6>
+                <div class="ml-4 mr-4 mb-4">
+                    <div>{% trans "〒940-2188" %}</div>
+                    <div>{% trans "新潟県長岡市上富岡町1603番地1" %}</div>
+                    <div>{% trans "長岡技術科学大学 電気1号棟 3階 305 (教員居室)，4階 416 (学生居室)" %}</div>
+                    <div class="mt-4">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3096.7754855407297!2d138.77702000075678!3d37.424903281698406!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5ff5aedc8402ed13%3A0x7b7c8f1b9d731d94!2z6ZW35bKh5oqA6KGT56eR5a2m5aSn5a2mIOmbu-awl--8keWPt-ajnw!5e0!3m2!1sja!2sjp!4v1572959683013!5m2!1sja!2sjp" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                    </div>
+                </div>
+                <div class="bottom-text">
+                    <div class="skip-arrow"><a href="javascript:void(0);" onclick="Scroll('#block2');"><i class="fas fa-angle-double-down"></i></a></div>
+                </div>
+            </div>
+        </div>
+        <div class="block-negative">
+            <div id="block2" class="contents-block">
+                <h2 class="under_border ml-4 mb-1 mr-4 pt-4">Way to Access</h2>
+                <h6 class="ml-4 mr-4">{% if request.LANGUAGE_CODE == 'ja' %}アクセス{% endif %}</h6>
+                <div class="ml-4 mr-4 mb-4">
+                    <ul>
+                        <li>{% trans "JR長岡駅 大手口より，バスのりば7番線から技大前行きバス乗車 約30分" %}</li>
+                        <li>{% trans "JR長岡駅 大手口より，タクシー乗車 約25分" %}</li>
+                        <li>{% trans "関越自動車道・北陸自動車道長岡I.C.から約5分" %}</li>
+                    </ul>
+                </div>
+                <div class="bottom-text">
+                    <div class="skip-arrow"><a href="javascript:void(0);" onclick="Scroll('#top');"><i class="fas fa-angle-double-up"></i></a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block js %}
+    {{ block.super }}
+{% endblock %}

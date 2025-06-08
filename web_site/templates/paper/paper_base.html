@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block app_css %}
+{% endblock %}
+
+{% block header_btn %}
+    <a href="{% url 'paper:top' %}" class="btn btn-primary mr-2 mb-1">{% trans "業績・文献管理トップ" %}</a>
+    <div class="btn-group mr-2 mb-1" role="group">
+        <button id="submission_list" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {% trans "新規登録" %}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="submission_list">
+            <a class="dropdown-item" href="{% url 'paper:create_our_journal_paper' %}">{% trans "学術誌論文(研究室メンバが著者)" %}</a>
+            <a class="dropdown-item" href="{% url 'paper:create_our_conference_paper' %}">{% trans "国際・国内会議論文(研究室メンバが著者)" %}</a>
+            <a class="dropdown-item" href="{% url 'paper:create_journal_paper' %}">{% trans "学術誌論文" %}</a>
+            <a class="dropdown-item" href="{% url 'paper:create_conference_paper' %}">{% trans "国際・国内会議論文" %}</a>
+            <a class="dropdown-item" href="{% url 'paper:create_url_reference' %}">{% trans "ウェブサイト" %}</a>
+        </div>
+    </div>
+    <a href="{% url 'paper:search_list' %}" class="btn btn-primary mr-2 mb-1">{% trans "文献検索" %}</a>
+    <div class="btn-group mr-2 mb-1" role="group">
+        <button id="submission_list" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {% trans "LaTeX" %}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="submission_list">
+            <a class="dropdown-item" href="{% url 'paper:bibtex_how_to' %}">BibTeXによる参考文献の出力方法</a>
+            <a class="dropdown-item" href="{% url 'output:mix_format_form' %}?format1=論文誌論文 bibtex形式&format2=会議発表 bibtex形式&format3=ウェブサイト bibtex形式">bibファイルダウンロード</a>
+            <a class="dropdown-item" href="{% static 'paper/download/ieicetr.bst' %} download">bstファイルダウンロード(日本語論文用)</a>
+            <a class="dropdown-item" href="{% static 'paper/download/IEEEtran.bst' %} download">bstファイルダウンロード(英語論文用)</a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block top_page %}
+    <a class="nav-link text-light" href="{% url 'paper:top' %}">
+        {% trans "業績・文献管理" %}
+    </a>
+{% endblock %}

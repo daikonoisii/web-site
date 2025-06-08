@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block app_css %}
+{% endblock %}
+
+{% block header_btn %}
+    <a href="{% url 'output:top' %}" class="btn btn-primary mr-2 mb-1">{% trans "データ出力トップ" %}</a>
+    <div class="btn-group mr-2 mb-1" role="group">
+        <button id="submission_list" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {% trans "論文データ出力" %}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="submission_list">
+            <a class="dropdown-item" href="{% url 'output:format_list' %}?category=our_journal_paper">学術誌論文(研究室メンバが著者)</a>
+            <a class="dropdown-item" href="{% url 'output:format_list' %}?category=our_conference_paper">国際・国内会議論文(研究室メンバが著者)</a>
+            <a class="dropdown-item" href="{% url 'output:format_list' %}?category=our_int_conf_paper">国際会議論文(研究室メンバが著者)</a>
+            <a class="dropdown-item" href="{% url 'output:format_list' %}?category=our_dom_conf_paper">国内会議論文(研究室メンバが著者)</a>
+            <a class="dropdown-item" href="{% url 'output:format_list' %}?category=journal_paper">学術誌論文</a>
+            <a class="dropdown-item" href="{% url 'output:format_list' %}?category=conference_paper">国際・国内会議論文</a>
+            <a class="dropdown-item" href="{% url 'output:format_list' %}?category=url_reference">ウェブサイト</a>
+        </div>
+    </div>
+    <a href="{% url 'output:format_list' %}?category=award" class="btn btn-primary mr-2 mb-1">{% trans "受賞データ出力" %}</a>
+    <a href="{% url 'output:format_list' %}?category=activity" class="btn btn-primary mr-2 mb-1">{% trans "委員歴データ出力" %}</a>
+{% endblock %}
+
+{% block top_page %}
+    <a class="nav-link text-light" href="{% url 'output:top' %}">
+        {% trans "データ出力" %}
+    </a>
+{% endblock %}

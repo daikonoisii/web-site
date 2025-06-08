@@ -1,0 +1,41 @@
+{% extends 'output/output_base.html' %}
+{% load i18n %}
+
+{% block title %}
+    {% trans "データ出力" %}
+{% endblock title %}
+
+{% block headline %}
+    {% trans "データ出力" %}
+{% endblock %}
+
+{% block lead_sentence %}
+    {% trans "出力可能なフォーマットの一覧を表示します．" %}
+{% endblock %}
+
+{% block content %}
+    <div class="child_main_wrapper">
+        <section class="bg-light py-5">
+            <h2 class="mb-5 text-center">{% trans "フォーマットリスト" %}</h2>
+                <div class="container-fluid">
+                    <div class="list-group list-group-flush w-75 mx-auto" style="height:700px;overflow:auto;">
+                        <a href="{% url 'output:format_form' %}?category={{ category }}" class="list-group-item list-group-item-action flex-column align-items-star">新規フォーマット作成</a>
+                        {% for x in object_list %}
+                            <a class="list-group-item list-group-item-action flex-column align-items-start" href="{% url 'output:format_form' %}?format_pk={{ x.pk }}" >
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h4 class="mb-1">{{x.name}}</h4>
+                                    <small>{{x.created_date}}</small>
+                                </div>
+                                <div class="tiny_font">
+                                    <strong>出力データ:</strong> <span class="badge badge-primary">{{ x.get_category_display }}</span>
+                                </div>
+                                <div class="text-right">
+                                    <small>{{x.user.username}}</small>
+                                </div>
+                            </a>
+                        {% endfor %}
+                    </div>
+                </div>
+        </section>
+    </div>
+{% endblock content %}

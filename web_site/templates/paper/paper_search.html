@@ -1,0 +1,173 @@
+{% extends 'paper/paper_base.html' %}
+{% load i18n %}
+
+{% block title %}
+    {% trans "文献検索" %}
+{% endblock title %}
+
+{% block headline %}
+    {% trans "文献検索" %}
+{% endblock %}
+
+{% block lead_sentence %}
+    {% trans "データベースから文献を検索することができます．" %}
+{% endblock %}
+
+
+{% block content %}
+    <h2 class='mx-5'>{% trans "文献検索" %}</h2>
+    <div class="bg-light py-5">
+        <form id="ajax-search-post" action="{% url 'paper:ajax_paper_search' %}" method="GET" novalidate>
+            <div class="form-row">
+                <div class="col-7 ml-5">
+                    {% csrf_token %}
+                    {{form.as_p}}
+                </div>
+            </div>
+            <div class="form-row px-5">
+                <button type="submit"  class="btn-sm btn-danger">{% trans "検索" %}</button>
+            </div>
+        </form>
+    </div>
+    <div class="child_main_wrapper">
+        <h2 class="mx-5">{% trans "検索結果" %}</h2>
+        <hr>
+        <div id="posts" class="mx-5" style="height:700px;overflow:auto;">
+            <!-- 現状, この処理は使用されていない模様. ここから -->
+            {% for paper in paper_list %}
+                <p>{{ paper.title }}</p>
+            {% endfor %}
+            <!-- 現状, この処理は使用されていない模様. ここまで -->
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block js %}
+<script type="text/javascript">
+///*
+    $(function () {
+        $('#ajax-search-post').submit(
+            function (event) {
+                event.preventDefault();
+                var $form = $(this);
+                sessionStorage.setItem('paper', $('.search-word').val());
+                $.ajax({
+                    type: $form.prop("method"),
+                    url: $form.prop("action"),
+                    data: {
+                        'paper': $('.search-word').val(),
+                    },
+                    dataType: 'json',
+                    timeout: 10000,
+                })
+                    .done(function (response) {
+                        $('#posts').empty();
+                        if ($.isEmptyObject(response.paper_list)) {
+                            $('#posts').append( 
+                                `<font size="7">「`
+                                + $('.search-word').val()
+                                + `」に一致する情報は見つかりませんでした。</font>`
+                            );
+                        }
+                        else {
+                            for (const paper of response.paper_list) {
+                                var time = new Date(paper["created_date"]);
+                                var year = time.getFullYear();
+                                var month = time.getMonth() + 1;
+                                var day = time.getDate();
+                                var hours = time.getHours();
+                                var minutes = time.getMinutes();
+
+                                var created_date = year + '/' + month + '/' + day + ' '+hours+':'+minutes;
+
+
+                                var cutFigure = 150;
+                                
+                                if (paper["abstract"].length > cutFigure) {
+                                    var abst = paper["abstract"].substr(0,cutFigure) + '...';
+                                    console.log(abst);
+                                }
+                                else{
+                                    abst = paper["abstract"];
+                                }
+                                
+                                $('#posts').append(
+                                    `<a class=\'list-group-item list-group-item-action flex-column align-items-start\' href=\'`
+                                    + paper['pk']
+                                    + `/detail/'\'>`
+                                    +`<div class=\'d-flex w-100 justify-content-between\'><h4 class=\' mb-1 \'>`
+                                    + paper["title"]
+                                    + paper["related_report"]
+                                    + `</h4><small>`
+                                    + created_date
+                                    + `</small></div>`
+                                    + `<div class="tiny_font"><strong>カテゴリ:</strong> <span class="badge badge-primary">`
+                                    + paper['label']
+                                    + `</span> `
+                                    + paper["tag"]
+                                    + `</div>`
+                                    + `<div><strong>著者: </strong>`
+                                    + paper["author"]
+                                    + `</div>`
+                                    + `<div><strong>出典: </strong>`
+                                    + paper["source"]
+                                    + `</div>`
+                                    + `<div><strong>発表年: </strong>`
+                                    + paper["year"]
+                                    + `</div>`
+                                    + `<p class='mb-1 mt-2 ml-3'>`
+                                    + abst
+                                    + `</p><div class=\' text-right \'><small>`
+                                    + paper["user"]
+                                    + `</small></div></a>`
+                                );
+
+                            }
+                        
+                        }
+                        
+                        console.log('検証OK');
+
+                        // posts のスクロール位置を復元する
+                        var paperPostsScrollTop = sessionStorage.getItem('paperPostsScrollTop');
+                        if (paperPostsScrollTop !== null) {
+                            $('#posts').animate({scrollTop: paperPostsScrollTop});
+                        }
+                    })
+                    .fail(function (response) {
+                        alert("失敗");
+                    })
+                    .always(function(){
+                        // $(".search-word").val('');
+                    })
+            });
+    });
+//*/
+
+    window.onload = function() {
+        // 検索ワードを復元し、検索結果を表示する
+        if (sessionStorage.getItem('paper') !== null) {
+            console.log('on load.')
+            // 検索ワードを復元する
+            $(".search-word").val(sessionStorage.getItem('paper'));
+            // submit
+            $('#ajax-search-post').submit();
+            // window のスクロール位置を復元する
+            var paperWindowScrollTop = sessionStorage.getItem('paperWindowScrollTop');
+            if (paperWindowScrollTop !== null) {
+                $('html, body').animate({scrollTop: paperWindowScrollTop});
+                // $(window).scrollTop(paperWindowScrollTop);
+            }
+        }
+    };
+
+    window.addEventListener('beforeunload', function() {
+        // window のスクロール位置を保存する
+        sessionStorage.setItem('paperWindowScrollTop', $(window).scrollTop());
+        // posts のスクロール位置を保存する
+        sessionStorage.setItem('paperPostsScrollTop', $('#posts').scrollTop());
+    });
+
+</script>
+{% endblock %}

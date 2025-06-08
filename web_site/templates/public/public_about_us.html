@@ -1,0 +1,436 @@
+{% extends 'public/public_base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}
+    {% trans "通信ネットワーク研究室" %} -- {% trans "研究室紹介" %}
+{% endblock title %}
+
+{% block nav_items %}
+    <ul class="navbar-nav mr-auto">
+    </ul>
+{% endblock %}
+
+{% block top_page %}
+{% endblock %}
+
+{% block app_css %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'public/css/jqcloud.css' %}" />  {# タグクラウド #}
+    <link  href="{% static 'public/css/fotorama.css' %}" rel="stylesheet">  {# フォトギャラリー #}
+{% endblock %}
+
+{% block pre-title %}
+    NUT ComNets Lab.
+{% endblock %}
+
+{% block headline %}
+    About us
+{% endblock %}
+
+{% block sub-title %}
+    {% if request.LANGUAGE_CODE == 'ja' %}研究室紹介{% endif %}
+{% endblock %}
+{% block content %}
+    <div>
+        <div>
+            <div id="block1" class="contents-block">
+                <h2 class="under_border ml-4 mb-1 mr-4">Vision</h2>
+                <h6 class="ml-4 mr-4">{% if request.LANGUAGE_CODE == 'ja' %}研究室が目指すもの{% endif %}</h6>
+                <div class="ml-4 mr-4">
+                    <p>
+                        {% blocktrans %}
+                            インターネットに代表される通信ネットワークは，私達の生活に深く根ざし，重要な社会インフラとなってきています．
+                            私達の生活がネットワークに強く依存すればするほど，決して止まることのないネットワークが求められます．
+                            通信ネットワーク研究室では，安心して使える通信インフラを目指し，超高信頼ネットワークを実現するための技術を研究しています．
+                        {% endblocktrans %}
+                    </p>
+                    <div class="small-block-container">
+                        <div class="small-block slide-bottom">
+                            <div class="small-block-icon"><i class="fas fa-chart-line"></i></div>
+                            <h5>Scalability</h5>
+                            {% blocktrans %}
+                                様々なものがインターネットに接続されるInternet of Things (IoT)では，膨大な数のデバイスがつながるため，これらを協調させ，きちんと繋がるネットワークを構築することはとても難しい課題です．
+                            {% endblocktrans %}
+                        </div><div class="small-block slide-bottom">
+                            <div class="small-block-icon"><i class="far fa-handshake"></i></div>
+                            <h5>Reliability</h5>
+                            {% blocktrans %}
+                                ネットワークを介した遠隔手術や自動運転を実現する場合，ネットワークの僅かな遅れや停止も重大な事故に繋がるため，決して止まらない通信を実現する方法を模索することは非常に重要です．
+                            {% endblocktrans %}
+                        </div><div class="small-block slide-bottom">
+                            <div class="small-block-icon"><i class="fas fa-house-damage"></i></div>
+                            <h5>Resiliency</h5>
+                            {% blocktrans %}
+                                インフラの重要性は，大規模な災害や障害時に浮き彫りになります．
+                                災害や障害が起こっても途切れることがない，あるいはすぐに復旧可能な設計を検討しなければなりません．
+                            {% endblocktrans %}
+                        </div>
+                    </div>
+                    <div class="text-right mt-4">
+                        <button class="btn btn-sm"><a href="http://kaede.nagaokaut.ac.jp/iv.cgi" target="_blank"><i class="fas fa-chevron-circle-right"></i> {% trans "インターネットの中身を覗いてみよう" %}</a></button>
+                    </div>
+                </div>
+                <div class="bottom-text">
+                    <div class="skip-arrow"><a href="javascript:void(0);" onclick="Scroll('#block2');"><i class="fas fa-angle-double-down"></i></a></div>
+                </div>
+            </div>
+        </div>
+        <div class="block-negative">
+            <div id="block2" class="contents-block">
+                <h2 class="under_border ml-4 mr-4 mb-1 pt-4">Researches</h2>
+                <h6 class="ml-4 mr-4">{% if request.LANGUAGE_CODE == 'ja' %}研究内容{% endif %}</h6>
+                <div class="ml-4 mr-4">
+                    <p>
+                        {% blocktrans %}
+                            通信ネットワーク研究室では，安心して使える通信インフラを実現するために，様々なアプローチから研究を行っています．
+                        {% endblocktrans %}
+                    </p>
+                    <div class="small-block-container">
+                        {% for r in researches %}
+                            <div class="small-block slide-bottom">
+                                <div class="small-block-icon">{{ r.icon_tag|safe }}</div>
+                                <h5>{{ r.title }}</h5>
+                                {{ r.description }}
+                                <span class="badge"><a href="{% url 'public:presentation_list' r.pk %}"><i class="fas fa-chevron-circle-right"></i> {% trans "詳細はこちら" %}</a></span>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="bottom-text">
+                    <div class="skip-arrow"><a href="javascript:void(0);" onclick="Scroll('#block3');"><i class="fas fa-angle-double-down"></i></a></div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div id="block3" class="contents-block">
+                <h2 class="under_border ml-4 mr-4 mb-1 pt-4">Environments</h2>
+                <h6 class="ml-4 mr-4">{% if request.LANGUAGE_CODE == 'ja' %}研究室の環境{% endif %}</h6>
+                <div class="ml-4 mr-4">
+                    <p>
+                        {% blocktrans %}
+                            通信ネットワーク研究室の学生居室は，広さ134平方メートルの大きな研究室で，各メンバーにはパーティションで区切られたパーソナルデスクとロッカー，GPU搭載の高機能サーバ群のアカウントが割り当てられます．
+                            部屋の南側に大きく確保された共有スペースは，本格的なエスプレッソを楽しめるコーヒーサーバと大型のビーズクッションを備えており，研究の合間にくつろぐことができます．
+                        {% endblocktrans %}
+                    </p>
+                    <div class="small-block-container">
+                        <div class="mb-4 mr-4 ml-4 slide-bottom">
+                            <iframe src="https://www.google.com/maps/embed?pb=!4v1595051275270!6m8!1m7!1sCAoSLEFGMVFpcE4tV2JFNE1pTXpsdWZGQU5LV2RPU0lvajJoMkpkcE1oYWdORzlu!2m2!1d37.4254367!2d138.77867!3f269.64106114059746!4f-1.13426890609081!5f0.4000000000000002" width="100%" height="400" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom-text">
+                    <div class="skip-arrow"><a href="javascript:void(0);" onclick="Scroll('#block4');"><i class="fas fa-angle-double-down"></i></a></div>
+                </div>
+            </div>
+        </div>
+        <div class="block-negative">
+            <div id="block4" class="contents-block">
+                <h2 class="under_border ml-4 mr-4 mb-1 pt-4">Education</h2>
+                <h6 class="ml-4 mr-4">{% if request.LANGUAGE_CODE == 'ja' %}教育{% endif %}</h6>
+                <div class="ml-4 mr-4">
+                    <p>
+                        {% blocktrans %}
+                            通信ネットワーク研究室では，卒業・修了までの期間に，様々なスキルを獲得することができます．
+                            研究活動の中でスキルが培われるほか，研究外プロジェクトも推奨しており， メンバー自身が描くキャリアプランに合わせ，多様なスキル獲得をサポートします．
+                        {% endblocktrans %}
+                    </p>
+                    <div class="tagcloud-bg">
+                        <div id="tagcloud" class="slide-bottom" style="width: 100%; height: 200px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom-text">
+                    <div class="skip-arrow"><a href="javascript:void(0);" onclick="Scroll('#block5');"><i class="fas fa-angle-double-down"></i></a></div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div id="block5" class="contents-block">
+                <h2 class="under_border ml-4 mr-4 mb-1 pt-4">Schedule</h2>
+                <h6 class="ml-4 mr-4">{% if request.LANGUAGE_CODE == 'ja' %}スケジュール{% endif %}</h6>
+                <div class="ml-4 mr-4">
+                    <p>
+                        {% blocktrans %}
+                            通信ネットワーク研究室の大まかな年間スケジュールです．
+                            各種打ち上げや，花火観覧，OBとの交流を企画しています．
+                        {% endblocktrans %}
+                    </p>
+                    <div class="timeline-container small-block-container">
+                        <div class="small-block slide-bottom text-left">
+                            <ul class="timeline">
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span>{% trans "4月" %}</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        {% for s in schedule.4 %}
+                                            <div>{{ s.name }}</div>
+                                        {% endfor %}
+                                    </div>
+                                </li>
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span>{% trans "5月" %}</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        {% for s in schedule.5 %}
+                                            <div>{{ s.name }}</div>
+                                        {% endfor %}
+                                    </div>
+                                </li>
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span>{% trans "6月" %}</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        {% for s in schedule.6 %}
+                                            <div>{{ s.name }}</div>
+                                        {% endfor %}
+                                    </div>
+                                </li>
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span>{% trans "7月" %}</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        {% for s in schedule.7 %}
+                                            <div>{{ s.name }}</div>
+                                        {% endfor %}
+                                    </div>
+                                </li>
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span>{% trans "8月" %}</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        {% for s in schedule.8 %}
+                                            <div>{{ s.name }}</div>
+                                        {% endfor %}
+                                    </div>
+                                </li>
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span>{% trans "9月" %}</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        {% for s in schedule.9 %}
+                                            <div>{{ s.name }}</div>
+                                        {% endfor %}
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="small-block slide-bottom text-left">
+                            <ul class="timeline">
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span>{% trans "10月" %}</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        {% for s in schedule.10 %}
+                                            <div>{{ s.name }}</div>
+                                        {% endfor %}
+                                    </div>
+                                </li>
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span>{% trans "11月" %}</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        {% for s in schedule.11 %}
+                                            <div>{{ s.name }}</div>
+                                        {% endfor %}
+                                    </div>
+                                </li>
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span>{% trans "12月" %}</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        {% for s in schedule.12 %}
+                                            <div>{{ s.name }}</div>
+                                        {% endfor %}
+                                    </div>
+                                </li>
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span>{% trans "1月" %}</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        {% for s in schedule.1 %}
+                                            <div>{{ s.name }}</div>
+                                        {% endfor %}
+                                    </div>
+                                </li>
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span>{% trans "2月" %}</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        {% for s in schedule.2 %}
+                                            <div>{{ s.name }}</div>
+                                        {% endfor %}
+                                    </div>
+                                </li>
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span>{% trans "3月" %}</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        {% for s in schedule.3 %}
+                                            <div>{{ s.name }}</div>
+                                        {% endfor %}
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom-text">
+                    <div class="skip-arrow"><a href="javascript:void(0);" onclick="Scroll('#block6');"><i class="fas fa-angle-double-down"></i></a></div>
+                </div>
+            </div>
+        </div>
+        <div class="block-negative">
+            <div id="block6" class="contents-block">
+                <h2 class="under_border ml-4 mr-4 mb-1 pt-4">Life in the lab.</h2>
+                <h6 class="ml-4 mr-4">{% if request.LANGUAGE_CODE == 'ja' %}研究室の雰囲気{% endif %}</h6>
+                <div class="ml-4 mr-4">
+                    <p>
+                        {% blocktrans %}
+                            通信ネットワーク研究室は，アットホームな雰囲気作りを目指しています．
+                            研究の相談など，チャットを活用して気軽にコミュニケーションを取れる雰囲気があります．
+                            有志による遊びの企画も多く，たこ焼きパーティーなども頻繁に企画しています．
+                        {% endblocktrans %}
+                    </p>
+                    <div class="mb-4 photo-container slide-bottom">
+                        <div class="fotorama" data-allowfullscreen="true" data-loop="true" data-autoplay="true" data-keyboard="true" data-ratio="800/600">
+                            {% for p in pictures %}
+                                <img src="{% url 'picture:image' p.pk %}" data-caption="{{ p.caption }}">
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom-text">
+                    <div class="skip-arrow"><a href="javascript:void(0);" onclick="Scroll('#block7');"><i class="fas fa-angle-double-down"></i></a></div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div id="block7" class="contents-block">
+                <h2 class="under_border ml-4 mr-4 mb-1 pt-4">Internship</h2>
+                <h6 class="ml-4 mr-4">{% if request.LANGUAGE_CODE == 'ja' %}実務訓練派遣先企業{% endif %}</h6>
+                <div class="ml-4 mr-4">
+                    <p>
+                        {% blocktrans %}
+                            修士に進学する学生は，4ヵ月間の実務訓練に派遣されます．
+                            派遣先は，通信関係の企業が中心となりますが，ベトナムの企業・研究所への派遣も可能です．
+                        {% endblocktrans %}
+                    </p>
+                    <p>
+                        <small class="mt-2">
+                            {% blocktrans %}
+                                ※ ネットワーク特性評価研究室(中川健治研究室)の派遣実績を含みます．
+                            {% endblocktrans %}
+                        </small>
+                    </p>
+                    <div class="slide-bottom">
+                        <ul class="tag text-negative">
+                            {% for i in internship %}
+                                <li><a><span>{{ i.name }}</span></a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="bottom-text">
+                    <div class="skip-arrow"><a href="javascript:void(0);" onclick="Scroll('#block8');"><i class="fas fa-angle-double-down"></i></a></div>
+                </div>
+            </div>
+        </div>
+        <div class="block-negative">
+            <div id="block8" class="contents-block">
+                <h2 class="under_border ml-4 mr-4 mb-1 pt-4">Job hunting</h2>
+                <h6 class="ml-4 mr-4">{% if request.LANGUAGE_CODE == 'ja' %}OB・OGの就職先{% endif %}</h6>
+                <div class="ml-4 mr-4">
+                    <p>
+                        {% blocktrans %}
+                            卒業生・修了生は， NTTなど通信関連の企業に就職する割合が多いですが，JRなど通信分野以外の企業に就職する例も多数あります．
+                            現代では，ほとんどすべての企業は情報部門を持ち，ネットワークに依存しているため，潜在的な就職先はほとんど絞られることはありません．
+                            職種としては，ネットワークエンジニアや，社内の情報部門やSIerで上流を担当するシステムエンジニアが多くいます．
+                        {% endblocktrans %}
+                    </p>
+                    <p>
+                        <small class="mt-2">
+                            {% blocktrans %}
+                                ※ ネットワーク特性評価研究室(中川健治研究室)における指導学生の就職実績を含みます．
+                            {% endblocktrans %}
+                        </small>
+                    </p>
+                    <div class="slide-bottom">
+                        <ul class="tag">
+                            {% for c in company_items %}
+                                <li><a><span>{{ c.0 }} ({{ c.1 }})</span></a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="bottom-text">
+                    <div class="skip-arrow"><a href="javascript:void(0);" onclick="Scroll('#block9');"><i class="fas fa-angle-double-down"></i></a></div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div id="block9" class="contents-block">
+                <h2 class="under_border ml-4 mr-4 mb-1 pt-4">Q&A</h2>
+                <h6 class="ml-4 mr-4">{% if request.LANGUAGE_CODE == 'ja' %}よくある質問{% endif %}</h6>
+                <div class="ml-4 mr-4">
+                    {% for q in q_and_a %}
+                        <div class="slide-bottom">
+                            <h5><span class="badge badge-secondary">Q</span> {{ q.question }}</h5>
+                            <div class="ml-4 mb-4">
+                                <span class="badge badge-secondary">A</span>
+                                {{ q.answer }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="bottom-text">
+                    <div class="skip-arrow"><a href="javascript:void(0);" onclick="Scroll('#top');"><i class="fas fa-angle-double-up"></i></a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block js %}
+    {# フォトギャラリー #}
+    <script src="{% static 'public/js/fotorama.js' %}"></script>
+
+    {# タグクラウド #}
+    <script src="{% static 'public/js/jqcloud-1.0.4.js' %}"></script>
+    <script>
+        var word_array = [
+            {% for s in skills %}
+                {text: "{{ s.name }}", weight: {{ s.weight }}},
+            {% endfor %}
+        ];
+        $(function() {
+            // When DOM is ready, select the container element and call the jQCloud method, passing the array of words as the first argument.
+            $("#tagcloud").jQCloud(word_array);
+        });
+    </script>
+    {{ block.super }}
+{% endblock %}

@@ -1,0 +1,312 @@
+{% extends 'report/report_base.html' %}
+{% load markdown_deux_tags %}
+{% load i18n %}
+
+{% block title %}
+    {{ report_detail.title }}
+{% endblock title %}
+
+{% block extra_style %}
+    <style>
+        #navTgl:checked ~ .contents {
+            transform: translateX(250px);
+        }
+
+        /* :::::: toggle button :::::: */
+        #navTgl {
+            display: none;
+        }
+        label {
+            cursor: pointer;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+        .open {
+            z-index: 1;
+            width: 40px;
+            height: 20%;
+            top: 35%;
+            background: indianRed;
+            transition: background .6s, transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
+        }
+        .open::before,
+        .open::after {
+            content: "";
+        }
+        .open span,
+        .open::before,
+        .open::after {
+            content: "";
+            position: absolute;
+            top: calc(50% - 1px);
+            left: 30%;
+            width: 50%;
+            border-bottom: 2px solid white;
+            transition: transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
+        }
+        .open::before {
+            transform: translateY(-8px);
+        }
+        .open::after {
+            transform: translateY(8px);
+        }
+        .close {
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            transition: background .6s;
+        }
+
+        #navTgl:checked + .open span {
+            transform: scaleX(0);
+        }
+
+        #navTgl:checked ~ .close {
+            pointer-events: auto;
+            background: rgba(0,0,0,.3);
+        }
+
+        /* :::::: drawer menu :::::: */
+        .menu {
+            z-index: 1;
+            position: fixed;
+            overflow: auto;
+            top: 0;
+            left: 0;
+            width: 40%;
+            height: 100%;
+            margin: 0;
+            padding: 10px;
+            box-sizing: border-box;
+            background: rgba(0,0,0,.6);
+            transform: translateX(-100%);
+            transition: transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
+        }
+        .menu h2 {
+            color: white;
+        }
+
+        #navTgl:checked ~ .menu {
+            transform: none;
+        }
+    </style>
+{% endblock extra_style %}
+
+{% block headline %}
+    {{ report_detail.title }} <a href="{% url 'report:report_edit' report_detail.pk %}" class="btn-sm btn-primary">Edit</a>
+    <a href="{% url 'report:report_delete' report_detail.pk %}" class="btn-sm btn-danger">Delete</a>
+{% endblock %}
+
+{% block lead_sentence %}
+    <div><strong>ファイル:</strong>
+        {% if file_type == 'pdf' %}
+            PDF
+            <a href="{% url 'report:media_pdf' report_detail.pk %}" download="{{ report_detail.title }}.pdf" target="_blank" class="td_icons">
+                <i class="fas fa-file-download"></i>
+            </a>
+        {% elif file_type == 'txt' %}
+            Text
+            <a href="{% url 'report:media_pdf' report_detail.pk %}" download="{{ report_detail.title }}.txt" target="_blank" class="td_icons">
+                <i class="fas fa-file-download"></i>
+            </a>
+        {% elif file_type == 'md' %}
+            Markdown
+            <a href="{% url 'report:media_pdf' report_detail.pk %}" download="{{ report_detail.title }}.md" target="_blank" class="td_icons">
+                <i class="fas fa-file-download"></i>
+            </a>
+        {% else %}
+            Unknown
+            <a href="{% url 'report:media_pdf' report_detail.pk %}" download="{{ report_detail.title }}" target="_blank" class="td_icons">
+                <i class="fas fa-file-download"></i>
+            </a>
+        {% endif %}
+        <a href="{% url 'report:media_pdf' report_detail.pk %}" target="_blank" class="td_icons">
+            <i class="fas fa-external-link-alt"></i>
+        </a>
+    </div>
+    <div><strong>カテゴリ:</strong>
+        {{ report_detail.get_category_display }}
+    </div>
+    <div>
+        <strong>関連論文:</strong>
+        {% if report_detail.paper.pk != None %}
+            <a href="{% url 'paper:paper_detail' report_detail.paper.pk %}" target="_blank" class="btn-sm btn-primary text-light mr-1">
+                {{ report_detail.paper.title }}
+                <span class="td_icons">
+                    <i class="far fa-file-pdf"></i>
+                </span>
+            </a>
+        {% endif %}
+    </div>
+    <div><strong>概要:</strong> {{ report_detail.abstract }}</div>
+    <div class="text-right"> {{report_detail.user.username}}  {{report_detail.created_date}}</div>
+{% endblock %}
+
+{% block content %}
+<input type="checkbox" id="navTgl">
+<label for="navTgl" class="open"><span></span></label>
+<label for="navTgl" class="close"></label>
+    <nav class="menu">
+        <div class="ml-3" style="float:left;">
+            <h2 class="dispaly-4 text-left"><strong>{% trans "コメント" %}</strong></h2>
+        </div>
+
+        <div style="text-align:right;">
+            <form method="post" action="{% url 'report:ajax_comment_update' report_detail.pk %}" id="update">
+                {% csrf_token %}
+                <input type="submit" name="comment_update" value="更新" class="mr-3 square_btn btn-sm">
+            </form>
+        </div>
+
+        <hr class="my-3" style="background-color: #FFFFFF;;">
+
+        <div class="list-group list-group-flush mx-auto" style="width: 100%; height: 80%; overflow:auto; word-wrap: break-word;" id="comment_body">
+            {% for comment in comments %}
+                <div class=" list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h4 class="mb-4">{{comment.user.username}}</h4>
+                        <small>{{comment.published_date}}</small>
+                    </div>
+                    <p class=""> {{ comment.comment | markdown| linebreaksbr}} </p>
+                </div>
+            {% endfor %}
+            <div id="comment_post"></div>
+        </div>
+
+        <hr class="my-3" style="background-color: #FFFFFF;;">
+
+        <div class="mx-auto" style="width: 100%;">
+            <div>
+                <form action="{% url 'report:ajax_comment_post' report_detail.pk %}" method="post" id="commentform" novalidate enctype="multipart/form-data" >
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    <button type="submit"  class="btn-sm btn-danger" name="Post" id="comment_post_button">Post</button>
+                    <span class="text-light">&#x2318;Cmd or Ctrl + Enter</span>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+<div class="contents">
+    <div class="full_screen">
+        <iframe src="{{ request.scheme }}://{{ request.META.HTTP_HOST }}{% url 'report:media_pdf' report_detail.pk %}" id="pdf" height="100%" width="100%" frameborder="0"></iframe>
+    </div>
+</div>
+
+{% endblock content %}
+
+{% block js %}
+<script type="text/javascript">
+    $(function(){
+        nodoubleclick()
+    });
+    function nodoubleclick () {
+        if ($(".comment").val().length <= 0) {
+            $("#comment_post_button").prop("disabled", true);
+        }
+        $(".comment").on("keydown keyup keypress change", function() {
+            if ($(this).val().length < 5) {
+                $("#comment_post_button").prop("disabled", true);
+            } else {
+                $("#comment_post_button").prop("disabled", false);
+            }
+        });
+    }
+    {# コメントpostボタンのショートカットキー #}
+    $(window).keydown(function(e){
+        if(event.ctrlKey || event.metaKey){  {# metaKeyはMacのcommandキー #}
+            if(e.keyCode === 13){  {# Enterのキーコードは13 #}
+                $("#comment_post_button").click();
+                return false;
+            }
+        }
+  });
+</script>
+
+
+<script>
+    // Markdownのhtml化
+    // $(function(){
+    //     $('#pdf').on('load', function(){
+    //         var script = document.createElement("script");
+    //         script.src = "https://rawcdn.githack.com/oscarmorrison/md-page/master/md-page.js";
+    //         var iframe_body = $('#pdf').contents().find('body')[0];
+    //         iframe_body.innerText = '#test\n- test';
+    //         iframe_body.insertBefore(script, iframe_body.firstChild);
+    //     });
+    // });
+    // $(function(){
+    //     var iframe = $('iframe').contents();
+    //     iframe.open();
+    //     iframe.write('<span>test</span>');
+    //     iframe.close();
+    //     console.info(iframe.find('body'));
+    //     // iframe.find('html').css('background-color', 'black');
+    //     iframe.find('html').prepend('<span>test</span>');
+    // });
+
+    // コメント更新
+    $(function () {
+        $('#update').submit(function(event){
+            event.preventDefault();    
+            var $form = $(this);
+            
+            $.ajax({
+                type: $form.prop("method"),
+                dataType: "html",
+                url: $form.prop("action"),
+                data: $form.serialize(),
+                timeout: 10000,  
+            })
+                .done(function (response) {
+                    $('#comment_body').empty();
+                    $('#comment_body').html(response);
+                    MathJax.Hub.Queue(["Typeset",MathJax.Hub,"comment_body"]);
+                    console.log('検証OK');
+                })
+                .fail(function (response) {
+                    alert("失敗");
+                })    
+        });
+    });
+
+    // コメント投稿
+    $(function () {
+        $('#commentform').submit( 
+            function (event) {
+                $('#comment_post_button').hide();
+
+                event.preventDefault();
+                var $form = $(this);
+                
+                $.ajax({
+                    type: $form.prop("method"),
+                    dataType: "html",
+                    url: $form.prop("action"),
+                    data: $form.serialize(),
+                    timeout: 10000,  
+                })
+                    .done(function (response) {
+                        $('#comment_post').append(response);
+                        MathJax.Hub.Queue(["Typeset",MathJax.Hub,"comment_post"]);
+                        $(".comment").val('');
+                        scrollTop: $(document).height()
+                        console.log(response);
+                        console.log('検証OK');
+                    })
+                    .fail(function (response) {
+                        alert("失敗");
+                    })
+                    .always(function(){
+                        nodoubleclick()
+                        $('#comment_post_button').show()
+                    })
+            });
+    });
+    
+</script>
+
+
+{% endblock js %}

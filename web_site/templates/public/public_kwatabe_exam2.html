@@ -1,0 +1,147 @@
+{% extends 'public/public_kwatabe_base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}
+    Kohei Watabe's Site -- Exam
+{% endblock title %}
+
+{% block nav_items %}
+    <ul class="navbar-nav mr-auto">
+    </ul>
+{% endblock %}
+
+{% block top_page %}
+{% endblock %}
+
+{% block app_css %}
+    {{ block.super }}
+{% endblock %}
+
+{% block header_content %}
+    <div class="header-background"></div>
+    {% if background_image %}
+    <img class="header-image" onload="AfterLoaded();" src="{% url 'picture:image' background_image.pk %}" alt="Background Image">
+    {% else %}
+        <img class="header-image" onload="AfterLoaded();" src="{% static 'public/image/default/default.jpg' %}" alt="Default Background Image">
+    {% endif %}
+    <div class="shade"></div>
+    <div id="top" class="header-text block-negative">
+        <div class="bottom-text">
+            <h6 class="mr-4 ml-4 mb-0">Kohei Watabe's Site</h6>
+            <h1 class="under_border mr-4 ml-4">Examination</h1>
+            <h6 class="mr-4 ml-4">{% if request.LANGUAGE_CODE == 'ja' %}テスト{% endif %}</h6>
+            <div class="skip-arrow"><a href="javascript:void(0);" onclick="Scroll('#block1');"><i class="fas fa-angle-double-down"></i></a></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block pre-title %}
+    Kohei Watabe's Site
+{% endblock %}
+
+{% block headline %}
+    Examination
+{% endblock %}
+
+{% block sub-title %}
+    {% if request.LANGUAGE_CODE == 'ja' %}試験{% endif %}
+{% endblock %}
+{% block content %}
+    {% if limited_auth or login %}
+        <div>
+            <div>
+                <div id="block1" class="contents-block">
+                    <h2 class="under_border ml-4 mb-1 mr-4">Information and Communication Theory</h2>
+                    <h6 class="ml-4 mr-4">情報通信理論</h6>
+                    <div class="ml-4 mr-4">
+                        <div>
+                            このページは，情報通信理論の期末試験を受験ページです．
+                            下記のフォームに学籍番号を入力して，受験開始を押すと，試験が開始され，問題ページが表示されます．
+                            以下に，受験にあたっての注意点を挙げます．
+                            <ul>
+                                <li>本試験を受験するに当たり，講義資料，その他の文献，インターネット等を利用することを認めます．ただし，他人と相談する行為は禁止します．</li>
+                                <li>本試験は，正答数だけでなく，回答時間が得点に加味されるため，資料の参照に時間を掛けると得点が下がります．</li>
+                                <li>回答時間の計測は，受験開始ボタンを押した時刻から，回答の送信ボタンを押した時刻までです．</li>
+                                <li>本試験は，遠隔でも受験が可能ですが，事前に渡部の許可が必要です．</li>
+                                <li>システムの仕様上，2回以上受験することも可能ですが，2回以上受験することは認めません．</li>
+                                <li>回答中に，ブラウザの戻るや更新の操作をしてしまった場合，回答した内容は失われますが，問題ページに戻りそのまま回答を続けてください．</li>
+                                <li>試験中にトラブルが発生した場合は，渡部に連絡を入れてください．</li>
+                                <li>問題は，個人ごとに異なるため，他人に出題された問題を聞いてもあまり意味はありませんが，試験問題の内容は口外しないようにしてください．</li>
+                                <li>成績評価の人数は既に決めてあるため，他人に協力してその人の成績が上がると，自分の成績は下がります．</li>
+                                <li>回答終了後，正解度を表示というリンクが出ますが，回答の履歴が見れるだけで，正解が見れるわけではありません．</li>
+                            </ul>
+                            内容を理解したら，学籍番号を入力後，回答を開始ボタンを押して回答を始めてください．
+                        </div>
+                        <div  class="mt-3 mb-5">
+                            <form action="{% url 'public:kwatabe_exam2' %}" method="post">
+                                {% csrf_token %}
+                                {{ form.as_p }}
+                                <input type="submit" value="回答を開始">
+                            </form>
+                        </div>
+                    </div>
+                    <div class="bottom-text">
+                        {% if login %}
+                            <div class="skip-arrow"><a href="javascript:void(0);" onclick="Scroll('#block2');"><i class="fas fa-angle-double-down"></i></a></div>
+                        {% else %}
+                            <div class="skip-arrow"><a href="javascript:void(0);" onclick="Scroll('#top');"><i class="fas fa-angle-double-up"></i></a></div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% if login %}
+                <div class="block-negative">
+                    <div id="block2" class="contents-block">
+                        <h2 class="under_border ml-4 mr-4 mb-1 pt-4">Access Limited URL</h2>
+                        <h6 class="ml-4 mr-4">{% if request.LANGUAGE_CODE == 'ja' %}時間限定公開URL{% endif %}</h6>
+                        <div class="ml-4 mr-4">
+                            <p>
+                                以下のURLを共有することで，期間を限定してページへのアクセスを許可することができます．
+                            </p>
+                            <div class="mb-4">
+                                <div>
+                                    当日間限定公開URL
+                                </div>
+                                <div class="url">
+                                    {{ key_list.0 }}
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <div>
+                                    14日間限定公開URL
+                                </div>
+                                <div class="url">
+                                    {{ key_list.1 }}
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <div>
+                                    30日間限定公開URL
+                                </div>
+                                <div class="url">
+                                    {{ key_list.2 }}
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <div>
+                                    365日間限定公開URL
+                                </div>
+                                <div class="url">
+                                    {{ key_list.3 }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bottom-text">
+                            <div class="skip-arrow"><a href="javascript:void(0);" onclick="Scroll('#top');"><i class="fas fa-angle-double-up"></i></a></div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+{% endblock content %}
+
+{% block js %}
+    {{ block.super }}
+{% endblock %}

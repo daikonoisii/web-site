@@ -1,0 +1,35 @@
+
+/* 投稿一覧ページ */
+/* アイコンを大きく */
+.td_icons{
+    font-size: larger;
+}
+
+/* 本文編集、ファイルアップロード選択タブ用 */
+.tab li {
+  color: #333;
+  float: left;
+  padding: 10px 150px;
+  margin: -10px 0 25px -40px;
+  border: 1px solid #136FFF;
+  cursor: pointer;
+  list-style: none;
+  transition: .3s;
+}
+.tab li.active {
+  color: #fff;
+  background: #136FFF;
+  cursor: auto;
+}
+
+.area ul {
+  display: none;
+  margin: 0;
+  padding: 0;
+}
+.area ul.show {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+

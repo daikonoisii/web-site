@@ -1,0 +1,40 @@
+{% extends 'paper/paper_base.html' %}
+{% load i18n %}
+
+{% block title %}
+    {% trans "BibTeXによる参考文献の出力方法" %}
+{% endblock title %}
+
+{% block headline %}
+    {% trans "BibTeXによる参考文献の出力方法" %}
+{% endblock %}
+
+{% block lead_sentence %}
+    {% trans "BibTeXによる参考文献出力の仕方を説明します．" %}
+{% endblock %}
+
+{% block content %}
+    <div class="child_main_wrapper">
+        <section class="bg-light py-5">
+            <h2 class="mb-5 text-center">{% trans "BibTeXの使い方" %}</h2>
+                <div class="container-fluid">
+                    <div class="w-75 mx-auto">
+                        <ol>
+                            <li><p>bibファイルをダウンロードして，LaTeXソースと同じディレクトリに配置．</p></li>
+                            <li>
+                                <p>bstファイル(日本語用はieicetr.bst，英語用はIEEEtran.bst)をダウンロードして，LaTeXソースと同じディレクトリに配置する．</p>
+                                <p>ただし，論文などでLaTeXテンプレートと一緒にbstファイルが用意されている場合は，そちらを利用する．</p>
+                            </li>
+                            <li><p>LaTeXソースに\bibliographystyle{[拡張子なしのbstファイル名]}を追記．</p></li>
+                            <li><p>LaTeXソースに\bibliography{[拡張子なしのbibファイル名]}を追記．</p></li>
+                            <li><p>引用番号を表記する箇所に\cite{[引用キー]}のように記述する．引用キーは，データベースで確認できる他，bibファイル内の各エントリの最初の行にも書かれている．</li>
+                            <li><p>LaTeXを通常通り，コンパイルする．</p></li>
+                            <li><p>以下のコマンドで，bibtexをコンパイルする．</p>
+                                <p>pbibtex [LaTeXファイル名.tex]</p></li>
+                            <li><p>LaTeXを3回コンパイルする．</p></li>
+                        </ol>
+                    </div>
+                </div>
+        </section>
+    </div>
+{% endblock content %}

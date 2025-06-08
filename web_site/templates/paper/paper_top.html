@@ -1,0 +1,40 @@
+{% extends 'paper/paper_base.html' %}
+{% load i18n %}
+
+{% block title %}
+    {% trans "業績・文献管理" %}
+{% endblock title %}
+
+{% block headline %}
+    {% trans "業績・文献管理" %}
+{% endblock %}
+
+{% block lead_sentence %}
+    {% trans "研究室内の業績と参考文献を管理します．" %}
+{% endblock %}
+
+{% block content %}
+    <div class="child_main_wrapper">
+        <section class="bg-light py-5">
+            <h2 class="mb-5 text-center">{% trans "最新の投稿" %}<small>（{{past|date:"Y/m/d" }} ~ {{new|date:"Y/m/d" }}）</small></h2>
+                <div class="container-fluid">
+                    <div class="list-group list-group-flush w-75 mx-auto" style="height:700px;overflow:auto;">
+                        {% for paper in papers %}
+                            <a class="list-group-item list-group-item-action flex-column align-items-start" href="{% url 'paper:paper_detail' paper.pk %}" >
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h4 class="mb-4">{{paper.title}}</h4>
+                                    <small>{{paper.created_date}}</small>
+                                </div>
+                                <p class="mb-2 ml-3">
+                                    {{paper.abstract|truncatechars:70}}
+                                </p>
+                                <div class="text-right">
+                                    <small>{{paper.user.username}}</small>
+                                </div>
+                            </a>
+                        {% endfor %}
+                    </div>
+                </div>
+        </section>
+    </div>
+{% endblock content %}

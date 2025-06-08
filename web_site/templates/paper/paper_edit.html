@@ -1,0 +1,73 @@
+{% extends 'paper/paper_base.html' %}
+{% load i18n static %}
+
+{% block title %}
+    {% trans "文献登録" %}
+{% endblock title %}
+
+{% block headline %}
+    {% trans "文献登録" %}
+{% endblock %}
+
+{% block lead_sentence %}
+    {% trans "文献をデータベースに登録することができます．" %}
+{% endblock %}
+
+{% block extra_style %}
+    <link rel="stylesheet" href="{% static 'css/chosen.min.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="child_main_wrapper">
+        <div class="bg-light py-5">
+            <form method="post" id="reportform" novalidate enctype="multipart/form-data">
+                <div class="form-row">
+                    <div class="col-7 ml-5">
+                        {% csrf_token %}
+                        {{ form.non_field_errors }}
+                        {% for field in form %}
+                            <p>
+                                {{ field.label_tag }}
+                                {{ field }}
+                                {{ field.errors }}
+                                <span class="helptext">
+                                    {% if field.name == 'core_rank' %}
+                                        <a href="http://portal.core.edu.au/conf-ranks/" target="_blank">CORE Ranking <i class="fas fa-external-link-alt"></i></a>
+                                    {% endif %}
+                                    {{ field.help_text | linebreaksbr }}
+                                    {% if object == None %}
+                                        {% if field.name == 'journal_title' %}
+                                            <a href="{% url 'paper:create_journal_title' %}">論文誌名を追加</a>
+                                        {% endif %}
+                                        {% if field.name == 'conference_title' %}
+                                            <a href="{% url 'paper:create_conference_title' %}">会議名を追加</a>
+                                        {% endif %}
+                                    {% else %}
+                                        {% if field.name == 'journal_title' %}
+                                            <a href="{% url 'paper:create_journal_title' %}?return_pk={{ object.pk }}">論文誌名を追加</a>
+                                        {% endif %}
+                                        {% if field.name == 'conference_title' %}
+                                            <a href="{% url 'paper:create_conference_title' %}?return_pk={{ object.pk }}">会議名を追加</a>
+                                        {% endif %}
+                                    {% endif %}
+                                </span>
+                            </p>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <button class="btn btn-danger btn-sm ml-5 mt-2" type="submit">Post</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static "js/chosen.jquery.ja.js" %}"></script>
+    <script>
+        $(".chosen-select").chosen({
+            search_contains:true
+        })
+    </script>
+{% endblock %}

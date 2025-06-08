@@ -1,0 +1,58 @@
+{% extends 'report/report_base.html' %}
+{% load i18n %}
+
+{% block title %}
+    {% trans "投稿一覧" %}
+{% endblock title %}
+
+{% block headline %}
+    {% trans "投稿一覧" %}
+{% endblock %}
+
+{% block lead_sentence %}
+    {% trans "メンバー毎の資料投稿状況を見ることができます．" %}
+{% endblock %}
+
+{% block content %}
+    <div class="child_main_wrapper">
+        <div class="table-responsive">
+            <table class="table table-striped table-sm">
+                <thead>
+                <tr>
+                    {% for cell in table_head %}
+                        <th class="text-center">
+                            {% if cell.display %}
+                                {{ cell.u_name }}
+                                ({{ cell.post_num }})
+                            {% endif %}
+                        </th>
+                    {% endfor %}
+                </tr>
+                </thead>
+                <tbody>
+                {% for row in table %}
+                    <tr>
+                        {% for cell in row %}
+                            {% if forloop.first %}
+                                <th class="text-nowrap text-right">
+                                    {{ cell.content }}
+                                </th>
+                            {% else %}
+                                <td class="text-center">
+                                    {% if cell.display %}
+                                        {% for pk in cell.pk_list %}
+                                            <a href="{% url 'report:report_detail' pk %}" class="td_icons">
+                                                <i class="far fa-file-pdf"></i>
+                                            </a>
+                                        {% endfor %}
+                                    {% endif %}
+                                </td>
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

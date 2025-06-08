@@ -1,0 +1,31 @@
+{% extends 'report/report_base.html' %}
+
+{% block title %}
+    {% trans "タイトル追加" %}
+{% endblock title %}
+
+{% block headline %}
+    {% trans "タイトル追加" %}
+{% endblock %}
+
+{% block lead_sentence %}
+    {% trans "研究テーマをデータベースに登録することができます．" %}
+{% endblock %}
+
+{% block content %}
+    <div class="child_main_wrapper">
+        <div class="bg-light py-5">
+            <form method="post" novalidate>
+                <div class="form-row">
+                    <div class="col-7 ml-5">
+                        {% csrf_token %}
+                        {{form.as_p}}  
+                    </div>
+                </div>
+                <div class="form-row">
+                    <button class="btn btn-primary btn-sm ml-5 mt-2" type="submit">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

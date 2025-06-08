@@ -1,0 +1,112 @@
+{% extends 'public/public_base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}
+    {% trans "通信ネットワーク研究室" %} -- {% trans "ComNets マーケット" %}
+{% endblock title %}
+
+{% block nav_items %}
+    <ul class="navbar-nav mr-auto">
+    </ul>
+{% endblock %}
+
+{% block top_page %}
+{% endblock %}
+
+{% block app_css %}
+    {{ block.super }}
+{% endblock %}
+
+{% block header_content %}
+    <div class="header-background"></div>
+    test
+    {% if background_image %}
+        <img class="header-image" onload="AfterLoaded();" src="{% url 'picture:image' background_image.pk %}" alt="Background Image">
+    {% else %}
+        <img class="header-image" onload="AfterLoaded();" src="{% static 'public/image/default/default.jpg' %}" alt="Default Background Image">
+    {% endif %}
+    <div class="shade"></div>
+    <div id="top" class="header-text block-negative">
+        <div class="bottom-text">
+            <h6 class="mr-4 ml-4 mb-0">NUT ComNets Lab.</h6>
+            <h1 class="under_border mr-4 ml-4">ComNets Market</h1>
+            <h6 class="mr-4 ml-4">{% if request.LANGUAGE_CODE == 'ja' %}ComNets マーケット{% endif %}</h6>
+            <div class="skip-arrow"><a href="javascript:void(0);" onclick="Scroll('#block1');"><i class="fas fa-angle-double-down"></i></a></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block pre-title %}
+    NUT ComNets Lab.
+{% endblock %}
+
+{% block headline %}
+    ComNets Market
+{% endblock %}
+
+{% block sub-title %}
+    {% if request.LANGUAGE_CODE == 'ja' %}ComNets マーケット{% endif %}
+{% endblock %}
+{% block content %}
+    <div>
+        <div>
+            {% for c in view.model.CATEGORY %}
+                <div {% if forloop.counter|divisibleby:2 %}class="block-negative"{% endif %}>
+                    <div id="block{{ forloop.counter }}" class="contents-block">
+                        <h2 class="under_border ml-4 mb-1 mr-4 pt-4">{{ c.0 }}</h2>
+                        <h6 class="ml-4 mr-4">{% if request.LANGUAGE_CODE == 'ja' %}{{ c.1 }}{% endif %}</h6>
+                        <div class="ml-4 mr-4">
+                            <div>
+                                {% for x in object_list %}
+                                    {% if x.category == c.0 and x.active %}
+                                        <div class="small-block slide-bottom small-block-border w-100">
+                                            <h5>{{ x.title }}</h5>
+                                            <h6>Price: {{ x.price }} yen</h6>
+                                            <div>{{ x.description }}</div>
+                                            <div class="mt-1">
+                                                {% if x.user.kyash_qr != '' %}<button type="button" class="btn" data-toggle="popover" data-placement="bottom" title="Kyash で支払い" data-kyash="{% url 'market:qr' x.user.pk 'kyash' %}"><i class="fas fa-shopping-cart"></i> Kyash</button>{% endif %}
+                                                {% if x.user.paypay_id != '' %}<button type="button" class="btn" data-toggle="popover" data-placement="bottom" title="PayPay で支払い" data-paypay="{{ x.user.paypay_id }}"><i class="fas fa-shopping-cart"></i> PayPay</button>{% endif %}
+                                            </div>
+                                            <div class="mt-2 text-right">Manager: {{ x.user.username }}</div>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                            <div class="text-right mt-4">
+                                <button class="btn btn-sm"><a href="admin/market/item/" target="_blank"><i class="fas fa-chevron-circle-right"></i> {% trans "出品はこちらから" %}</a></button>
+                            </div>
+                        </div>
+                        {% if forloop.counter == view.model.CATEGORY|length %}
+                            <div class="bottom-text">
+                                <div class="skip-arrow"><a href="javascript:void(0);" onclick="Scroll('#top');"><i class="fas fa-angle-double-up"></i></a></div>
+                            </div>
+                        {% else %}
+                            <div class="bottom-text">
+                                <div class="skip-arrow"><a href="javascript:void(0);" onclick="Scroll('#block{{ forloop.counter|add:'1' }}');"><i class="fas fa-angle-double-down"></i></a></div>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}
+
+{% block js %}
+    {{ block.super }}
+    <script>
+        $(function () {
+            $('[data-toggle="popover"]').popover({
+                html: true,
+                content: function () {
+                    console.info($(this));
+                    if($(this).data('kyash') !== undefined){
+                        return 'KyashのQRコードを読み込んで，金額を指定して支払いしてください．<img src="'+ $(this).data('kyash') + '" width="100%"/> ※ QRコードは，カメラ等ではなくKyashアプリから読み込んでください．';
+                    }else if($(this).data('paypay')){
+                        return 'PayPayアプリからPayPay ID<div class="mb-1 mt-1 font-weight-bold h4"><span class="badge">' + $(this).data('paypay') + '</span></div>のユーザを検索して，支払いしてください．'
+                    }
+                }})
+        })
+    </script>
+{% endblock %}

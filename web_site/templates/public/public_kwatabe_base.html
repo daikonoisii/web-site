@@ -1,0 +1,97 @@
+{% extends 'public/public_base.html' %}
+{% load static %}
+{% load i18n %}
+
+<!-- アプリ毎 CSS -->
+{% block app_css %}
+    <style type="text/css">
+        /* 変数 */
+        :root {
+            --positive-color: #efefef;
+            --negative-color: #003366;
+        }
+    </style>
+    <link href="{% static 'public/css/css.css'%}" rel="stylesheet">
+{% endblock %}
+
+{% block navbar %}
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="">
+        <a class="navbar-brand text-light" href="{% url 'public:kwatabe' %}">
+            <strong>{% trans "Kohei Watabe's Site" %}</strong>
+        </a>
+        <div class="collapse navbar-collapse" id="Navbar">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="{% url 'public:kwatabe_profile' %}"><span class="d-inline-block">Profile</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="{% url 'public:kwatabe_publications' %}"><span class="d-inline-block">Publications</span></a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle small" id="Language" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-globe-americas"></i> Language
+                    </a>
+                    <div class="dropdown-menu border-0 text-center dropdown-menu-right" aria-labelledby="Language">
+                        <form action="{% url 'set_language' %}" method="post">
+                            {% csrf_token %}
+                            <input name="next" type="hidden" value="{{ PATH_WITHOUT_PREFIX }}" />
+                            <input name="language" type="hidden" value="ja">
+                            <button class="dropdown-item">Japanese</button>
+                        </form>
+                        <form action="{% url 'set_language' %}" method="post">
+                            {% csrf_token %}
+                            <input name="next" type="hidden" value="{{ PATH_WITHOUT_PREFIX }}" />
+                            <input name="language" type="hidden" value="en">
+                            <button class="dropdown-item">English</button>
+                        </form>
+                    </div>
+                </li>
+                {% if user.is_authenticated %}
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle small" id="HomeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-user"></i> {% blocktrans with name=user.get_username %}{{ name }}{% endblocktrans %}
+                        </a>
+                        <div class="dropdown-menu border-0 text-center dropdown-menu-right" aria-labelledby="HomeDropdown">
+                            <a class="dropdown-item" href="{% url 'members_top' %}">{% trans "メンバー限定ページ" %}</a>
+                            {% if user.get_username == 'kwatabe' or user.get_username == 'nakagawa' %}
+                                <a class="dropdown-item" href="{% url 'users:my_account_teacher' %}">{% trans "アカウント設定" %}</a>
+                            {% else %}
+                                <a class="dropdown-item" href="{% url 'users:my_account' %}">{% trans "アカウント設定" %}</a>
+                            {% endif %}
+                            <a class="dropdown-item" href="{% url 'admin:password_change' %}">{% trans "パスワード変更" %}</a>
+                            <a class="dropdown-item" href="{% url 'admin:logout' %}">{% trans "ログアウト" %}</a>
+                        </div>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link small" href="{% url 'admin:login' %}?next={{ request.path }}"><i class="fas fa-user"></i> Login</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse" id="navbarToggleExternalContent">
+            <div class="p-4">
+                <a class="dropdown-item text-light" href="{% url 'public:kwatabe_profile' %}">Profile</a>
+                <a class="dropdown-item text-light" href="{% url 'public:kwatabe_publications' %}">Publications</a>
+                <hr class="bg-light">
+                {% if user.is_authenticated %}
+                    <a class="dropdown-item text-light" href="{% url 'members_top' %}">{% trans "メンバー限定ページ" %}</a>
+                    {% if user.get_username == 'kwatabe' or user.get_username == 'nakagawa' %}
+                        <a class="dropdown-item text-light" href="{% url 'users:my_account_teacher' %}">{% trans "アカウント設定" %}</a>
+                    {% else %}
+                        <a class="dropdown-item text-light" href="{% url 'users:my_account' %}">{% trans "アカウント設定" %}</a>
+                    {% endif %}
+                    <a class="dropdown-item text-light" href="{% url 'admin:password_change' %}">{% trans "パスワード変更" %}</a>
+                    <a class="dropdown-item text-light" href="{% url 'admin:logout' %}">{% trans "ログアウト" %}</a>
+                {% else %}
+                    <a class="dropdown-item text-light" href="{% url 'admin:login' %}?next={{ request.path }}">{% trans "Login" %}</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+{% endblock %}

@@ -1,0 +1,212 @@
+{% extends 'public/public_kwatabe_base.html' %}
+{% load i18n %}
+{% load static %}
+{% load japanese %}
+
+{% block title %}
+    Kohei Watabe's Site -- Profile
+{% endblock title %}
+
+{% block nav_items %}
+    <ul class="navbar-nav mr-auto">
+    </ul>
+{% endblock %}
+
+{% block top_page %}
+{% endblock %}
+
+{% block app_css %}
+    {{ block.super }}
+{% endblock %}
+
+{% block pre-title %}
+    Kohei Watabe's Site
+{% endblock %}
+
+{% block headline %}
+    Profile
+{% endblock %}
+
+{% block sub-title %}
+    {% if request.LANGUAGE_CODE == 'ja' %}渡部康平のプロフィール{% endif %}
+{% endblock %}
+
+{% block content %}
+    <div>
+        <div>
+            <div id="block1" class="contents-block">
+                <h2 class="under_border ml-4 mb-1 mr-4">Biography</h2>
+                <h6 class="ml-4 mr-4">{% if request.LANGUAGE_CODE == 'ja' %}略歴{% endif %}</h6>
+                <div class="ml-4 mr-4">
+                    <ul>
+                        {% if request.LANGUAGE_CODE == 'ja' %}
+                            <li class="mb-1">2009年 首都大学東京 システムデザイン学部卒業．</li>
+                            <li class="mb-1">2011年 首都大学東京 大学院システムデザイン研究科 博士前期課程修了．</li>
+                            <li class="mb-1">2012年 日本学術振興会 特別研究員(DC2)に採用 (2014年まで)．</li>
+                            <li class="mb-1">2014年 大阪大学 大学院情報科学研究科 博士後期課程修了．</li>
+                            <li class="mb-1">2014年 長岡技術科学大学 大学院工学研究科 助教に着任 (2019年まで)．</li>
+                            <li class="mb-1">2019年 長岡技術科学大学 技学研究院 准教授に着任． 現在に至る．</li>
+                            <li class="mb-1">IEEE，IEICE各会員．</li>
+                        {% else %}
+                            <li class="mb-1">Kohei Watabe received his B.E. and M.E. degrees in Engineering from Tokyo Metropolitan University, Tokyo, Japan, in 2009 and 2011, respectively.</li>
+                            <li class="mb-1">He also received the Ph.D. degree from Osaka University, Japan, in 2014.</li>
+                            <li class="mb-1">He was a JSPS research fellow (DC2) from April 2012 to March 2014.</li>
+                            <li class="mb-1">He was an Assistant Professor of the Graduate School of Engineering, Nagaoka University of Technology, from April 2014 to October 2019.</li>
+                            <li class="mb-1">He has been an Associate Professor of the Graduate School of Engineering, Nagaoka University of Technology, since November 2019. </li>
+                            <li class="mb-1">He is a member of the IEEE and the IEICE.</li>
+                        {% endif %}
+                    </ul>
+                </div>
+                <div class="bottom-text">
+                    <div class="skip-arrow"><a href="javascript:void(0);" onclick="Scroll('#block2');"><i class="fas fa-angle-double-down"></i></a></div>
+                </div>
+            </div>
+        </div>
+        <div class="block-negative">
+            <div id="block2" class="contents-block">
+                <h2 class="under_border ml-4 mr-4 mb-1 pt-4">Professional Activities</h2>
+                <h6 class="ml-4 mr-4">{% if request.LANGUAGE_CODE == 'ja' %}委員等{% endif %}</h6>
+                <div class="ml-4 mr-4">
+                    <ul>
+                        {% for p in professional_activity %}
+                            {% if request.LANGUAGE_CODE == 'ja' %}
+                                <li class="mb-3">{{ p.title }} ({{ p.start_date|date:"Y年M" }} -- {{ p.end_date|date:"Y年M" }})</li>
+                            {% else %}
+                                {% if not p.title|is_ja %}  {# 英語のみ表示 #}
+                                    <li class="mb-3">{{ p.title }} ({{ p.start_date|date:"N Y" }} -- {{ p.end_date|date:"N Y" }})</li>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="bottom-text">
+                    <div class="skip-arrow positive-text"><a href="javascript:void(0);" onclick="Scroll('#block3');"><i class="fas fa-angle-double-down"></i></a></div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div id="block3" class="contents-block">
+                <h2 class="under_border ml-4 mr-4 mb-1 pt-4">Awards</h2>
+                <h6 class="ml-4 mr-4">{% if request.LANGUAGE_CODE == 'ja' %}受賞歴{% endif %}</h6>
+                <div class="ml-4 mr-4">
+                    <ol class="ml-2 mr-4">
+                        {% now "U" as today %}
+                        {% for a in awards %}
+                            {% if today > a.date|date:"U" %}
+                                {% if request.LANGUAGE_CODE == 'ja' %}
+                                    <li class="mb-3">{{ a.title }}, {{ a.org_name }} ({{ a.date|date:"Y年M" }})</li>
+                                {% else %}
+                                    {% if not a.title|is_ja %}  {# 英語のみ表示 #}
+                                        <li class="mb-3">{{ a.title }}, {{ a.org_name }} ({{ a.date|date:"N Y" }})</li>
+                                    {% endif %}
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    </ol>
+                </div>
+                <div class="bottom-text">
+                    <div class="skip-arrow"><a href="javascript:void(0);" onclick="Scroll('#block4');"><i class="fas fa-angle-double-down"></i></a></div>
+                </div>
+            </div>
+        </div>
+        <div class="block-negative">
+            <div id="block4" class="contents-block">
+                <h2 class="under_border ml-4 mr-4 mb-1 pt-4">Student Awards</h2>
+                <h6 class="ml-4 mr-4">{% if request.LANGUAGE_CODE == 'ja' %}指導学生の受賞{% endif %}</h6>
+                <div class="ml-4 mr-4">
+                    <ol class="ml-2 mr-4">
+                        {% now "U" as today %}
+                        {% for a in student_awards %}
+                            {% if today > a.date|date:"U" %}
+                                {% if request.LANGUAGE_CODE == 'ja' %}
+                                    <li class="mb-3">
+                                        <div>{{ a.winners }},</div>
+                                        <div>{{ a.title }}, {{ a.org_name }} ({{ a.date|date:"Y年M" }})</div>
+                                    </li>
+                                {% else %}
+                                    {% if not a.title|is_ja %}  {# 英語のみ表示 #}
+                                        <li class="mb-3">
+                                            <div>{{ a.winners }},</div>
+                                            <div>{{ a.title }}, {{ a.org_name }} ({{ a.date|date:"N Y" }})</div>
+                                        </li>
+                                    {% endif %}
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    </ol>
+                </div>
+                <div class="bottom-text">
+                    <div class="skip-arrow positive-text"><a href="javascript:void(0);" onclick="Scroll('#block5');"><i class="fas fa-angle-double-down"></i></a></div>
+                </div>
+            </div>
+        </div>
+        {% if request.LANGUAGE_CODE == 'ja' %}
+            <div>
+                <div id="block5" class="contents-block">
+                    <h2 class="under_border ml-4 mr-4 mb-1 pt-4">Research Funds</h2>
+                    <h6 class="ml-4 mr-4">{% if request.LANGUAGE_CODE == 'ja' %}競争的資金{% endif %}</h6>
+                    <div class="ml-4 mr-4">
+                        <ul>
+                            {% for f in fund %}
+                                <li class="mb-3">{{ f.fund_name }}: {{ f.title }} ({{ f.start_date|date:"Y年M" }} -- {{ f.end_date|date:"Y年M" }})</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="bottom-text">
+                        <div class="skip-arrow positive-text"><a href="javascript:void(0);" onclick="Scroll('#block6');"><i class="fas fa-angle-double-down"></i></a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="block-negative">
+                <div id="block6" class="contents-block">
+                    <h2 class="under_border ml-4 mr-4 mb-1 pt-4">Collaborative Projects</h2>
+                    <h6 class="ml-4 mr-4">{% if request.LANGUAGE_CODE == 'ja' %}共同研究{% endif %}</h6>
+                    <div class="ml-4 mr-4">
+                        <ul>
+                            {% for c in collaboration %}
+                                <li class="mb-3">{{ c.company }}: {{ c.title }} ({{ c.start_date|date:"Y年M" }} -- {{ c.end_date|date:"Y年M" }})</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="bottom-text">
+                        <div class="skip-arrow positive-text"><a href="javascript:void(0);" onclick="Scroll('#block7');"><i class="fas fa-angle-double-down"></i></a></div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        <div>
+            <div id="block7" class="contents-block">
+                <h2 class="under_border ml-4 mr-4 mb-1 pt-4">Contacts</h2>
+                <h6 class="ml-4 mr-4">{% if request.LANGUAGE_CODE == 'ja' %}連絡先{% endif %}</h6>
+                <div class="ml-4 mr-4 text-break">
+                    {% blocktrans %}
+                        <p>
+                            IoTを始め通信ネットワークを活用して様々な技術課題の解決に取り組みます．
+                        </p>
+                        <p>
+                            通信を専門とする企業から地域の中小企業まで，共同研究の提案，技術相談などお気軽にご相談ください．
+                        </p>
+                    {% endblocktrans %}
+                    <ul class="contacts-list">
+                        <li class="mb-1 text-break"><i class="fas fa-map-marker-alt"></i> {% trans "住所: 〒940-2188 新潟県長岡市上富岡町1603-1" %}</li>
+                        <li class="mb-1 text-break"><i class="fas fa-door-open"></i> {% trans "居室: 電気1号棟 3階 305" %}</li>
+                        <li class="mb-1 text-break"><i class="fas fa-phone-square"></i> {% trans "電話: 0258-47-9537" %}</li>
+                        <li class="mb-1 text-break"><i class="fas fa-envelope-square"></i> {% trans "メール" %}: k_watabe[at]vos.nagaokaut.ac.jp</li>
+                        <li class="mb-1 text-break"><i class="fab fa-twitter-square"></i> Twitter: <a href="https://twitter.com/wkouw1082/" target="_blank"><span class="badge">@wkouw1082 <i class="fas fa-external-link-alt"></i></span></a></li>
+                        <li class="mb-1 text-break"><i class="fab fa-facebook-square"></i> Facebook: <a href="https://www.facebook.com/wkouw1082" target="_blank"><span class="badge">Kohei Watabe <i class="fas fa-external-link-alt"></i></span></a></li>
+                        <li class="mb-1 text-break"><i class="fab fa-linkedin"></i> LinkedIn: <a href="linkedin.com/in/kohei-watabe-98195941/" target="_blank"><span class="badge">Kohei Watabe <i class="fas fa-external-link-alt"></i></span></a></li>
+                        <li class="mb-1 text-break"><i class="fab fa-researchgate"></i> ResearchGate: <a href="https://www.researchgate.net/profile/Kohei_Watabe" target="_blank"><span class="badge">Kohei Watabe <i class="fas fa-external-link-alt"></i></span></a></li>
+                        <li class="mb-1 text-break"><i class="fas fa-caret-square-right"></i> Researchmap: <a href="https://researchmap.jp/7000022295/" target="_blank"><span class="badge">{% trans "渡部 康平" %} <i class="fas fa-external-link-alt"></i></span></a></li>
+                    </ul>
+                </div>
+                <div class="bottom-text">
+                    <div class="skip-arrow positive-text"><a href="javascript:void(0);" onclick="Scroll('#top');"><i class="fas fa-angle-double-up"></i></a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block js %}
+    {{ block.super }}
+{% endblock %}

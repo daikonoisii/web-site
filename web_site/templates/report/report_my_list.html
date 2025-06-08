@@ -1,0 +1,134 @@
+{% extends 'report/report_base.html' %}
+{% load i18n %}
+
+{% block title %}
+    {% trans "マイレポート" %}
+{% endblock title %}
+
+{% block headline %}
+    {% trans "マイレポート" %}
+{% endblock %}
+
+{% block lead_sentence %}
+    {% trans "自身が投稿したレポートの一覧を表示することができます．" %}
+{% endblock %}
+
+{% block content %}
+    <h2 class='mx-5'>{{ user.get_username }} のレポート一覧</h2>
+    <div class="bg-light py-5">
+        <form id="ajax-search-post" action="{% url 'report:ajax_my_reports' %}" method="GET" novalidate>
+            <div class="form-row">
+                <div class="col-7 ml-5">
+                    {% csrf_token %}
+                    {{form.as_p}}
+                </div>
+            </div>
+            <div class="form-row px-5">
+                <button type="submit"  class="btn-sm btn-danger">{% trans "表示" %}</button>
+            </div>
+        </form>
+    </div>
+    <div class="child_main_wrapper">
+        <h2 class="mx-5">{% trans "検索結果" %}</h2>
+        <hr>
+        <div id="posts" class="mx-5" style="height:700px;overflow:auto;">
+            {% for post in report_list %}
+                <p>{{ post.title_name }}</p>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block js %}
+
+<script type="text/javascript">
+
+    $(function () {
+        $('#ajax-search-post').submit(
+            function (event) {
+                event.preventDefault();
+                var $form = $(this);
+                var word = $('.search-word').val();
+
+                $.ajax({
+                    type: $form.prop("method"),
+                    url: $form.prop("action"),
+                    data: {
+                        'report': word,
+                    },
+                    dataType: 'json',
+                    timeout: 10000,
+                })
+                    .done(function (response) {
+                        $('#posts').empty();
+                        var reports = response.report_list;
+                        console.log(reports);
+                        console.log(reports.length);
+                        if (reports.length < 1) {
+                            if (word > 0) {
+                                $('#posts').append( 
+                                    `<font size="7">{% trans "このテーマに関するレポートはありません．" %}</font>`
+                                );
+                           
+                            }
+                            else {
+                                $('#posts').append( 
+                                    `<font size="7">{% trans "テーマを選択してください．" %}</font>`
+                                );
+                            
+                            }
+
+                        }
+                        else {
+                            for (const report of reports) {
+                                var time = new Date(report["created_date"]);
+                                var year = time.getFullYear();
+                                var month = time.getMonth() + 1;
+                                var day = time.getDate();
+                                var hours = time.getHours();
+                                var minutes = time.getMinutes();
+
+                                var created_date = year + '/' + month + '/' + day + ' '+hours+':'+minutes;
+    
+                                var cutFigure = 120;
+
+                                if (report["abstract"].length > cutFigure) {
+                                    var abst = report["abstract"].substr(0,cutFigure) + '...';
+                                    console.log(abst);
+                                }
+                                else{
+                                    abst = report["abstract"];
+                                }
+
+                                $('#posts').append(
+                                    `<a class=\'list-group-item list-group-item-action flex-column align-items-start\' href=\'`
+                                    + report['pk']
+                                    + `/detail/'\'>`
+                                    +`<div class=\'d-flex w-100 justify-content-between\'><h4 class=\' mb-4 \'>`
+                                    + report["title_name"]
+                                    + `</h4><small>`
+                                    + created_date
+                                    + `</small></div><p class='mb-2 ml-3'>`
+                                    + abst
+                                    + `</p><div class=\' text-right \'><small>`
+                                    + report["user"]
+                                    + `</small></div></a>`
+                                );
+                            }
+                        
+                        }
+                        
+                        console.log('検証OK');
+                    })
+                    .fail(function (response) {
+                        alert("失敗");
+                    })
+                    .always(function(){
+                    })
+            });
+    });
+
+</script>
+
+{% endblock %}

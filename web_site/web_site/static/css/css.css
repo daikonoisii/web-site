@@ -1,0 +1,27 @@
+/* iframe表示の設定 */
+.full_screen {
+    height: 90vh;
+}
+
+/* 見出し下の罫線 */
+.under_border {
+    border-bottom:solid 3px;
+}
+
+/* フォームの書式 */
+.helptext{
+    display: block;
+    color: gray;
+    font-size: small;
+}
+.errorlist{
+    color: red;
+}
+
+/* 文字サイズの設定 */
+.small_font {
+    font-size: small;
+}
+.tiny_font {
+    font-size: xx-small;
+}
