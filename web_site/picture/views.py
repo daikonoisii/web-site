@@ -8,6 +8,7 @@ from django.conf import settings as django_settings
 from wiki.plugins.images import settings as wiki_settings
 
 from PIL import Image
+import io
 
 class PictureView(View):
     """画像を表示"""
