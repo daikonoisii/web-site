@@ -152,7 +152,10 @@
         <p>{% blocktrans %}Copyright(C) 2017- Comunication Networks Laboratory in Nagaoka University. All rights reserved.{% endblocktrans %}</p>
         <div class="clearfix"></div>
         <p><a href="{% url 'wiki:root' %}" class="pull-right">
-            <img src="{% static "/image/logo.png" %}"  width=80 height=80 /></a></p>
+          <picture>
+            <source srcset="{% static '/image/logo.webp' %}" type="image/webp">
+            <img src="{% static '/image/logo.png' %}" width="80" height="80" alt="Logo">
+          </picture>
       </footer>
       </div>
 
