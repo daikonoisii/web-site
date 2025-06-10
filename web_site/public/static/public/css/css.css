@@ -1,257 +1,258 @@
 /* navbar分だけスライド */
-body {
-  padding-top: 56px;
-  color: var(--negative-color);
-  background-color: var(--positive-color);
+body{
+    padding-top: 56px;
+    color: var(--negative-color);
+    background-color: var(--positive-color);
 }
 
 /* navbar */
-#top-logo {
-  height: 36px;
-  background-color: var(--positive-color);
-  border-radius: 5px;
+#top-logo{
+    height: 36px;
+    background-color: var(--positive-color);
+    border-radius: 5px;
 }
 nav {
-  background-color: var(--negative-color);
+    background-color: var(--negative-color)
 }
 
 /* footer */
 footer {
-  background-color: var(--negative-color);
+    background-color: var(--negative-color)
 }
 
 /* 各ブロックの下揃え */
-.bottom-text {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
+.bottom-text{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 /* ページ内遷移矢印 */
-.skip-arrow {
-  width: 100%;
-  margin-top: 20pt;
-  margin-bottom: 20pt;
-  text-align: center;
-  font-size: 5ex;
-  animation-name: flash-anim;
-  animation-duration: 1.5s;
-  animation-iteration-count: infinite;
+.skip-arrow{
+    width: 100%;
+    margin-top: 20pt;
+    margin-bottom: 20pt;
+    text-align: center;
+    font-size: 5ex;
+    animation-name: flash-anim;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
 }
-@keyframes flash-anim {
-  from {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
+@keyframes flash-anim{
+    from {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
 }
 /* コンテンツのブロック */
-.contents-block {
-  min-height: 80vh;
-  position: relative;
-  max-width: 950px;
-  margin: auto;
-  padding-bottom: 12ex;
+.contents-block{
+    min-height: 80vh;
+    position:relative;
+    max-width: 950px;
+    margin: auto;
+    padding-bottom: 12ex;
 }
-.block-negative {
-  background-color: var(--negative-color);
-  color: var(--positive-color);
+.block-negative{
+    background-color: var(--negative-color);
+    color: var(--positive-color);
 }
-.text-negative {
-  color: var(--positive-color);
+.text-negative{
+    color: var(--positive-color);
 }
 /* 小ブロック */
-.small-block-container {
-  width: 100%;
-  text-align: center;
+.small-block-container{
+    width: 100%;
+    text-align: center;
 }
-.small-block {
-  max-width: 290px;
-  display: inline-block;
-  padding: 15px;
-  margin-bottom: 10px;
-  font-size: small;
-  vertical-align: top;
+.small-block{
+    max-width: 290px;
+    display: inline-block;
+    padding: 15px;
+    margin-bottom: 10px;
+    font-size: small;
+    vertical-align: top;
 }
-.small-block-border {
-  border: solid 2px;
-  border-radius: 10px;
-  border-color: var(--negative-color);
+.small-block-border{
+    border: solid 2px;
+    border-radius: 10px;
+    border-color: var(--negative-color);
 }
 div.block-negative .small-block-border {
-  border-color: var(--positive-color);
+    border-color: var(--positive-color);
 }
-.small-block-icon {
-  font-size: 5ex;
-  margin-top: 10px;
-  margin-bottom: 15px;
-  text-shadow: 1px 1px 1px #999;
+.small-block-icon{
+    font-size: 5ex;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    text-shadow: 1px 1px 1px #999;
 }
 
 /* ヘッダ */
-.header-text {
-  height: 80vh;
-  min-height: 200pt;
-  color: #fff;
-  background-size: cover;
-  position: relative;
-  text-shadow: 1px 1px 1px #000;
-  background-color: transparent;
+.header-text{
+    height: 80vh;
+    min-height: 200pt;
+    color: #fff;
+    background-size: cover;
+    position:relative;
+    text-shadow: 1px 1px 1px #000;
+    background-color: transparent;
 }
-.draw-line {
-  animation-name: draw-line-anim;
-  animation-duration: 1.5s;
-  animation-iteration-count: 1;
+.draw-line{
+    animation-name: draw-line-anim;
+    animation-duration: 1.5s;
+    animation-iteration-count: 1;
 }
 @keyframes draw-line-anim {
-  from {
-    width: 0;
-  }
-  to {
-    width: calc(100% - 48px);
-  }
+    from {
+        width: 0;
+    }
+    to {
+        width: calc(100% - 48px);
+    }
 }
-.fadein-1 {
-  animation-name: fadein-anim-1;
-  animation-duration: 3s;
-  animation-iteration-count: 1;
+.fadein-1{
+    animation-name: fadein-anim-1;
+    animation-duration: 3s;
+    animation-iteration-count: 1;
 }
-@keyframes fadein-anim-1 {
-  from {
-    opacity: 0;
-  }
-  40% {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+@keyframes fadein-anim-1{
+    from {
+        opacity: 0;
+    }
+    40%{
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
-.fadein-2 {
-  animation-name: fadein-anim-2;
-  animation-duration: 3s;
-  animation-iteration-count: 1;
+.fadein-2{
+    animation-name: fadein-anim-2;
+    animation-duration: 3s;
+    animation-iteration-count: 1;
 }
-@keyframes fadein-anim-2 {
-  from {
-    opacity: 0;
-  }
-  45% {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+@keyframes fadein-anim-2{
+    from {
+        opacity: 0;
+    }
+    45%{
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
-.fadein-3 {
-  animation-name: fadein-anim-3;
-  animation-duration: 2s;
-  animation-iteration-count: 1;
+.fadein-3{
+    animation-name: fadein-anim-3;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
 }
-@keyframes fadein-anim-3 {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+@keyframes fadein-anim-3{
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
-.header-image {
-  height: 80vh;
-  min-height: 200pt;
-  width: 100%;
-  object-fit: cover;
-  position: absolute;
-  z-index: -1;
-  opacity: 0;
+.header-image{
+    height: 80vh;
+    min-height: 200pt;
+    width: 100%;
+    object-fit: cover;
+    position : absolute;
+    z-index : -1;
+    opacity : 0;
 }
-.shade {
-  height: 80vh;
-  min-height: 200pt;
-  width: 100%;
-  /* 透過した黒を重ねる */
-  background-color: rgba(0, 0, 0, 0.7);
-  /* どの範囲に重ねるかを指定 */
-  position: absolute;
+.shade{
+    height: 80vh;
+    min-height: 200pt;
+    width: 100%;
+    /* 透過した黒を重ねる */
+    background-color: rgba(0,0,0,0.7);
+    /* どの範囲に重ねるかを指定 */
+    position: absolute;
 }
-.header-background {
-  background-color: var(--negative-color);
-  height: 80vh;
-  min-height: 200pt;
-  width: 100%;
-  position: absolute;
-  z-index: -1;
+.header-background{
+    background-color: var(--negative-color);
+    height: 80vh;
+    min-height: 200pt;
+    width: 100%;
+    position : absolute;
+    z-index : -1;
 }
 
 /* 新着情報 */
 .information-image-box {
-  background-color: lightgrey;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 150px;
-  font-size: 10ex;
+    background-color: lightgrey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 150px;
+    font-size: 10ex;
 }
 @media screen and (max-width: 650px) {
-  /* small-blockが2つ以上並ぶだけの幅がなければ，画像は非表示 */
-  .information-image-box {
-    height: 2px;
-  }
-  .information-image-contents {
-    display: none;
-  }
+    /* small-blockが2つ以上並ぶだけの幅がなければ，画像は非表示 */
+    .information-image-box {
+        height: 2px;
+    }
+    .information-image-contents {
+        display: none;
+    }
 }
 .information-image {
-  width: 100%;
-  max-height: 150px;
-  object-fit: contain;
+    width: 100%;
+    max-height: 150px;
+    object-fit: contain;
 }
 
 /* メンバー一覧 */
 .profile-box {
-  display: flex;
+    display: flex;
 }
 .profile-photo img {
-  width: 120px;
-  height: 160px;
-  margin-right: 10px;
-  object-fit: cover;
+    width: 120px;
+    height: 160px;
+    margin-right: 10px;
+    object-fit: cover;
 }
 .no-profile-image {
-  background-color: lightgrey;
-  text-align: center;
-  width: 120px;
-  height: 160px;
-  margin-right: 10px;
-  padding: 30px;
+    background-color: lightgrey;
+    text-align: center;
+    width: 120px;
+    height: 160px;
+    margin-right: 10px;
+    padding: 30px;
 }
 .block-negative .no-profile-image {
-  background-color: grey;
+    background-color: grey;
 }
 .profile-text {
-  min-width: 140px;
-  word-break: break-all;
+    min-width: 140px;
+    word-break: break-all;
 }
 .user-icon {
-  font-size: 30px;
+    font-size: 30px;
 }
 
 /* 個人ページ */
 .contacts-list {
-  word-break: break-all;
+    word-break: break-all;
 }
 .url {
-  word-break: break-all;
+    word-break: break-all;
 }
 
+
 /* フォトギャラリー */
-.photo-container {
-  margin: auto;
-  max-width: 600px;
+.photo-container{
+    margin: auto;
+    max-width: 600px;
 }
 
 /* タグ */
@@ -262,7 +263,7 @@ ul.tag {
 }
 ul.tag li {
   display: inline-block;
-  margin: 0 0 0.3em 1em;
+  margin: 0 0 .3em 1em;
   padding: 0;
 }
 ul.tag li a {
@@ -276,25 +277,25 @@ ul.tag li a {
   color: var(--positive-color);
   font-size: 13px;
   text-decoration: none;
-  -webkit-transition: 0.2s;
-  transition: 0.2s;
+  -webkit-transition: .2s;
+  transition: .2s;
 }
 div.block-negative ul.tag li a {
-  background-color: var(--positive-color);
-  color: var(--negative-color);
+      background-color: var(--positive-color);
+      color: var(--negative-color);
 }
 ul.tag li a::before {
   position: absolute;
   top: 0;
   left: -15px;
-  content: "";
+  content: '';
   width: 0;
   height: 0;
   border-color: transparent var(--negative-color) transparent transparent;
   border-style: solid;
   border-width: 15px 15px 15px 0;
-  -webkit-transition: 0.2s;
-  transition: 0.2s;
+  -webkit-transition: .2s;
+  transition: .2s;
 }
 div.block-negative ul.tag li a::before {
   border-color: transparent var(--positive-color) transparent transparent;
@@ -305,14 +306,14 @@ ul.tag li a::after {
   left: 0;
   z-index: 2;
   display: block;
-  content: "";
+  content: '';
   width: 6px;
   height: 6px;
   margin-top: -3px;
   background-color: var(--positive-color);
   border-radius: 100%;
 }
-div.block-negative ul.tag li a::after {
+div.block-negative ul.tag li a::after{
   background-color: var(--negative-color);
 }
 ul.tag li span {
@@ -335,102 +336,55 @@ div.block-negative ul.tag li a:hover::before {
 }
 
 /* ボタン */
-.btn {
-  white-space: normal;
-  color: var(--positive-color);
-  background-color: var(--negative-color);
+.btn{
+    white-space: normal;
+    color: var(--positive-color);
+    background-color: var(--negative-color);
 }
 .badge {
-  color: var(--positive-color);
-  background-color: var(--negative-color);
+    color: var(--positive-color);
+    background-color: var(--negative-color);
 }
 div.block-negative button {
-  color: var(--negative-color);
-  background-color: var(--positive-color);
+    color: var(--negative-color);
+    background-color: var(--positive-color);
 }
 div.block-negative .badge {
-  color: var(--negative-color);
-  background-color: var(--positive-color);
+    color: var(--negative-color);
+    background-color: var(--positive-color);
 }
 .for_members {
-  background-color: #bbbbbb;
+    background-color: #bbbbbb;
 }
 div.block-negative .for_members {
-  background-color: #bbbbbb;
+    background-color: #bbbbbb;
 }
 /* リンク */
-a:link {
-  color: var(--negative-color);
-}
-a:visited {
-  color: var(--negative-color);
-}
-a:hover {
-  color: gray;
-}
-a:active {
-  color: var(--negative-color);
-}
-button a:link {
-  color: var(--positive-color);
-}
-button a:visited {
-  color: var(--positive-color);
-}
-button a:hover {
-  color: lightgrey;
-}
-button a:active {
-  color: var(--positive-color);
-}
-.badge a:link {
-  color: var(--positive-color);
-}
-.badge a:visited {
-  color: var(--positive-color);
-}
-.badge a:hover {
-  color: lightgrey;
-}
-.badge a:active {
-  color: var(--positive-color);
-}
-div.block-negative a:link {
-  color: var(--positive-color);
-}
-div.block-negative a:visited {
-  color: var(--positive-color);
-}
-div.block-negative a:hover {
-  color: lightgrey;
-}
-div.block-negative a:active {
-  color: var(--positive-color);
-}
-div.block-negative button a:link {
-  color: var(--negative-color);
-}
-div.block-negative button a:visited {
-  color: var(--negative-color);
-}
-div.block-negative button a:hover {
-  color: gray;
-}
-div.block-negative button a:active {
-  color: var(--negative-color);
-}
-div.block-negative .badge a:link {
-  color: var(--negative-color);
-}
-div.block-negative .badge a:visited {
-  color: var(--negative-color);
-}
-div.block-negative .badge a:hover {
-  color: gray;
-}
-div.block-negative .badge a:active {
-  color: var(--negative-color);
-}
+a:link { color: var(--negative-color); }
+a:visited { color: var(--negative-color); }
+a:hover { color: gray; }
+a:active { color: var(--negative-color); }
+button a:link { color: var(--positive-color); }
+button a:visited { color: var(--positive-color); }
+button a:hover { color: lightgrey; }
+button a:active { color: var(--positive-color); }
+.badge a:link { color: var(--positive-color); }
+.badge a:visited { color: var(--positive-color); }
+.badge a:hover { color: lightgrey; }
+.badge a:active { color: var(--positive-color); }
+div.block-negative a:link { color: var(--positive-color); }
+div.block-negative a:visited { color: var(--positive-color); }
+div.block-negative a:hover { color: lightgrey; }
+div.block-negative a:active { color: var(--positive-color); }
+div.block-negative button a:link { color: var(--negative-color); }
+div.block-negative button a:visited { color: var(--negative-color); }
+div.block-negative button a:hover { color: gray; }
+div.block-negative button a:active { color: var(--negative-color); }
+div.block-negative .badge a:link { color: var(--negative-color); }
+div.block-negative .badge a:visited { color: var(--negative-color); }
+div.block-negative .badge a:hover { color: gray; }
+div.block-negative .badge a:active { color: var(--negative-color); }
+
 
 /* タイムライン */
 
@@ -454,12 +408,7 @@ div.block-negative .badge a:active {
   padding: 0;
   width: 100%;
 }
-.timeline h1,
-.timeline h2,
-.timeline h3,
-.timeline h4,
-.timeline h5,
-.timeline h6 {
+.timeline h1, .timeline h2, .timeline h3, .timeline h4, .timeline h5, .timeline h6 {
   line-height: inherit;
 }
 
@@ -477,7 +426,7 @@ div.block-negative .badge a:active {
   font-size: 1rem;
   font-weight: 700;
   letter-spacing: 3px;
-  margin: 0 0 0.5em 0;
+  margin: 0 0 .5em 0;
   text-transform: uppercase;
   white-space: nowrap;
 }
@@ -560,27 +509,4 @@ div.block-negative .badge a:active {
 }
 .period .timeline-title {
   margin: 0;
-}
-
-/* 遅延読み込み用のスタイル */
-img[data-src] {
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
-}
-
-img.loaded {
-  opacity: 1;
-}
-
-/* プレースホルダー用のスタイル */
-.lazy-placeholder {
-  background-color: #f0f0f0;
-  position: relative;
-  overflow: hidden;
-}
-
-.lazy-placeholder::before {
-  content: "";
-  display: block;
-  padding-top: 56.25%; /* 16:9のアスペクト比 */
 }

@@ -28,21 +28,13 @@ class Command(BaseCommand):
             "--quality",
             type=int,
             default=85,
-            help="圧縮品質（0-100）",
-        )
-        parser.add_argument(
-            "--format",
-            type=str,
-            choices=["webp", "avif", "jpeg"],
-            default="webp",
-            help="出力形式（webp, avif, jpeg）",
+            help="JPEGの圧縮品質（0-100）",
         )
 
     def handle(self, *args, **options):
         dry_run = options["dry_run"]
         max_size = tuple(options["max_size"])
         quality = options["quality"]
-        output_format = options["format"]
 
         pictures = Picture.objects.all()
         total = pictures.count()
@@ -74,8 +66,7 @@ class Command(BaseCommand):
 
                 # 画像が既に最適化されているかチェック
                 if (
-                    im.format.upper()
-                    == output_format.upper()
+                    im.format == "JPEG"
                     and im.width <= max_size[0]
                     and im.height <= max_size[1]
                 ):
@@ -85,25 +76,9 @@ class Command(BaseCommand):
                     skipped += 1
                     continue
 
-                # 透過を保持するかどうかを判断
-                has_alpha = im.mode in ("RGBA", "LA") or (
-                    im.mode == "P"
-                    and "transparency" in im.info
-                )
-
-                # 画像モードの変換
-                if output_format == "avif" and has_alpha:
-                    # AVIFは透過をサポート
-                    if im.mode != "RGBA":
-                        im = im.convert("RGBA")
-                elif output_format == "webp" and has_alpha:
-                    # WebPは透過をサポート
-                    if im.mode != "RGBA":
-                        im = im.convert("RGBA")
-                else:
-                    # JPEGは透過をサポートしない
-                    if im.mode != "RGB":
-                        im = im.convert("RGB")
+                # RGBに変換（PNGの透過を保持する場合はこの行を削除）
+                if im.mode != "RGB":
+                    im = im.convert("RGB")
 
                 # リサイズ
                 if (
@@ -116,32 +91,21 @@ class Command(BaseCommand):
 
                 # 画像をメモリ上で圧縮
                 output = BytesIO()
-
-                # 形式に応じた保存オプション
-                save_options = {
-                    "quality": quality,
-                    "optimize": True,
-                }
-
-                if output_format == "webp":
-                    save_options["method"] = 6  # 最高圧縮率
-                elif output_format == "avif":
-                    save_options["speed"] = 8  # 最高圧縮率
-
                 im.save(
                     output,
-                    format=output_format.upper(),
-                    **save_options,
+                    format="JPEG",
+                    quality=quality,
+                    optimize=True,
                 )
                 output.seek(0)
 
                 if not dry_run:
-                    # 元のファイル名を維持（拡張子のみ変更）
+                    # 新しいファイル名を生成
                     filename = os.path.basename(
                         picture.file.name
                     )
-                    name, _ = os.path.splitext(filename)
-                    new_filename = f"{name}.{output_format}"
+                    name, ext = os.path.splitext(filename)
+                    new_filename = f"{name}"
 
                     # ファイルを保存
                     picture.file.save(

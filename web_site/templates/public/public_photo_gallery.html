@@ -1,60 +1,65 @@
-{% extends 'public/public_base.html' %} {% load i18n %} {% load static %} {%
-block title %} {% trans "通信ネットワーク研究室" %} -- {% trans
-"フォトギャラリー" %} {% endblock title %} {% block nav_items %}
-<ul class="navbar-nav mr-auto"></ul>
-{% endblock %} {% block top_page %} {% endblock %} {% block pre-title %} NUT
-ComNets Lab. {% endblock %} {% block headline %} Photo Gallery {% endblock %} {%
-block sub-title %} {% if request.LANGUAGE_CODE == 'ja' %}フォトギャラリー{%
-endif %} {% endblock %} {% block content %}
-<div>
-  {% for g in list %}
-  <div {% if forloop.counter|divisibleby:2 %}class="block-negative" {% endif %}>
-    <div id="block{{ forloop.counter }}" class="contents-block">
-      <h2 class="under_border ml-4 mb-1 mr-4">{{ g.title }}</h2>
-      <h6 class="ml-4 mr-4">
-        {% if request.LANGUAGE_CODE == 'ja' %}{{ g.j_title }}{% endif %}
-      </h6>
-      <div class="ml-4 mr-4">
-        {% for p in g.picture_list %}
-        <div class="small-block">
-          <div class="mb-1">
-            <i class="far fa-calendar-check"></i>
-            <strong>{{ p.created_date }}</strong>
-          </div>
-          <div class="information-image-box mb-1">
-            <div class="information-image-contents">
-              <img
-                class="information-image lazy"
-                data-src="{% url 'picture:image' p.pk %}"
-                alt="{{ p.caption }}"
-              />
+{% extends 'public/public_base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}
+    {% trans "通信ネットワーク研究室" %} -- {% trans "フォトギャラリー" %}
+{% endblock title %}
+
+{% block nav_items %}
+    <ul class="navbar-nav mr-auto">
+    </ul>
+{% endblock %}
+
+{% block top_page %}
+{% endblock %}
+
+{% block pre-title %}
+    NUT ComNets Lab.
+{% endblock %}
+
+{% block headline %}
+    Photo Gallery
+{% endblock %}
+
+{% block sub-title %}
+    {% if request.LANGUAGE_CODE == 'ja' %}フォトギャラリー{% endif %}
+{% endblock %}
+
+{% block content %}
+    <div>
+        {% for g in list %}
+            <div {% if forloop.counter|divisibleby:2 %}class="block-negative"{% endif %}>
+                <div id="block{{ forloop.counter }}" class="contents-block">
+                    <h2 class="under_border ml-4 mb-1 mr-4">{{ g.title }}</h2>
+                    <h6 class="ml-4 mr-4">{% if request.LANGUAGE_CODE == 'ja' %}{{ g.j_title }}{% endif %}</h6>
+                    <div class="ml-4 mr-4">
+                        {% for p in g.picture_list %}
+                            <div class="small-block">
+                                <div class="mb-1">
+                                    <i class="far fa-calendar-check"></i>
+                                    <strong>{{ p.created_date }}</strong>
+                                </div>
+                                <div class="information-image-box mb-1">
+                                    <div class="information-image-contents">
+                                        <img class="information-image" src="{% url 'picture:image' p.pk %}">
+                                    </div>
+                                </div>
+                                {{ p.caption|safe }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                    {% if forloop.last %}
+                        <div class="bottom-text">
+                            <div class="skip-arrow"><a href="javascript:void(0);" onclick="Scroll('#top');"><i class="fas fa-angle-double-up"></i></a></div>
+                        </div>
+                    {% else %}
+                        <div class="bottom-text">
+                                <div class="skip-arrow"><a href="javascript:void(0);" onclick="Scroll('#block{{ forloop.counter|add:'1' }}');"><i class="fas fa-angle-double-down"></i></a></div>
+                            </div>
+                        </div>
+                    {% endif %}
             </div>
-          </div>
-          {{ p.caption|safe }}
-        </div>
         {% endfor %}
-      </div>
-      {% if forloop.last %}
-      <div class="bottom-text">
-        <div class="skip-arrow">
-          <a href="javascript:void(0);" onclick="Scroll('#top');"
-            ><i class="fas fa-angle-double-up"></i
-          ></a>
-        </div>
-      </div>
-      {% else %}
-      <div class="bottom-text">
-        <div class="skip-arrow">
-          <a
-            href="javascript:void(0);"
-            onclick="Scroll('#block{{ forloop.counter|add:'1' }}');"
-            ><i class="fas fa-angle-double-down"></i
-          ></a>
-        </div>
-      </div>
     </div>
-    {% endif %}
-  </div>
-  {% endfor %}
-</div>
 {% endblock content %}
