@@ -1,63 +1,48 @@
-{% extends "wiki/base.html" %}
-{% load wiki_tags i18n sekizai_tags %}
+{% extends "wiki/base.html" %} {% load wiki_tags i18n sekizai_tags %} {% block
+wiki_pagetitle %}{{ article.current_revision.title }}{% endblock %} {% block
+wiki_breadcrumbs %} {% include "wiki/includes/breadcrumbs.html" %} {% endblock
+%} {% block wiki_contents %}
 
-{% block wiki_pagetitle %}{{ article.current_revision.title }}{% endblock %}
+<div id="article-container">
+  <ul class="nav nav-pills" id="article-menu">
+    <li class="pull-left" id="article-title-li">
+      <h1 id="article-title">
+        {{ article.current_revision.title }} {% if
+        article.current_revision.locked %}
+        <span class="fa fa-lock"></span> {% trans "locked" %} {% endif %}
 
+        <small style="font-size: 14px">
+          {% if urlpath.parent %}
+          <a href="{% url 'wiki:get' path=urlpath.path %}"
+            ><span class="fa fa-bookmark"></span> {{ urlpath.tag }}</a
+          >
+          {% endif %} {% if article.current_revision.tag == 0 %} Category:
+          Software {% elif article.current_revision.tag == 1 %} Category: Server
+          {% elif article.current_revision.tag == 2 %} Category: LabTips {% elif
+          article.current_revision.tag == 3 %} Category: SchoolLifeTips {% elif
+          article.current_revision.tag == 4 %} Category: Et cetera {% endif %}
+        </small>
+      </h1>
 
-{% block wiki_breadcrumbs %}
-{% include "wiki/includes/breadcrumbs.html" %}
-{% endblock %}
-
-{% block wiki_contents %}
-
-  <div id="article-container">
-    <ul class="nav nav-pills" id="article-menu">
-      <li class="pull-left" id="article-title-li">
-
-        <h1 id="article-title">
-          {{ article.current_revision.title }}
-          {% if article.current_revision.locked %}
-            <span class="fa fa-lock"></span> {% trans "locked" %}
-          {% endif %}
-
-          <small style="font-size: 14px;">
-            {% if urlpath.parent %}
-              <a href="{% url 'wiki:get' path=urlpath.path %}"><span class="fa fa-bookmark"></span> {{ urlpath.tag }}</a>
-            {% endif %}
-            {% if article.current_revision.tag == 0 %}
-                Category: Software
-            {% elif article.current_revision.tag == 1 %}
-                Category: Server
-            {% elif article.current_revision.tag == 2 %}
-                Category: LabTips
-            {% elif article.current_revision.tag == 3 %}
-                Category: SchoolLifeTips
-            {% elif article.current_revision.tag == 4 %}
-                Category: Et cetera
-            {% endif %}
-          </small>
-        </h1>
-
-        {% if not article.current_revision.tag == 5 %}
-        <p>編集者:
-        {% for editor in editors %}
-        {{editor}}
-        {% if not forloop.last %}
-        &nbsp;
-        {% endif %}
-        {% endfor %}
-        </p>
-        {% endif %}
-      </li>
-      {% include "wiki/includes/article_menu.html" %}
-    </ul>
-    <div>
-      {% block wiki_contents_tab %}
-      {% endblock %}
-    </div>
+      {% if not article.current_revision.tag == 5 %}
+      <p>
+        編集者: {% for editor in editors %} {{editor}} {% if not forloop.last %}
+        &nbsp; {% endif %} {% endfor %}
+      </p>
+      {% endif %}
+    </li>
+    {% include "wiki/includes/article_menu.html" %}
+  </ul>
+  <div>
+    {% block wiki_contents_tab %} {% wiki_render article|add_lazy_loading %} {%
+    endblock %}
   </div>
-{% endblock %}
-
-{% block wiki_footer_prepend %}
-  <p style="margin-bottom: 10px;"><em>{% trans "This article was last modified:" %} {{ article.current_revision.modified }}</em></p>
+</div>
+{% endblock %} {% block wiki_footer_prepend %}
+<p style="margin-bottom: 10px">
+  <em
+    >{% trans "This article was last modified:" %} {{
+    article.current_revision.modified }}</em
+  >
+</p>
 {% endblock %}

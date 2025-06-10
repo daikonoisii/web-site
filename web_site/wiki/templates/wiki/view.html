@@ -6,12 +6,15 @@
 {% block wiki_contents_tab %}
 
 <div class="col-lg-9">
-{% wiki_render article %}
+{% wiki_render article|add_lazy_loading %}
 
 {% if urlpath.parent == None %}
 {% for item in all_article %}
 <a href={% url 'wiki:get' path=item.path %}>
-{{item.article.current_revision.title}}
+  {% if item.image %}
+    <img src="{{ item.image }}" alt="{{ item.article.current_revision.title }}" loading="lazy" />
+  {% endif %}
+  {{item.article.current_revision.title}}
 </a>
 <br>
 {% endfor %}
