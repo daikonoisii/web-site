@@ -7,8 +7,6 @@ from .models import Picture
 from django.conf import settings as django_settings
 from wiki.plugins.images import settings as wiki_settings
 
-import os
-
 
 class PictureView(View):
     """画像を表示"""
@@ -56,22 +54,3 @@ class WikiPictureView(View):
             raise Http404  # レポートがなければ404エラー
         return response
 
-
-def serve_image_with_cache(request, image_name):
-    # 画像ファイルのパスを構築（MEDIA_ROOTからの例）
-    image_path = os.path.join(settings.MEDIA_ROOT, image_name)
-
-    if not os.path.exists(image_path):
-        # ファイルが存在しない場合は404エラーを返すなど
-        return HttpResponse("Image not found", status=404)
-
-    with open(image_path, 'rb') as f:
-        image_data = f.read()
-
-    response = HttpResponse(image_data, content_type="image/jpeg") # 画像のMIMEタイプを適切に設定
-    
-    # ここで Cache-Control ヘッダーを追加する
-    response['Cache-Control'] = 'public, max-age=31536000' # 1年間キャッシュ
-    # response['Cache-Control'] = 'public, max-age=86400, immutable' # 例えば1日間、不変であることを示す場合
-
-    return response

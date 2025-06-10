@@ -81,7 +81,6 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # ここを追加．静的ファイルのホスティングをWhitenoiseで行う
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -189,16 +188,6 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'web_site/static'), )  # アプリ毎
 MEDIA_URL = '/media/'
 # MEDIA_URL = os.path.join(BASE_DIR, 'media/')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-# ここを追加．Whitenoiseの設定
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage' #Whitenoiseで静的ファイルを圧縮してホスティングする
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # collectstatic の出力先
-
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # ユーザーアップロードファイルの保存先
 
 
 # 認証にカスタムユーザモデルを採用
