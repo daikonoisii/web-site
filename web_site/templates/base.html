@@ -1,293 +1,149 @@
 <!DOCTYPE html>
-{% load static %} {% load i18n %}
+{% load static %}
+{% load i18n %}
 
 <html lang="ja">
-  <head>
+<head>
     <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-      crossorigin="anonymous"
-    />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <!-- 全体用 CSS -->
-    <link href="{% static 'css/css.css'%}" rel="stylesheet" />
+    <link href="{% static 'css/css.css'%}" rel="stylesheet">
 
     <!-- アプリ毎 CSS -->
-    {% block app_css %} {% endblock %}
+    {% block app_css %}
+    {% endblock %}
 
     <!-- アイコン表示用 Font Awesome -->
-    <link
-      href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
-      rel="stylesheet"
-    />
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 
     <!-- 個別ページ用スタイル -->
-    {% block extra_style %} {% endblock %}
-
-    <!-- 遅延読み込み用のJavaScript -->
-    <script src="{% static 'public/js/lazy-loading.js' %}"></script>
+    {% block extra_style %}
+    {% endblock %}
 
     <title>{% block title %}{% endblock %}</title>
-  </head>
+</head>
 
-  <body>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark" style="">
-      <a class="navbar-brand text-light" href="{% url 'members_top' %}">
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark" style="">
+    <a class="navbar-brand text-light" href="{% url 'members_top' %}">
         <strong>{% trans "データ管理システム" %}</strong>
-      </a>
-      <div class="collapse navbar-collapse" id="Navbar">
+    </a>
+    <div class="collapse navbar-collapse" id="Navbar">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item">{% block top_page %} top page {% endblock %}</li>
-          <li class="nav-item dropdown">
-            <a
-              href="#"
-              class="nav-link dropdown-toggle text-light"
-              id="HomeDropdown"
-              role="button"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              {% trans "アプリ一覧" %}
-            </a>
-            <div
-              class="dropdown-menu bg-light border-0 text-center"
-              aria-labelledby="HomeDropdown"
-            >
-              <a
-                class="dropdown-item bg-light text-dark"
-                href="{% url 'public:top' %}"
-                >{% trans "外部公開サイト" %}</a
-              >
-              <a
-                class="dropdown-item bg-light text-dark"
-                href="{% url 'wiki:root' %}"
-                >{% trans "研究室wiki" %}</a
-              >
-              <a
-                class="dropdown-item bg-light text-dark"
-                href="{% url 'report:top' %}"
-                >{% trans "レポート管理" %}</a
-              >
-              <a
-                class="dropdown-item bg-light text-dark"
-                href="{% url 'paper:top' %}"
-                >{% trans "業績・文献管理" %}</a
-              >
-              <a
-                class="dropdown-item bg-light text-dark"
-                href="{% url 'output:top' %}"
-                >{% trans "データ出力" %}</a
-              >
-              <a
-                class="dropdown-item bg-light text-dark"
-                href="{% url 'admin:index' %}"
-                >{% trans "データベース" %}</a
-              >
-            </div>
-          </li>
+            <li class="nav-item">
+                {% block top_page %}
+                    top page
+                {% endblock %}
+            </li>
+            <li class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle text-light" id="HomeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {% trans "アプリ一覧" %}
+                </a>
+                <div class="dropdown-menu bg-light border-0  text-center" aria-labelledby="HomeDropdown">
+                    <a class="dropdown-item bg-light text-dark " href="{% url 'public:top' %}">{% trans "外部公開サイト" %}</a>
+                    <a class="dropdown-item bg-light text-dark " href="{% url 'wiki:root' %}">{% trans "研究室wiki" %}</a>
+                    <a class="dropdown-item bg-light text-dark " href="{% url 'report:top' %}">{% trans "レポート管理" %}</a>
+                    <a class="dropdown-item bg-light text-dark " href="{% url 'paper:top' %}">{% trans "業績・文献管理" %}</a>
+                    <a class="dropdown-item bg-light text-dark " href="{% url 'output:top' %}">{% trans "データ出力" %}</a>
+                    <a class="dropdown-item bg-light text-dark " href="{% url 'admin:index' %}">{% trans "データベース" %}</a>
+                </div>
+            </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li class="nav-item dropdown">
-            <a
-              href="#"
-              class="nav-link dropdown-toggle text-light"
-              id="Language"
-              role="button"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              <strong class=""
-                ><i class="fas fa-globe-americas"></i> Language</strong
-              >
-            </a>
-            <div
-              class="dropdown-menu border-0 text-center"
-              aria-labelledby="Language"
-            >
-              <form action="{% url 'set_language' %}" method="post">
-                {% csrf_token %}
-                <input
-                  name="next"
-                  type="hidden"
-                  value="{{ PATH_WITHOUT_PREFIX }}"
-                />
-                <input name="language" type="hidden" value="ja" />
-                <button class="dropdown-item">Japanese</button>
-              </form>
-              <form action="{% url 'set_language' %}" method="post">
-                {% csrf_token %}
-                <input
-                  name="next"
-                  type="hidden"
-                  value="{{ PATH_WITHOUT_PREFIX }}"
-                />
-                <input name="language" type="hidden" value="en" />
-                <button class="dropdown-item">English</button>
-              </form>
-            </div>
-          </li>
-          <li class="nav-item dropdown">
-            <a
-              href="#"
-              class="nav-link dropdown-toggle text-light"
-              id="HomeDropdown"
-              role="button"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              <strong class=""
-                >{% blocktrans with name=user.get_username %}ようこそ {{ name
-                }}さん{% endblocktrans %}</strong
-              >
-            </a>
-            <div
-              class="dropdown-menu border-0 text-center"
-              aria-labelledby="HomeDropdown"
-            >
-              {% if user.get_username == 'kwatabe' or user.get_username ==
-              'nakagawa' %}
-              <a
-                class="dropdown-item"
-                href="{% url 'users:my_account_teacher' %}"
-                >{% trans "アカウント設定" %}</a
-              >
-              {% else %}
-              <a class="dropdown-item" href="{% url 'users:my_account' %}"
-                >{% trans "アカウント設定" %}</a
-              >
-              {% endif %}
-              <a class="dropdown-item" href="{% url 'admin:password_change' %}"
-                >{% trans "パスワード変更" %}</a
-              >
-              <a class="dropdown-item" href="{% url  'admin:logout' %}"
-                >{% trans "ログアウト" %}</a
-              >
-            </div>
-          </li>
+            <li class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle text-light" id="Language" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <strong class=""><i class="fas fa-globe-americas"></i> Language</strong>
+                </a>
+                <div class="dropdown-menu border-0 text-center" aria-labelledby="Language">
+                    <form action="{% url 'set_language' %}" method="post">
+                        {% csrf_token %}
+                        <input name="next" type="hidden" value="{{ PATH_WITHOUT_PREFIX }}" />
+                        <input name="language" type="hidden" value="ja">
+                        <button class="dropdown-item">Japanese</button>
+                    </form>
+                    <form action="{% url 'set_language' %}" method="post">
+                        {% csrf_token %}
+                        <input name="next" type="hidden" value="{{ PATH_WITHOUT_PREFIX }}" />
+                        <input name="language" type="hidden" value="en">
+                        <button class="dropdown-item">English</button>
+                    </form>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle text-light" id="HomeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <strong class="">{% blocktrans with name=user.get_username %}ようこそ {{ name }}さん{% endblocktrans %}</strong>
+                </a>
+                <div class="dropdown-menu border-0 text-center" aria-labelledby="HomeDropdown">
+                    {% if user.get_username == 'kwatabe' or user.get_username == 'nakagawa' %}
+                        <a class="dropdown-item" href="{% url 'users:my_account_teacher' %}">{% trans "アカウント設定" %}</a>
+                    {% else %}
+                        <a class="dropdown-item" href="{% url 'users:my_account' %}">{% trans "アカウント設定" %}</a>
+                    {% endif %}
+                    <a class="dropdown-item" href="{% url 'admin:password_change' %}">{% trans "パスワード変更" %}</a>
+                    <a class="dropdown-item" href="{% url  'admin:logout' %}">{% trans "ログアウト" %}</a>
+                </div>
+            </li>
         </ul>
-      </div>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarToggleExternalContent"
-        aria-controls="navbarToggleExternalContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse" id="navbarToggleExternalContent">
-        <div class="bg-dark p-4">
-          <a class="dropdown-item text-light" href="{% url 'public:top' %}"
-            >{% trans "外部公開サイト" %}</a
-          >
-          <a class="dropdown-item text-light" href="{% url 'wiki:root' %}"
-            >{% trans "研究室wiki" %}</a
-          >
-          <a class="dropdown-item text-light" href="{% url 'report:top' %}"
-            >{% trans "レポート管理" %}</a
-          >
-          <a class="dropdown-item text-light" href="{% url 'paper:top' %}"
-            >{% trans "業績・文献管理" %}</a
-          >
-          <a class="dropdown-item text-light" href="{% url 'output:top' %}"
-            >{% trans "データ出力" %}</a
-          >
-          <a class="dropdown-item text-light" href="{% url 'admin:index' %}"
-            >{% trans "データベース閲覧" %}</a
-          >
-          <hr class="bg-light" />
-          {% if user.get_username == 'kwatabe' or user.get_username ==
-          'nakagawa' %}
-          <a
-            class="dropdown-item text-light"
-            href="{% url 'users:my_account_teacher' %}"
-            >{% trans "アカウント設定" %}</a
-          >
-          {% else %}
-          <a
-            class="dropdown-item text-light"
-            href="{% url 'users:my_account' %}"
-            >{% trans "アカウント設定" %}</a
-          >
-          {% endif %}
-          <a
-            class="dropdown-item text-light"
-            href="{% url 'admin:password_change' %}"
-            >{% trans "パスワード変更" %}</a
-          >
-          <a class="dropdown-item text-light" href="{% url 'admin:logout' %}"
-            >{% trans "ログアウト" %}</a
-          >
-        </div>
-      </div>
-    </nav>
-    <div class="wrapper">
-      <header>
-        <div class="jumbotron jumbotron-fluid pr-4 pl-4">
-          <h1 class="under_border pb-1">
-            {% block headline %}見出し{% endblock %}
-          </h1>
-          <p class="lead">{% block lead_sentence %}リード文{% endblock %}</p>
-          <div
-            class="btn-toolbar"
-            role="toolbar"
-            aria-label="Button group with nested dropdown"
-          >
-            {% block header_btn %}リンクボタン{% endblock %}
-          </div>
-        </div>
-      </header>
-      <main>
-        {% for message in messages %}
-        <div class="alert alert-primary mx-4" role="alert">
-          {{ message | safe | linebreaksbr }}
-        </div>
-        {% endfor %} {% block content %} {% endblock %}
-      </main>
-      <footer class="text-right text-light bg-dark py-1 px-3 small">
-        <span class="d-inline-block">{% trans "長岡技術科学大学" %}</span>
-        <span class="d-inline-block">{% trans "通信ネットワーク研究室" %}</span
-        ><wbr />
-        <span class="ml-3 d-inline-block"
-          >e-mail: webmaster[at]kashiwa.nagaokaut.ac.jp</span
-        >
-      </footer>
     </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse" id="navbarToggleExternalContent">
+        <div class="bg-dark p-4">
+            <a class="dropdown-item text-light" href="{% url 'public:top' %}">{% trans "外部公開サイト" %}</a>
+            <a class="dropdown-item text-light" href="{% url 'wiki:root' %}">{% trans "研究室wiki" %}</a>
+            <a class="dropdown-item text-light" href="{% url 'report:top' %}">{% trans "レポート管理" %}</a>
+            <a class="dropdown-item text-light" href="{% url 'paper:top' %}">{% trans "業績・文献管理" %}</a>
+            <a class="dropdown-item text-light" href="{% url 'output:top' %}">{% trans "データ出力" %}</a>
+            <a class="dropdown-item text-light" href="{% url 'admin:index' %}">{% trans "データベース閲覧" %}</a>
+            <hr class="bg-light">
+            {% if user.get_username == 'kwatabe' or user.get_username == 'nakagawa' %}
+                <a class="dropdown-item text-light" href="{% url 'users:my_account_teacher' %}">{% trans "アカウント設定" %}</a>
+            {% else %}
+                <a class="dropdown-item text-light" href="{% url 'users:my_account' %}">{% trans "アカウント設定" %}</a>
+            {% endif %}
+            <a class="dropdown-item text-light" href="{% url 'admin:password_change' %}">{% trans "パスワード変更" %}</a>
+            <a class="dropdown-item text-light" href="{% url 'admin:logout' %}">{% trans "ログアウト" %}</a>
+        </div>
+    </div>
+</nav>
+<div class="wrapper">
+    <header>
+        <div class="jumbotron jumbotron-fluid pr-4 pl-4">
+            <h1 class="under_border pb-1">{% block headline %}見出し{% endblock %}</h1>
+            <p class="lead" >{% block lead_sentence %}リード文{% endblock %}</p>
+            <div class="btn-toolbar" role="toolbar" aria-label="Button group with nested dropdown">
+                {% block header_btn %}リンクボタン{% endblock %}
+            </div>
+        </div>
+    </header>
+    <main>
+        {% for message in messages %}
+            <div class="alert alert-primary mx-4" role="alert">{{ message | safe | linebreaksbr }}</div>
+        {% endfor %}
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer class= "text-right text-light bg-dark py-1 px-3 small">
+        <span class="d-inline-block">{% trans "長岡技術科学大学" %}</span> <span class="d-inline-block">{% trans "通信ネットワーク研究室" %}</span><wbr>
+        <span class="ml-3 d-inline-block">e-mail: webmaster[at]kashiwa.nagaokaut.ac.jp</span>
+    </footer>
+</div>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-      crossorigin="anonymous"
-    ></script>
-    <!-- 数式を表示するためのjsを引っ張ってくる-->
-    <script
-      type="text/javascript"
-      async
-      src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"
-    ></script>
-    {% block js %} {% endblock %}
-  </body>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<!-- 数式を表示するためのjsを引っ張ってくる-->
+<script type="text/javascript" async src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+{% block js %}
+{% endblock %}
+</body>
 </html>

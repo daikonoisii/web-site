@@ -1,154 +1,133 @@
-{% extends 'public/public_kwatabe_base.html' %} {% load i18n %} {% load static
-%} {% block title %} Kohei Watabe's Site {% endblock title %} {% block nav_items
-%}
-<ul class="navbar-nav mr-auto"></ul>
-{% endblock %} {% block top_page %} {% endblock %} {% block app_css %} {{
-block.super }} {% endblock %} {% block pre-title %} Nagaoka Univ. of Tech. {%
-endblock %} {% block headline %} Kohei Watabe's Site {% endblock %} {% block
-sub-title %} {% if request.LANGUAGE_CODE == 'ja' %}渡部康平のページ{% endif %}
-{% endblock %} {% block content %}
-<div>
-  <div>
-    <div id="block1" class="contents-block">
-      <h2 class="under_border ml-4 mb-1 mr-4">Profile</h2>
-      <h6 class="ml-4 mr-4">
-        {% if request.LANGUAGE_CODE == 'ja' %}プロフィール{% endif %}
-      </h6>
-      <div class="ml-4 mr-4">
-        <div class="profile-box">
-          <div class="profile-photo">
-            {% if watabe.avatar %}
-            <img
-              class="lazy"
-              data-src="{% url 'users:avatar' watabe.pk %}"
-              alt="{{ watabe.get_full_name }}のプロフィール画像"
-            />
-            {% else %}
-            <div class="no-profile-image">
-              <div class="user-icon"><i class="fas fa-user"></i></div>
-              <div>No image</div>
+{% extends 'public/public_kwatabe_base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}
+    Kohei Watabe's Site
+{% endblock title %}
+
+{% block nav_items %}
+    <ul class="navbar-nav mr-auto">
+    </ul>
+{% endblock %}
+
+{% block top_page %}
+{% endblock %}
+
+{% block app_css %}
+    {{ block.super }}
+{% endblock %}
+
+{% block pre-title %}
+    Nagaoka Univ. of Tech.
+{% endblock %}
+
+{% block headline %}
+    Kohei Watabe's Site
+{% endblock %}
+
+{% block sub-title %}
+    {% if request.LANGUAGE_CODE == 'ja' %}渡部康平のページ{% endif %}
+{% endblock %}
+
+{% block content %}
+    <div>
+        <div>
+            <div id="block1" class="contents-block">
+                <h2 class="under_border ml-4 mb-1 mr-4">Profile</h2>
+                <h6 class="ml-4 mr-4">{% if request.LANGUAGE_CODE == 'ja' %}プロフィール{% endif %}</h6>
+                <div class="ml-4 mr-4">
+                    <div class="profile-box">
+                        <div class="profile-photo">
+                            {% if watabe.avatar %}
+                                <img src="{% url 'users:avatar' watabe.pk %}" alt="{{ watabe.get_full_name }}のプロフィール画像">
+                            {% else %}
+                                <div class="no-profile-image">
+                                    <div class="user-icon"><i class="fas fa-user"></i></div>
+                                    <div>No image</div>
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="profile-text">
+                            <div class="mb-2">
+                                <div>{% trans "[氏名]" %}</div>
+                                <div>{% trans "渡部 康平" %}</div>
+                            </div>
+                            <div class="mb-2">
+                                <div>{% trans "[学位]" %}</div>
+                                <div>{% trans "博士(情報科学)" %}</div>
+                            </div>
+                            <div class="mb-2">
+                                <div>{% trans "[所属]" %}</div>
+                                <div>{% trans "長岡技術科学大学<br>技学研究院<br>電気電子情報工学専攻<br>情報通信制御システム工学コース" %}</div>
+                            </div>
+                            <div class="mb-2">
+                                <div>{% trans "[職位]" %}</div>
+                                <div>{% trans "准教授" %}</div>
+                            </div>
+                            <div class="mb-2">
+                                <div>{% trans "[専門領域]" %}</div>
+                                <div>{% trans "通信ネットワーク" %}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 ml-4">
+                        <button type="button" class="btn"><a href="{% url 'public:kwatabe_profile' %}"><i class="fas fa-chevron-circle-right"></i> {% trans "プロフィールの詳細はこちら" %}</a></button>
+                    </div>
+                </div>
+                <div class="bottom-text">
+                    <div class="skip-arrow"><a href="javascript:void(0);" onclick="Scroll('#block2');"><i class="fas fa-angle-double-down"></i></a></div>
+                </div>
             </div>
-            {% endif %}
-          </div>
-          <div class="profile-text">
-            <div class="mb-2">
-              <div>{% trans "[氏名]" %}</div>
-              <div>{% trans "渡部 康平" %}</div>
-            </div>
-            <div class="mb-2">
-              <div>{% trans "[学位]" %}</div>
-              <div>{% trans "博士(情報科学)" %}</div>
-            </div>
-            <div class="mb-2">
-              <div>{% trans "[所属]" %}</div>
-              <div>
-                {% trans "長岡技術科学大学<br />技学研究院<br />電気電子情報工学専攻<br />情報通信制御システム工学コース"
-                %}
-              </div>
-            </div>
-            <div class="mb-2">
-              <div>{% trans "[職位]" %}</div>
-              <div>{% trans "准教授" %}</div>
-            </div>
-            <div class="mb-2">
-              <div>{% trans "[専門領域]" %}</div>
-              <div>{% trans "通信ネットワーク" %}</div>
-            </div>
-          </div>
         </div>
-        <div class="mt-4 ml-4">
-          <button type="button" class="btn">
-            <a href="{% url 'public:kwatabe_profile' %}"
-              ><i class="fas fa-chevron-circle-right"></i> {% trans
-              "プロフィールの詳細はこちら" %}</a
-            >
-          </button>
+        <div class="block-negative">
+            <div id="block2" class="contents-block">
+                <h2 class="under_border ml-4 mr-4 mb-1 pt-4">Research Fields of Interest</h2>
+                <h6 class="ml-4 mr-4">{% if request.LANGUAGE_CODE == 'ja' %}研究領域{% endif %}</h6>
+                <div class="ml-4 mr-4">
+                    <div class="small-block-container">
+                        {% for r in researches %}
+                            <div class="small-block slide-bottom">
+                                <div class="small-block-icon">{{ r.icon_tag|safe }}</div>
+                                {% if request.LANGUAGE_CODE == 'ja' %}
+                                    <h5>{{ r.title }}</h5>
+                                    {{ r.description }}
+                                {% else %}
+                                    <h5>{{ r.e_title }}</h5>
+                                    {{ r.e_description }}
+                                {% endif %}
+                                <span class="badge"><a href="{% url 'public:presentation_list' r.pk %}"><i class="fas fa-chevron-circle-right"></i> {% trans "詳細はこちら" %}</a></span>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="bottom-text">
+                    <div class="skip-arrow positive-text"><a href="javascript:void(0);" onclick="Scroll('#block3');"><i class="fas fa-angle-double-down"></i></a></div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="bottom-text">
-        <div class="skip-arrow">
-          <a href="javascript:void(0);" onclick="Scroll('#block2');"
-            ><i class="fas fa-angle-double-down"></i
-          ></a>
+        <div>
+            <div id="block3" class="contents-block">
+                <h2 class="under_border ml-4 mr-4 mb-1 pt-4">Publications</h2>
+                <h6 class="ml-4 mr-4">{% if request.LANGUAGE_CODE == 'ja' %}研究業績{% endif %}</h6>
+                <div class="ml-4 mr-4">
+                    <ul>
+                        <li>{% blocktrans with journal_num=journal_num %}論文誌 {{ watabe_journal_num }}件{% endblocktrans %}</li>
+                        <li>{% blocktrans with conf_num=conf_num %}国際会議 {{ watabe_e_conf_num }}件{% endblocktrans %}</li>
+                        <li>{% blocktrans with conf_num=conf_num %}国内会議 {{ watabe_j_conf_num }}件{% endblocktrans %}</li>
+                    </ul>
+                    <div class="mt-4 ml-4">
+                        <button type="button" class="btn"><a href="{% url 'public:kwatabe_publications' %}"><i class="fas fa-chevron-circle-right"></i> {% trans "研究業績の詳細はこちら" %}</a></button>
+                    </div>
+                </div>
+                <div class="bottom-text">
+                    <div class="skip-arrow"><a href="javascript:void(0);" onclick="Scroll('#top');"><i class="fas fa-angle-double-up"></i></a></div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
-  <div class="block-negative">
-    <div id="block2" class="contents-block">
-      <h2 class="under_border ml-4 mr-4 mb-1 pt-4">
-        Research Fields of Interest
-      </h2>
-      <h6 class="ml-4 mr-4">
-        {% if request.LANGUAGE_CODE == 'ja' %}研究領域{% endif %}
-      </h6>
-      <div class="ml-4 mr-4">
-        <div class="small-block-container">
-          {% for r in researches %}
-          <div class="small-block slide-bottom">
-            <div class="small-block-icon">{{ r.icon_tag|safe }}</div>
-            {% if request.LANGUAGE_CODE == 'ja' %}
-            <h5>{{ r.title }}</h5>
-            {{ r.description }} {% else %}
-            <h5>{{ r.e_title }}</h5>
-            {{ r.e_description }} {% endif %}
-            <span class="badge"
-              ><a href="{% url 'public:presentation_list' r.pk %}"
-                ><i class="fas fa-chevron-circle-right"></i> {% trans
-                "詳細はこちら" %}</a
-              ></span
-            >
-          </div>
-          {% endfor %}
-        </div>
-      </div>
-      <div class="bottom-text">
-        <div class="skip-arrow positive-text">
-          <a href="javascript:void(0);" onclick="Scroll('#block3');"
-            ><i class="fas fa-angle-double-down"></i
-          ></a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div>
-    <div id="block3" class="contents-block">
-      <h2 class="under_border ml-4 mr-4 mb-1 pt-4">Publications</h2>
-      <h6 class="ml-4 mr-4">
-        {% if request.LANGUAGE_CODE == 'ja' %}研究業績{% endif %}
-      </h6>
-      <div class="ml-4 mr-4">
-        <ul>
-          <li>
-            {% blocktrans with journal_num=journal_num %}論文誌 {{
-            watabe_journal_num }}件{% endblocktrans %}
-          </li>
-          <li>
-            {% blocktrans with conf_num=conf_num %}国際会議 {{ watabe_e_conf_num
-            }}件{% endblocktrans %}
-          </li>
-          <li>
-            {% blocktrans with conf_num=conf_num %}国内会議 {{ watabe_j_conf_num
-            }}件{% endblocktrans %}
-          </li>
-        </ul>
-        <div class="mt-4 ml-4">
-          <button type="button" class="btn">
-            <a href="{% url 'public:kwatabe_publications' %}"
-              ><i class="fas fa-chevron-circle-right"></i> {% trans
-              "研究業績の詳細はこちら" %}</a
-            >
-          </button>
-        </div>
-      </div>
-      <div class="bottom-text">
-        <div class="skip-arrow">
-          <a href="javascript:void(0);" onclick="Scroll('#top');"
-            ><i class="fas fa-angle-double-up"></i
-          ></a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-{% endblock content %} {% block js %} {{ block.super }} {% endblock %}
+{% endblock content %}
+
+{% block js %}
+    {{ block.super }}
+{% endblock %}
