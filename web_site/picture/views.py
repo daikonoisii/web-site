@@ -53,3 +53,4 @@ class WikiPictureView(View):
         except FileNotFoundError:
             raise Http404  # レポートがなければ404エラー
         return response
+
