@@ -1,120 +1,136 @@
-{% extends 'public/public_base.html' %}
-{% load i18n %}
-{% load static %}
-
-{% block title %}
-    {% trans "通信ネットワーク研究室" %} -- {% trans "メンバー" %}
-{% endblock title %}
-
-{% block nav_items %}
-    <ul class="navbar-nav mr-auto">
-    </ul>
-{% endblock %}
-
-{% block top_page %}
-{% endblock %}
-
-{% block app_css %}
-    {{ block.super }}
-{% endblock %}
-
-{% block pre-title %}
-    NUT ComNets Lab.
-{% endblock %}
-
-{% block headline %}
-    Members
-{% endblock %}
-
-{% block sub-title %}
-    {% if request.LANGUAGE_CODE == 'ja' %}メンバー{% endif %}
-{% endblock %}
-{% block content %}
-    <div>
-        {% for g in list %}
-            <div {% if forloop.counter|divisibleby:2 %}class="block-negative"{% endif %}>
-                <div id="block{{ forloop.counter }}" class="contents-block">
-                    <h2 class="under_border ml-4 mb-1 mr-4 pt-4">{{ g.title }}</h2>
-                    <h6 class="ml-4 mr-4">{% if request.LANGUAGE_CODE == 'ja' %}{{ g.j_title }}{% endif %}</h6>
-                    <div class="ml-4 mr-4 mb-4">
-                        {% for m in g.list %}
-                            <div class="small-block slide-bottom">
-                                <div class="profile-box">
-                                    <div class="profile-photo">
-                                        {% if m.image %}
-                                            <img src="{% url 'users:avatar' m.pk %}">
-                                        {% else %}
-                                            <div class="no-profile-image">
-                                                <div class="user-icon"><i class="fas fa-user"></i></div>
-                                                <div>No image</div>
-                                            </div>
-                                        {% endif %}
-                                    </div>
-                                    <div class="profile-text">
-                                        <div class="mb-2">
-                                            <div>{% trans "[氏名]" %}</div>
-                                            <div>{{ m.name }}</div>
-                                        </div>
-                                        {% if m.class == 'teacher' %}
-                                            <div class="mb-2">
-                                                <div>{% trans "[職位]" %}</div>
-                                                <div>{{ m.title }}</div>
-                                            </div>
-                                            <div class="mb-2">
-                                                <div>{% trans "[居室]" %}</div>
-                                                <div>{{ m.room }}</div>
-                                            </div>
-                                            <div class="mb-2">
-                                                <div>{% trans "[電話]" %}</div>
-                                                <div>{{ m.phone }}</div>
-                                            </div>
-                                            <div class="mb-2">
-                                                <div>{% trans "[メール]" %}</div>
-                                                <div>{{ m.mail }}</div>
-                                            </div>
-                                            <div class="mb-2">
-                                                <button class="btn btn-sm"><a href="{% url 'public:kwatabe' %}" target="_blank"><i class="fas fa-chevron-circle-right"></i> {% trans "個人ページ" %}</a></button>
-                                            </div>
-                                        {% else %}
-                                            <div class="mb-2">
-                                                <div>{% trans "[学年]" %}</div>
-                                                <div>{{ m.grade }}</div>
-                                            </div>
-                                            <div class="mb-2">
-                                                <div>{% trans "[出身校]" %}</div>
-                                                <div>{{ m.alma_mater }}</div>
-                                            </div>
-                                        {% endif %}
-                                    </div>
-                                </div>
-                            </div>
-                        {% endfor %}
-                    </div>
-                    <div class="bottom-text">
-                        <div class="skip-arrow"><a href="javascript:void(0);" onclick="Scroll('#block{{ forloop.counter|add:'1' }}');"><i class="fas fa-angle-double-down"></i></a></div>
-                    </div>
-                </div>
+{% extends 'public/public_base.html' %} {% load i18n %} {% load static %} {%
+block title %} {% trans "通信ネットワーク研究室" %} -- {% trans "メンバー" %} {%
+endblock title %} {% block nav_items %}
+<ul class="navbar-nav mr-auto"></ul>
+{% endblock %} {% block top_page %} {% endblock %} {% block app_css %} {{
+block.super }} {% endblock %} {% block pre-title %} NUT ComNets Lab. {% endblock
+%} {% block headline %} Members {% endblock %} {% block sub-title %} {% if
+request.LANGUAGE_CODE == 'ja' %}メンバー{% endif %} {% endblock %} {% block
+content %}
+<div>
+  {% for g in list %}
+  <div {% if forloop.counter|divisibleby:2 %}class="block-negative" {% endif %}>
+    <div id="block{{ forloop.counter }}" class="contents-block">
+      <h2 class="under_border ml-4 mb-1 mr-4 pt-4">{{ g.title }}</h2>
+      <h6 class="ml-4 mr-4">
+        {% if request.LANGUAGE_CODE == 'ja' %}{{ g.j_title }}{% endif %}
+      </h6>
+      <div class="ml-4 mr-4 mb-4">
+        {% for m in g.list %}
+        <div class="small-block slide-bottom">
+          <div class="profile-box">
+            <div class="profile-photo">
+              {% if m.image %}
+              <img
+                class="lazy"
+                data-src="{% url 'users:avatar' m.pk %}"
+                alt="{{ m.name }}のプロフィール画像"
+              />
+              {% else %}
+              <div class="no-profile-image">
+                <div class="user-icon"><i class="fas fa-user"></i></div>
+                <div>No image</div>
+              </div>
+              {% endif %}
             </div>
-        {% endfor %}
-        <div {% if list|length|add:1|divisibleby:2 %}class="block-negative"{% endif %}>
-            <div id="block{{ list|length|add:1 }}" class="contents-block">
-                <h2 class="under_border ml-4 mb-1 mr-4 pt-4">Former Members etc.</h2>
-                <h6 class="ml-4 mr-4">{% if request.LANGUAGE_CODE == 'ja' %}過去のメンバー等{% endif %}</h6>
-                <div class="ml-4 mr-4 mb-4">
-                    {% trans "ネットワーク特性評価研究室(中川健治研)を含む過去のメンバーと現中川健治研メンバーはこちら．" %}
-                    <div class="mt-4 ml-4">
-                        <button type="button" class="btn mr-2 mb-2"><a href="{% url 'public:former_members' %}"><i class="fas fa-chevron-circle-right"></i> {% trans "過去のメンバーはこちら" %}</a></button>
-                        <button type="button" class="btn mr-2 mb-2"><a href="{% url 'public:nakagawa_lab_members' %}"><i class="fas fa-chevron-circle-right"></i> {% trans "中川健治研のメンバーはこちら" %}</a></button>
-                    </div>
-                </div>
-                <div class="bottom-text">
-                    <div class="skip-arrow"><a href="javascript:void(0);" onclick="Scroll('#top');"><i class="fas fa-angle-double-up"></i></a></div>
-                </div>
+            <div class="profile-text">
+              <div class="mb-2">
+                <div>{% trans "[氏名]" %}</div>
+                <div>{{ m.name }}</div>
+              </div>
+              {% if m.class == 'teacher' %}
+              <div class="mb-2">
+                <div>{% trans "[職位]" %}</div>
+                <div>{{ m.title }}</div>
+              </div>
+              <div class="mb-2">
+                <div>{% trans "[居室]" %}</div>
+                <div>{{ m.room }}</div>
+              </div>
+              <div class="mb-2">
+                <div>{% trans "[電話]" %}</div>
+                <div>{{ m.phone }}</div>
+              </div>
+              <div class="mb-2">
+                <div>{% trans "[メール]" %}</div>
+                <div>{{ m.mail }}</div>
+              </div>
+              <div class="mb-2">
+                <button class="btn btn-sm">
+                  <a href="{% url 'public:kwatabe' %}" target="_blank"
+                    ><i class="fas fa-chevron-circle-right"></i> {% trans
+                    "個人ページ" %}</a
+                  >
+                </button>
+              </div>
+              {% else %}
+              <div class="mb-2">
+                <div>{% trans "[学年]" %}</div>
+                <div>{{ m.grade }}</div>
+              </div>
+              <div class="mb-2">
+                <div>{% trans "[出身校]" %}</div>
+                <div>{{ m.alma_mater }}</div>
+              </div>
+              {% endif %}
             </div>
+          </div>
         </div>
+        {% endfor %}
+      </div>
+      <div class="bottom-text">
+        <div class="skip-arrow">
+          <a
+            href="javascript:void(0);"
+            onclick="Scroll('#block{{ forloop.counter|add:'1' }}');"
+            ><i class="fas fa-angle-double-down"></i
+          ></a>
+        </div>
+      </div>
     </div>
-{% endblock content %}
-
-{% block js %}
-    {{ block.super }}
-{% endblock %}
+  </div>
+  {% endfor %}
+  <div
+    {%
+    if
+    list|length|add:1|divisibleby:2
+    %}class="block-negative"
+    {%
+    endif
+    %}
+  >
+    <div id="block{{ list|length|add:1 }}" class="contents-block">
+      <h2 class="under_border ml-4 mb-1 mr-4 pt-4">Former Members etc.</h2>
+      <h6 class="ml-4 mr-4">
+        {% if request.LANGUAGE_CODE == 'ja' %}過去のメンバー等{% endif %}
+      </h6>
+      <div class="ml-4 mr-4 mb-4">
+        {% trans
+        "ネットワーク特性評価研究室(中川健治研)を含む過去のメンバーと現中川健治研メンバーはこちら．"
+        %}
+        <div class="mt-4 ml-4">
+          <button type="button" class="btn mr-2 mb-2">
+            <a href="{% url 'public:former_members' %}"
+              ><i class="fas fa-chevron-circle-right"></i> {% trans
+              "過去のメンバーはこちら" %}</a
+            >
+          </button>
+          <button type="button" class="btn mr-2 mb-2">
+            <a href="{% url 'public:nakagawa_lab_members' %}"
+              ><i class="fas fa-chevron-circle-right"></i> {% trans
+              "中川健治研のメンバーはこちら" %}</a
+            >
+          </button>
+        </div>
+      </div>
+      <div class="bottom-text">
+        <div class="skip-arrow">
+          <a href="javascript:void(0);" onclick="Scroll('#top');"
+            ><i class="fas fa-angle-double-up"></i
+          ></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %} {% block js %} {{ block.super }} {% endblock %}

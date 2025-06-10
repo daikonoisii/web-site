@@ -1,68 +1,54 @@
-{% extends 'public/public_base.html' %}
-{% load i18n %}
-{% load static %}
-
-{% block title %}
-    {% trans "通信ネットワーク研究室" %} -- {% trans "過去の情報" %}
-{% endblock title %}
-
-{% block nav_items %}
-    <ul class="navbar-nav mr-auto">
-    </ul>
-{% endblock %}
-
-{% block top_page %}
-{% endblock %}
-
-{% block pre-title %}
-    NUT ComNets Lab.
-{% endblock %}
-
-{% block headline %}
-    Information
-{% endblock %}
-
-{% block sub-title %}
-    {% if request.LANGUAGE_CODE == 'ja' %}過去の情報{% endif %}
-{% endblock %}
-
-{% block content %}
-    <div>
-        <div>
-            <div id="block1" class="contents-block">
-                <h2 class="under_border ml-4 mb-1 mr-4">Information</h2>
-                <h6 class="ml-4 mr-4">{% if request.LANGUAGE_CODE == 'ja' %}過去の情報{% endif %}</h6>
-                <div class="ml-4 mr-4">
-                    {% for i in information_list %}
-                        <div class="small-block">
-                            <div class="mb-1">
-                                <i class="far fa-calendar-check"></i>
-                                <strong>{{ i.date }}</strong>
-                                {% if i.is_new %}
-                                    <span class="badge">New</span>
-                                {% endif %}
-                            </div>
-                            <div class="information-image-box mb-1">
-                                <div class="information-image-contents">
-                                    {% if i.picture is not None %}
-                                        <img class="information-image" src="{% url 'picture:image' i.picture.pk %}">
-                                    {% else %}
-                                        <i class="fas fa-info-circle"></i>
-                                    {% endif %}
-                                </div>
-                            </div>
-                            {% if request.LANGUAGE_CODE == 'ja' %}
-                                {{ i.description|safe }}
-                            {% else %}
-                                {{ i.e_description|safe }}
-                            {% endif %}
-                        </div>
-                    {% endfor %}
-                </div>
-                <div class="bottom-text">
-                    <div class="skip-arrow"><a href="javascript:void(0);" onclick="Scroll('#top');"><i class="fas fa-angle-double-up"></i></a></div>
-                </div>
+{% extends 'public/public_base.html' %} {% load i18n %} {% load static %} {%
+block title %} {% trans "通信ネットワーク研究室" %} -- {% trans "過去の情報" %}
+{% endblock title %} {% block nav_items %}
+<ul class="navbar-nav mr-auto"></ul>
+{% endblock %} {% block top_page %} {% endblock %} {% block pre-title %} NUT
+ComNets Lab. {% endblock %} {% block headline %} Information {% endblock %} {%
+block sub-title %} {% if request.LANGUAGE_CODE == 'ja' %}過去の情報{% endif %}
+{% endblock %} {% block content %}
+<div>
+  <div>
+    <div id="block1" class="contents-block">
+      <h2 class="under_border ml-4 mb-1 mr-4">Information</h2>
+      <h6 class="ml-4 mr-4">
+        {% if request.LANGUAGE_CODE == 'ja' %}過去の情報{% endif %}
+      </h6>
+      <div class="ml-4 mr-4">
+        {% for i in information_list %}
+        <div class="small-block">
+          <div class="mb-1">
+            <i class="far fa-calendar-check"></i>
+            <strong>{{ i.date }}</strong>
+            {% if i.is_new %}
+            <span class="badge">New</span>
+            {% endif %}
+          </div>
+          <div class="information-image-box mb-1">
+            <div class="information-image-contents">
+              {% if i.picture is not None %}
+              <img
+                class="information-image lazy"
+                data-src="{% url 'picture:image' i.picture.pk %}"
+                alt="{{ i.description|striptags }}"
+              />
+              {% else %}
+              <i class="fas fa-info-circle"></i>
+              {% endif %}
             </div>
+          </div>
+          {% if request.LANGUAGE_CODE == 'ja' %} {{ i.description|safe }} {%
+          else %} {{ i.e_description|safe }} {% endif %}
         </div>
+        {% endfor %}
+      </div>
+      <div class="bottom-text">
+        <div class="skip-arrow">
+          <a href="javascript:void(0);" onclick="Scroll('#top');"
+            ><i class="fas fa-angle-double-up"></i
+          ></a>
+        </div>
+      </div>
     </div>
+  </div>
+</div>
 {% endblock content %}
