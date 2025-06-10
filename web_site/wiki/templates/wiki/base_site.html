@@ -1,6 +1,6 @@
 {% load sekizai_tags i18n wiki_tags static %}<!DOCTYPE html>
 <html lang="en">
-  <link rel="shortcut icon" type="image/png" href="{% static 'wiki/img/logos.png' %}"/>
+  <link rel="shortcut icon" type="image/png" href="{% static 'wiki/img/logos.png' %}" loading="lazy"/>
   <head>
     <meta charset="utf-8">
     <title>
@@ -152,7 +152,7 @@
         <p>{% blocktrans %}Copyright(C) 2017- Comunication Networks Laboratory in Nagaoka University. All rights reserved.{% endblocktrans %}</p>
         <div class="clearfix"></div>
         <p><a href="{% url 'wiki:root' %}" class="pull-right">
-            <img src="{% static "/image/logo.png" %}"  width=80 height=80 /></a></p>
+            <img src="{% static "/image/logo.png" %}"  width=80 height=80 loading="lazy" /></a></p>
       </footer>
       </div>
 
